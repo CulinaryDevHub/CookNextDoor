@@ -26,6 +26,7 @@ def recommend_dishes(user_dish_name, user_preferences, excluded_ingredients):
         
         tfidf_matrix = vectorizer.fit_transform(filtered_data['Combined'])
     except ValueError as e:
+        
         return f"Error during TF-IDF vectorization: {e}"
     
     user_input_vector = vectorizer.transform([user_dish_name])

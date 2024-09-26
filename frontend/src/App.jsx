@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Navbar from './Component/Navbar/Navbar.jsx'
 import Header from './Component/Header/Header.jsx'
+import Recommendation from './pages/Recommendation/recommendation.jsx'
 // import Home from './pages/Home/Home.jsx'
 // import Cart from './pages/Cart/Cart.jsx'
 // import PlaceOrder from './pages/PlaceOrder/PlaceOrder.jsx'
@@ -15,6 +16,7 @@ function App() {
     <>
       <Navbar/>
       <Header/>
+      <Recommendation/>
       {/* <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/cart' element={<Cart />}/>

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-
-function App() {
+function Recommendation() {
   const [dishName, setDishName] = useState('');
   const [userPreferences, setUserPreferences] = useState('Vegetarian');
   const [excludedIngredients, setExcludedIngredients] = useState('');
@@ -113,4 +112,4 @@ function App() {
   );
 }
 
-export default App;
+export default Recommendation;
