@@ -23,27 +23,22 @@ def recommend_dishes(user_dish_name, user_preferences, excluded_ingredients):
     vectorizer = TfidfVectorizer(stop_words='english')
     
     try:
-        
         tfidf_matrix = vectorizer.fit_transform(filtered_data['Combined'])
     except ValueError as e:
-        
         return f"Error during TF-IDF vectorization: {e}"
     
     user_input_vector = vectorizer.transform([user_dish_name])
-    
     cosine_similarities = cosine_similarity(user_input_vector, tfidf_matrix).flatten()
     
     filtered_data['Similarity'] = cosine_similarities
-    
     filtered_data = filtered_data[filtered_data['Dish_Name'].str.lower() != user_dish_name.lower()]
     
     recommended_dishes = filtered_data.sort_values(by=['Similarity', 'Dish_Rating', 'Order_Price'], ascending=[False, False, True])
     
-    unique_recommendations = recommended_dishes.drop_duplicates(subset='Dish_Name', keep='first').head(8)
+    unique_recommendations = recommended_dishes.drop_duplicates(subset='Dish_Name', keep='first').head(7)
     
     if unique_recommendations.empty:
         return "No recommendations found based on your input."
     
+    # Return as a dictionary instead of DataFrame
     return unique_recommendations[['Dish_Name', 'Ingredients_List', 'Dish_Rating', 'Order_Price']].to_dict(orient="records")
-
-

@@ -61,7 +61,7 @@ function Recommendation() {
             onChange={(e) => setUserPreferences(e.target.value)}
           >
             <option value="Vegetarian">Vegetarian</option>
-            <option value="Non-Vegetarian">Non-Vegetarian</option>
+            <option value="NonVegetarian">Non-Vegetarian</option>
           </select>
         </label>
         <br />
