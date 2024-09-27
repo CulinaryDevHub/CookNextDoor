@@ -48,6 +48,7 @@ class user_model():
 
         return jsonify({'message': 'User added successfully', 'success': True}), 200;
 
+
     def get_user_by_email(self, email):
         query = f"SELECT * FROM User WHERE email = '{email}'"
         self.cur.execute(query)

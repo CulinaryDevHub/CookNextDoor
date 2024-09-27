@@ -63,7 +63,14 @@ def addone():
     if 'email' not in data or 'password' not in data:
         return jsonify({'message': 'Missing username or password', 'success': False}), 400
     
-    return obj.user_addone_model(data)
+    # return obj.user_addone_model(data)
+    try:
+        # Pass JSON data to the model function
+        return obj.user_addone_model(data)
+    except Exception as e:
+        # Log the error for debugging
+        print(f"Error: {str(e)}")
+        return jsonify({'message': 'Server error occurred', 'success': False}), 500
 
 @app.route('/api/user/logintoken', methods=["POST", "OPTIONS"])
 def create_token():

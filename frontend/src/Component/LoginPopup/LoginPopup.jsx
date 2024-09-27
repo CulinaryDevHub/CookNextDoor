@@ -28,65 +28,37 @@ const LoginPopup = ({ setShowLogin }) => {
         setData(data => ({ ...data, [name]: value }))
     }
 
-    // const onLogin = async (e) => {
-    //     e.preventDefault()
-
-    //     let new_url = url;
-    //     if (currState === "Login") {
-    //         new_url += "/api/user/logintoken";
-    //     }
-    //     else {
-    //         new_url += "/api/user/addone"
-    //     }
-    //     const response = await axios.post(new_url, data);
-    //     if (response.data.success) {
-    //         setToken(response.data.token)
-    //         localStorage.setItem("token", response.data.token)
-    //         // loadCartData({token:response.data.token})
-    //         setShowLogin(false)
-    //     }
-    //     else {
-    //         toast.error(response.data.message)
-    //     }
-    // }
-
     const onLogin = async (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
         let new_url = url;
         if (currState === "Login") {
             new_url += "/api/user/logintoken";
-        } else {
-            new_url += "/api/user/addone";
+        }
+        else {
+            new_url += "/api/user/addone"
         }
 
-        // Fetch options
-        const options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        };
-
         try {
-            const response = await fetch(new_url, options);
-            
+            const response = await axios.post(new_url, data, {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+
             // Check for non-JSON responses, such as an HTML error page
             const contentType = response.headers.get('content-type');
             if (!contentType || !contentType.includes('application/json')) {
                 throw new Error('Invalid response format');
             }
 
-            // // Log the raw response for debugging
-            // const responseText = await response.text();
-            // console.log('Raw response:', responseText);
+            const result = await response.data;
 
-            const result = await response.json();
 
             if (result.success) {
                 setToken(result.token);
                 localStorage.setItem("token", result.token);
+                // loadCartData({token:response.data.token})
                 setShowLogin(false);
             } else {
                 toast.error(result.message);
@@ -95,7 +67,54 @@ const LoginPopup = ({ setShowLogin }) => {
             console.error('Error during login:', error);
             toast.error("An error occurred during the request");
         }
-    };
+    }
+
+    // const onLogin = async (e) => {
+    //     e.preventDefault();
+
+    //     let new_url = url;
+    //     if (currState === "Login") {
+    //         new_url += "/api/user/logintoken";
+    //     } else {
+    //         new_url += "/api/user/addone";
+    //     }
+
+    //     // Fetch options
+    //     const options = {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify(data),
+    //     };
+
+    //     try {
+    //         const response = await fetch(new_url, options);
+
+    //         // Check for non-JSON responses, such as an HTML error page
+    //         const contentType = response.headers.get('content-type');
+    //         if (!contentType || !contentType.includes('application/json')) {
+    //             throw new Error('Invalid response format');
+    //         }
+
+    //         // // Log the raw response for debugging
+    //         // const responseText = await response.text();
+    //         // console.log('Raw response:', responseText);
+
+    //         const result = await response.json();
+
+    //         if (result.success) {
+    //             setToken(result.token);
+    //             localStorage.setItem("token", result.token);
+    //             setShowLogin(false);
+    //         } else {
+    //             toast.error(result.message);
+    //         }
+    //     } catch (error) {
+    //         console.error('Error during login:', error);
+    //         toast.error("An error occurred during the request");
+    //     }
+    // };
 
 
     return (
