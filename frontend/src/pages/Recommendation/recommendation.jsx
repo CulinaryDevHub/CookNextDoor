@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import './Recommendation.css'; // Import CSS for styling
+
 function Recommendation() {
   const [dishName, setDishName] = useState('');
   const [userPreferences, setUserPreferences] = useState('Vegetarian');
   const [excludedIngredients, setExcludedIngredients] = useState('');
   const [recommendations, setRecommendations] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
+  const [showModal, setShowModal] = useState(false);
 
   // Function to handle the form submission
   const handleSubmit = async (event) => {
@@ -32,6 +35,7 @@ function Recommendation() {
         const data = await response.json();
         setRecommendations(data);
         setErrorMessage('');
+        setShowModal(false); // Close the modal after successful submission
       }
     } catch (error) {
       setErrorMessage('An error occurred while fetching recommendations.');
@@ -39,48 +43,62 @@ function Recommendation() {
   };
 
   return (
-    <div className="App">
+    <div className="recommendation-container">
       <h1>Dish Recommendation System</h1>
 
-      {/* Form for input */}
-      <form onSubmit={handleSubmit}>
-        <label>
-          Enter the dish you'd like to order:
-          <input
-            type="text"
-            value={dishName}
-            onChange={(e) => setDishName(e.target.value)}
-          />
-        </label>
-        <br />
+      {/* Button to open the modal */}
+      <button className="toggle-button" onClick={() => setShowModal(true)}>
+        Need Recommendations?
+      </button>
 
-        <label>
-          Select your preference:
-          <select
-            value={userPreferences}
-            onChange={(e) => setUserPreferences(e.target.value)}
-          >
-            <option value="Vegetarian">Vegetarian</option>
-            <option value="NonVegetarian">Non-Vegetarian</option>
-          </select>
-        </label>
-        <br />
+      {/* Modal */}
+      {showModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close-button" onClick={() => setShowModal(false)}>&times;</span>
 
-        <label>
-          Ingredients to exclude (comma-separated):
-          <input
-            type="text"
-            value={excludedIngredients}
-            onChange={(e) => setExcludedIngredients(e.target.value)}
-          />
-        </label>
-        <br />
+            {/* Form inside the modal */}
+            <form onSubmit={handleSubmit}>
+              <label>
+                Enter the dish you'd like to order:
+                <input
+                  type="text"
+                  value={dishName}
+                  onChange={(e) => setDishName(e.target.value)}
+                />
+              </label>
+              <br />
 
-        <button type="submit">Get Recommendations</button>
-      </form>
+              <label>
+                Select your preference:
+                <select
+                  value={userPreferences}
+                  onChange={(e) => setUserPreferences(e.target.value)}
+                >
+                  <option value="Vegetarian">Vegetarian</option>
+                  <option value="NonVegetarian">Non-Vegetarian</option>
+                </select>
+              </label>
+              <br />
 
-      {/* Error Message */}
-      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+              <label>
+                Ingredients to exclude (comma-separated):
+                <input
+                  type="text"
+                  value={excludedIngredients}
+                  onChange={(e) => setExcludedIngredients(e.target.value)}
+                />
+              </label>
+              <br />
+
+              <button type="submit" className="submit-button">Get Recommendations</button>
+            </form>
+
+            {/* Error Message */}
+            {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+          </div>
+        </div>
+      )}
 
       {/* Display recommendations */}
       {recommendations.length > 0 && (
