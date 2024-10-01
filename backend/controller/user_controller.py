@@ -74,11 +74,12 @@ def addone():
 
 @app.route('/api/user/logintoken', methods=["POST", "OPTIONS"])
 def create_token():
+    user_type = request.json.get("user_type", None)
     email = request.json.get("email", None)
     password = request.json.get("password", None)
   
     if email:
-        user = obj.get_user_by_email(email)
+        user = obj.get_user_by_email(email, user_type)
     else:
         return jsonify({"error": "Email is required"}), 400
     #if email != "test" or password != "test":
@@ -100,7 +101,7 @@ def create_token():
   
     return jsonify({
         "email": email,
-        "access_token": access_token,
+        "token": access_token,
         "status": "Logged in Successfully "
     })
 

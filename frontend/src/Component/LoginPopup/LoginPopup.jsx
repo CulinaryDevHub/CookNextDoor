@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import './LoginPopup.css'
 // import { assets } from '../../assets/assets'
 // import { StoreContext } from '../../Context/StoreContext'
@@ -9,7 +9,7 @@ const LoginPopup = ({ setShowLogin }) => {
 
     // const { setToken, url,loadCartData } = useContext(StoreContext)
     const [token, setToken] = useState("")
-    const [currState, setCurrState] = useState("Sign Up");
+    const [currState, setCurrState] = useState("Login");
     const url = "http://localhost:5000"
 
     const [data, setData] = useState({
@@ -52,10 +52,9 @@ const LoginPopup = ({ setShowLogin }) => {
                 throw new Error('Invalid response format');
             }
 
-            const result = await response.data;
+            const result = response.data;
 
-
-            if (result.success) {
+            if (result) {                
                 setToken(result.token);
                 localStorage.setItem("token", result.token);
                 // loadCartData({token:response.data.token})
@@ -124,7 +123,7 @@ const LoginPopup = ({ setShowLogin }) => {
                     <h2>{currState}</h2> <img onClick={() => setShowLogin(false)} src={""/*assets.cross_icon*/} alt="" />
                 </div>
                 <div className="login-popup-inputs">
-                    {currState === "Sign Up" ? <input name='user_type' onChange={onChangeHandler} value={data.user_type} type="text" placeholder='Your role' required /> : <></>}
+                    <input name='user_type' onChange={onChangeHandler} value={data.user_type} type="text" placeholder='Your role' required />
                     <input name='email' onChange={onChangeHandler} value={data.email} type="email" placeholder='Your email' />
                     <input name='password' onChange={onChangeHandler} value={data.password} type="password" placeholder='Password' required />
                     {currState === "Sign Up" ? <input name='firstname' onChange={onChangeHandler} value={data.firstname} type="text" placeholder='Your firstname' required /> : <></>}
@@ -147,3 +146,6 @@ const LoginPopup = ({ setShowLogin }) => {
 }
 
 export default LoginPopup
+
+
+// while loging in or signing up if want to go back to home page without loging in or signing up they cant do it
