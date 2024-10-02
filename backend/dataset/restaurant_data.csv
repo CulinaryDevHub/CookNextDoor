@@ -129,7 +129,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 125,125,1028,Haldi Ki Sabzi,"Turmeric Root, Yogurt, Spices",2.2,2024-02-15,2,160,Delhi,49,Female,Vegetarian,Feb,Monsoon,V3
 145,115,1373,Matar Paneer,"Paneer, Peas, Onion, Tomatoes, Spices",4.0,2024-05-10,3,110,Thrissur,42,Male,Vegetarian,May,Winter,V3
 110,103,1355,Chawal,"Rice, Water, Salt",4.3,2024-01-08,4,193,Proddatur,37,Female,Vegetarian,Jan,Monsoon,V2
-101,118,1235,Pulao,"Basmati Rice, Mixed Vegets, Onion, Spices",2.9,2024-01-17,2,138,Agra,39,Male,Vegetarian,Jan,Summer,V2
+101,118,1235,Pulao,"Basmati Rice, Mixed Vegetables, Onion, Spices",2.9,2024-01-17,2,138,Agra,39,Male,Vegetarian,Jan,Summer,V2
 126,124,1350,Biryani,"Basmati Rice, Chicken or Vegetables, Spices",4.7,2024-08-12,3,119,Raichur,37,Male,Non-Vegetarian,Aug,Winter,V9
 118,146,1269,Poha,"Flattened Rice, Mustard Seeds, Curry Leaves, Onion, Spices",3.6,2024-07-28,3,81,Jamshedpur,47,Male,Vegetarian,Jul,Summer,V2
 83,106,1049,Rava Upma,"Semolina, Mustard Seeds, Curry Leaves, Vegetables",3.3,2024-09-12,1,198,Machilipatnam,40,Female,Vegetarian,Sep,Winter,V7
@@ -327,7 +327,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 186,115,1305,Chawal,"Rice, Water, Salt",2.2,2024-05-04,2,104,Proddatur,20,Male,Vegetarian,May,Summer,V5
 121,138,1256,Matar Paneer,"Paneer, Peas, Onion, Tomatoes, Spices",4.2,2024-08-21,1,195,Hospet,21,Female,Vegetarian,Aug,Winter,V5
 184,105,1103,Fish Fry,"Fish, Spices, Oil",4.3,2024-09-18,3,106,Barasat,45,Male,Non-Vegetarian,Sep,Winter,V8
-70,128,1005,Idli,"Red Lentils, Water, Ghee",2.7,2024-07-24,3,55,Jalna,31,Male,Vegetarian,Jul,Summer,V8
+70,128,1005,Idli,"Rice, Urad Dal, Fenugreek Seed",2.7,2024-07-24,3,55,Jalna,31,Male,Vegetarian,Jul,Summer,V8
 92,133,1356,Sabudana Khichdi,"Sabudana, Peanuts, Potatoes, Spices",2.8,2024-07-29,4,193,Mau,30,Female,Vegetarian,Jul,Monsoon,V5
 81,123,1191,Rajma Chawal,"Kidney Beans, Rice, Onion, Garlic, Spices",3.6,2024-03-17,5,129,Patna,39,Female,Vegetarian,Mar,Summer,V2
 14,131,1381,Rava Upma,"Semolina, Mustard Seeds, Curry Leaves, Vegetables",3.5,2024-04-24,5,136,Darbhanga,48,Female,Vegetarian,Apr,Summer,V1
@@ -497,7 +497,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 147,130,1228,Rava Upma,"Semolina, Mustard Seeds, Curry Leaves, Vegetables",1.1,2024-03-08,1,157,Phusro,31,Male,Vegetarian,Mar,Winter,V3
 170,102,1227,Aloo Gobi,"Potatoes, Cauliflower, Onion, Garlic, Spices",2.3,2024-09-03,3,97,Berhampur,36,Female,Vegetarian,Sep,Monsoon,V2
 148,117,1176,Masoor Dal,"Red Lentils, Onion, Garlic, Tomatoes, Spices",3.7,2024-02-08,1,93,Chandigarh,28,Male,Vegetarian,Feb,Monsoon,V1
-112,132,1115,Sarson Ka Saag,"Mustard Greens, Kafir Lime, Spinach, Onion, Garlic, Spices",1.1,2024-03-30,2,122,Jamalpur,26,Female,Vegetarian,Mar,Summer,V4
+112,132,1115,Sarson Ka Saag,"Mustard Greens, Spinach, Onion, Garlic, Spices",1.1,2024-03-30,2,122,Jamalpur,26,Female,Vegetarian,Mar,Summer,V4
 142,119,1047,Chawal,"Rice, Water, Salt",2.9,2024-04-13,4,79,Sangli-Miraj & Kupwad,44,Female,Vegetarian,Apr,Monsoon,V4
 63,112,1068,Matar Paneer,"Paneer, Peas, Onion, Tomatoes, Spices",1.9,2024-03-30,1,60,Haridwar,33,Female,Vegetarian,Mar,Winter,V4
 180,128,1160,Rajma Chawal,"Kidney Beans, Rice, Onion, Garlic, Spices",4.2,2024-01-24,5,139,Nellore,49,Male,Vegetarian,Jan,Winter,V3
@@ -643,7 +643,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 175,100,1471,Haldi Ki Sabzi,"Turmeric Root, Yogurt, Spices",3.5,2024-03-29,1,111,Sonipat,38,Male,Vegetarian,Mar,Winter,V4
 47,143,1246,Rava Upma,"Semolina, Mustard Seeds, Curry Leaves, Vegetables",4.9,2024-07-14,3,57,Amaravati,50,Female,Vegetarian,Jul,Summer,V3
 159,103,1380,Aloo Gobi,"Potatoes, Cauliflower, Onion, Garlic, Spices",3.3,2024-08-22,1,187,Thiruvananthapuram,40,Male,Vegetarian,Aug,Monsoon,V9
-159,103,1380,Aloo Gobi,"Potatoes, Calcium Chloride, Onion, Garlic, Spices",3.3,2024-08-22,1,187,Thiruvananthapuram,40,Male,Vegetarian,Aug,Monsoon,V9
+159,103,1380,Aloo Gobi,"Potatoes, Cauliflower, Onion, Garlic, Spices",3.3,2024-08-22,1,187,Thiruvananthapuram,40,Male,Vegetarian,Aug,Monsoon,V9
 106,127,1335,Idli,"Rice, Urad Dal, Fenugreek Seeds",2.5,2024-03-21,1,71,Alwar,38,Female,Vegetarian,Mar,Winter,V8
 111,145,1229,Haldi Ki Sabzi,"Turmeric Root, Yogurt, Spices",2.7,2024-02-08,5,56,Nanded,37,Male,Vegetarian,Feb,Summer,V6
 104,121,1146,Haldi Ki Sabzi,"Turmeric Root, Yogurt, Spices",4.6,2024-01-21,4,66,Sambhal,48,Male,Vegetarian,Jan,Summer,V5
@@ -909,8 +909,8 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 132,121,1043,Mutton Keema,"Minced Mutton, Onion, Garlic, Spices",2.6,2024-07-02,2,181,Korba,47,Female,Non-Vegetarian,Jul,Summer,V3
 109,137,1287,Kadhi,"Gram Flour, Yogurt, Spices",1.3,2024-03-20,4,155,Ambattur,28,Female,Vegetarian,Mar,Summer,V9
 142,119,1047,Chawal,"Rice, Water, Salt",2.9,2024-04-13,4,79,Sangli-Miraj & Kupwad,44,Female,Vegetarian,Apr,Monsoon,V4
-63,112,1068,Matara Ella,"Eggs, Potatoes, Spices",1.3,2024-06-13,3,112,Jodhpur,44,Female,Non-Vegetarian,Jun,Winter,V9
-147,130,1228,Rava Upma,"Semolina, Mustard Seeds, Curries, Vegetables",1.1,2024-03-08,1,157,Phusro,31,Male,Vegetarian,Mar,Winter,V3
+63,112,1068,Egg Aloo Masala,"Eggs, Potatoes, Spices",1.3,2024-06-13,3,112,Jodhpur,44,Female,Non-Vegetarian,Jun,Winter,V9
+147,130,1228,Rava Upma,"Semolina, Mustard Seeds, Curry Leaves, Vegetables",1.1,2024-03-08,1,157,Phusro,31,Male,Vegetarian,Mar,Winter,V3
 35,115,1165,Poha,"Flattened Rice, Mustard Seeds, Curry Leaves, Onion, Spices",2.0,2024-04-21,4,170,Mehsana,27,Female,Vegetarian,Apr,Monsoon,V10
 173,122,1425,Pulao,"Basmati Rice, Mixed Vegetables, Onion, Spices",1.1,2024-01-24,4,186,Muzaffarnagar,45,Female,Vegetarian,Jan,Winter,V3
 9,127,1363,Palak Paneer,"Spinach, Paneer, Onion, Tomatoes, Spices",4.1,2024-02-06,2,180,Bhusawal,31,Female,Vegetarian,Feb,Monsoon,V2
@@ -948,7 +948,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 93,119,1275,Masoor Dal,"Red Lentils, Onion, Garlic, Tomatoes, Spices",2.2,2024-02-15,3,76,Nashik,39,Male,Vegetarian,Feb,Winter,V10
 158,143,1229,Rajma Chawal,"Kidney Beans, Rice, Onion, Garlic, Spices",4.1,2024-03-10,1,154,Aurangabad,24,Female,Vegetarian,Mar,Winter,V7
 23,128,1458,Dal Tadka,"Yellow Lentils, Onion, Garlic, Tomatoes, Spices",4.4,2024-03-21,1,116,Baranagar,35,Male,Vegetarian,Mar,Summer,V5
-59,142,1071,Biryani,"Basmati Rice, Chicken or Vegetables, Spices",4.3,2024-07-23,5,101,Ghaziabad,27,Female,Non-Vegetarian,Jul,Winter,V8
+59,142,1071,Biryani,"Basmati Rice, Chicken, Spices",4.3,2024-07-23,5,101,Ghaziabad,27,Female,Non-Vegetarian,Jul,Winter,V8
 34,129,1158,Dosa,"Rice, Urad Dal, Potatoes, Spices",3.3,2024-03-11,3,83,Ajmer,20,Female,Vegetarian,Mar,Winter,V10
 184,105,1103,Fish Fry,"Fish, Spices, Oil",4.3,2024-09-18,3,106,Barasat,45,Male,Non-Vegetarian,Sep,Winter,V8
 81,123,1191,Rajma Chawal,"Kidney Beans, Rice, Onion, Garlic, Spices",3.6,2024-03-17,5,129,Patna,39,Female,Vegetarian,Mar,Summer,V2
@@ -973,7 +973,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 16,138,1299,Poha,"Flattened Rice, Mustard Seeds, Curry Leaves, Onion, Spices",1.8,2024-06-11,3,122,Srinagar,45,Male,Vegetarian,Jun,Monsoon,V5
 130,134,1158,Dal Tadka,"Yellow Lentils, Onion, Garlic, Tomatoes, Spices",2.9,2024-08-06,3,88,Bijapur,24,Male,Vegetarian,Aug,Winter,V2
 146,132,1128,Chicken Curry,"Chicken, Onion, Tomatoes, Spices",3.3,2024-08-05,1,127,Nangloi Jat,41,Male,Non-Vegetarian,Aug,Monsoon,V6
-81,123,1191,Rajma Chawal,"Kidney Beans, Rice, Onion, Garlic, SPF",3.6,2024-03-17,5,129,Patna,39,Female,Vegetarian,Mar,Summer,V2
+81,123,1191,Rajma Chawal,"Kidney Beans, Rice, Onion, Garlic, Spices",3.6,2024-03-17,5,129,Patna,39,Female,Vegetarian,Mar,Summer,V2
 129,142,1310,Mutton Keema,"Minced Mutton, Onion, Garlic, Spices",1.2,2024-02-21,2,140,Chennai,36,Female,Non-Vegetarian,Feb,Summer,V4
 135,103,1263,Dal Tadka,"Yellow Lentils, Onion, Garlic, Tomatoes, Spices",3.0,2024-07-01,4,184,Saharsa,24,Male,Vegetarian,Jul,Monsoon,V2
 155,146,1252,Aloo Paratha,"Potatoes, Wheat Flour, Ghee, Spices",4.3,2024-04-07,3,89,Farrukhabad,44,Female,Vegetarian,Apr,Winter,V8
@@ -1016,7 +1016,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 117,114,1414,Thepla,"Wheat Flour, Fenugreek Leaves, Spices",2.7,2024-03-04,4,146,Aurangabad,26,Female,Vegetarian,Mar,Winter,V1
 160,124,1245,Dal Tadka,"Yellow Lentils, Onion, Garlic, Tomatoes, Spices",3.0,2024-01-03,4,102,Saharsa,22,Female,Vegetarian,Jan,Monsoon,V1
 97,126,1375,Thepla,"Wheat Flour, Fenugreek Leaves, Spices",2.9,2024-07-30,4,193,Sagar,29,Male,Vegetarian,Jul,Winter,V4
-49,142,1253,Iron Pellet,"Metals, Oil, Starch",4.2,2024-01-03,3,145,Chennai,34,Female,Vegetarian,Jan,Summer,V1
+49,142,1253,Paneer Platter,"Yeast,Paneer, Spice Mix, Oil",4.2,2024-01-03,3,145,Chennai,34,Female,Vegetarian,Jan,Summer,V1
 55,130,1258,Masoor Dal,"Red Lentils, Onion, Garlic, Tomatoes, Spices",3.1,2024-09-09,4,93,Aurangabad,24,Female,Vegetarian,Sep,Monsoon,V1
 15,135,1376,Biryani,"Basmati Rice, Chicken or Vegetables, Spices",1.1,2024-03-17,2,165,Rewa,25,Female,Non-Vegetarian,Mar,Monsoon,V2
 118,146,1269,Poha,"Flattened Rice, Mustard Seeds, Curry Leaves, Onion, Spices",3.6,2024-07-28,3,81,Jamshedpur,47,Male,Vegetarian,Jul,Summer,V2
@@ -1074,7 +1074,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 122,142,1165,Rava Upma,"Semolina, Mustard Seeds, Curry Leaves, Vegetables",1.8,2024-01-08,4,199,Howrah,21,Female,Vegetarian,Jan,Monsoon,V7
 120,104,1363,Fish Fry,"Fish, Spices, Oil",3.6,2024-05-08,5,56,Medininagar,27,Male,Non-Vegetarian,May,Summer,V1
 117,114,1414,Thepla,"Wheat Flour, Fenugreek Leaves, Spices",2.7,2024-03-04,4,146,Aurangabad,26,Female,Vegetarian,Mar,Winter,V1
-47,143,1246,RavaUpma,"Semolina, Mustard Seeds, Curry Leaves, Vegetables",4.9,2024-07-14,3,57,Amaravati,50,Female,Vegetarian,Jul,Summer,V3
+47,143,1246,Rava Upma,"Semolina, Mustard Seeds, Curry Leaves, Vegetables",4.9,2024-07-14,3,57,Amaravati,50,Female,Vegetarian,Jul,Summer,V3
 38,138,1065,Biryani,"Basmati Rice, Chicken or Vegetables, Spices",3.1,2024-05-27,2,53,Bidhannagar,23,Female,Non-Vegetarian,May,Summer,V3
 69,139,1368,Biryani,"Basmati Rice, Chicken or Vegetables, Spices",1.6,2024-07-08,2,174,Bidhannagar,34,Female,Non-Vegetarian,Jul,Summer,V1
 11,149,1173,Mutton Keema,"Minced Mutton, Onion, Garlic, Spices",4.3,2024-05-22,3,149,Shimoga,33,Male,Non-Vegetarian,May,Monsoon,V7
@@ -1192,7 +1192,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 135,103,1263,Dal Tadka,"Yellow Lentils, Onion, Garlic, Tomatoes, Spices",3.0,2024-07-01,4,184,Saharsa,24,Male,Vegetarian,Jul,Monsoon,V2
 11,149,1173,Mutton Keema,"Minced Mutton, Onion, Garlic, Spices",4.3,2024-05-22,3,149,Shimoga,33,Male,Non-Vegetarian,May,Monsoon,V7
 158,143,1229,Rajma Chawal,"Kidney Beans, Rice, Onion, Garlic, Spices",4.1,2024-03-10,1,154,Aurangabad,24,Female,Vegetarian,Mar,Winter,V7
-5,124,1380,EggCurry,"Eggs, Onion, Tomatoes, Spices",2.0,2024-08-17,2,154,Katni,45,Male,Non-Vegetarian,Aug,Summer,V5
+5,124,1380,Egg Curry,"Eggs, Onion, Tomatoes, Spices",2.0,2024-08-17,2,154,Katni,45,Male,Non-Vegetarian,Aug,Summer,V5
 126,124,1350,Biryani,"Basmati Rice, Chicken or Vegetables, Spices",4.7,2024-08-12,3,119,Raichur,37,Male,Non-Vegetarian,Aug,Winter,V9
 15,135,1376,Biryani,"Basmati Rice, Chicken or Vegetables, Spices",1.1,2024-03-17,2,165,Rewa,25,Female,Non-Vegetarian,Mar,Monsoon,V2
 119,123,1074,Haldi Ki Sabzi,"Turmeric Root, Yogurt, Spices",1.3,2024-08-29,2,83,Tadepalligudem,47,Female,Vegetarian,Aug,Summer,V3
@@ -1218,7 +1218,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 46,130,1309,Idli,"Rice, Urad Dal, Fenugreek Seeds",2.9,2024-02-11,3,68,Naihati,44,Male,Vegetarian,Feb,Summer,V7
 125,125,1028,Haldi Ki Sabzi,"Turmeric Root, Yogurt, Spices",2.2,2024-02-15,2,160,Delhi,49,Female,Vegetarian,Feb,Monsoon,V3
 75,124,1124,Thepla,"Wheat Flour, Fenugreek Leaves, Spices",1.6,2024-07-31,2,51,Gurgaon,39,Female,Vegetarian,Jul,Summer,V2
-95,108,1259,Chapatis,"Wheat Flour, Water, Ghee",1.5,2024-07-29,1,89,Imphal,45,Female,Vegetarian,Jul,Winter,V8
+95,108,1259,Roti,"Wheat Flour, Water, Ghee",1.5,2024-07-29,1,89,Imphal,45,Female,Vegetarian,Jul,Winter,V8
 65,100,1417,Thepla,"Wheat Flour, Fenugreek Leaves, Spices",1.9,2024-07-01,1,90,Amritsar,45,Male,Vegetarian,Jul,Monsoon,V7
 193,115,1156,Fish Fry,"Fish, Spices, Oil",2.0,2024-05-07,1,156,Jammu,41,Male,Non-Vegetarian,May,Monsoon,V1
 8,122,1395,Aloo Paratha,"Potatoes, Wheat Flour, Ghee, Spices",4.0,2024-06-19,2,118,Gangtok,46,Male,Vegetarian,Jun,Monsoon,V2
@@ -1264,7 +1264,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 172,110,1360,Chawal,"Rice, Water, Salt",1.3,2024-06-13,3,127,Warangal,40,Female,Vegetarian,Jun,Monsoon,V5
 59,142,1071,Biryani,"Basmati Rice, Chicken or Vegetables, Spices",4.3,2024-07-23,5,101,Ghaziabad,27,Female,Non-Vegetarian,Jul,Winter,V8
 16,138,1299,Poha,"Flattened Rice, Mustard Seeds, Curry Leaves, Onion, Spices",1.8,2024-06-11,3,122,Srinagar,45,Male,Vegetarian,Jun,Monsoon,V5
-184,105,1103,Fish Fry,"Fishing Frogs, Fish, Spices",4.3,2024-09-18,3,106,Barasat,45,Male,Non-Vegetarian,Sep,Winter,V8
+184,105,1103,Fish Fry,"Fish, Spices",4.3,2024-09-18,3,106,Barasat,45,Male,Non-Vegetarian,Sep,Winter,V8
 163,115,1282,Aloo Paratha,"Potatoes, Wheat Flour, Ghee, Spices",1.4,2024-08-18,3,136,Bongaigaon,43,Male,Vegetarian,Aug,Summer,V4
 167,123,1164,Egg Curry,"Eggs, Onion, Tomatoes, Spices",1.9,2024-06-29,3,128,Jodhpur,40,Female,Non-Vegetarian,Jun,Winter,V8
 160,124,1245,Dal Tadka,"Yellow Lentils, Onion, Garlic, Tomatoes, Spices",3.0,2024-01-03,4,102,Saharsa,22,Female,Vegetarian,Jan,Monsoon,V1
@@ -1380,7 +1380,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 129,142,1310,Mutton Keema,"Minced Mutton, Onion, Garlic, Spices",1.2,2024-02-21,2,140,Chapra,37,Female,Non-Vegetarian,Feb,Summer,V7
 65,100,1417,Thepla,"Wheat Flour, Fenugreek Leaves, Spices",1.9,2024-07-01,1,90,Amritsar,45,Male,Vegetarian,Jul,Monsoon,V7
 28,136,1499,Roti,"Wheat Flour, Water, Ghee",4.1,2024-02-22,2,133,Bhatpara,22,Female,Vegetarian,Feb,Winter,V4
-196,119,1394, Thepla,"Wheat Flour, Fenugreek Leaves, Spices",2.6,2024-03-31,5,169,Chennai,45,Female,Vegetarian,Mar,Summer,V2
+196,119,1394,Thepla,"Wheat Flour, Fenugreek Leaves, Spices",2.6,2024-03-31,5,169,Chennai,45,Female,Vegetarian,Mar,Summer,V2
 165,118,1350,Pulao,"Basmati Rice, Mixed Vegetables, Onion, Spices",2.7,2024-07-06,2,118,Hapur,21,Female,Vegetarian,Jul,Winter,V7
 74,139,1278,Thepla,"Wheat Flour, Fenugreek Leaves, Spices",3.9,2024-05-01,3,149,Bhatpara,32,Male,Vegetarian,May,Winter,V8
 98,144,1159,Rava Upma,"Semolina, Mustard Seeds, Curry Leaves, Vegetables",2.8,2024-05-30,3,98,Nagaons,44,Male,Vegetarian,May,Summer,V8
@@ -1421,7 +1421,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 134,149,1083,Roti,"Wheat Flour, Water, Ghee",4.5,2024-03-21,5,119,Hosur,20,Male,Vegetarian,Mar,Summer,V10
 198,129,1486,Poha,"Flattened Rice, Mustard Seeds, Curry Leaves, Onion, Spices",1.3,2024-05-03,2,74,Belgaum,47,Female,Vegetarian,May,Summer,V7
 168,135,1469,Sabudana Khichdi,"Sabudana, Peanuts, Potatoes, Spices",2.8,2024-01-24,1,176,Davanagere,39,Male,Vegetarian,Jan,Winter,V10
-180,128,1160,Rajma Chawal,"Karaiti Peanuts, Rice, Onion, Garlic, Spices",4.2,2024-01-24,5,139,Nellore,49,Male,Vegetarian,Jan,Winter,V3
+180,128,1160,Rajma Chawal,"Kidney Beans, Rice, Onion, Garlic, Spices",4.2,2024-01-24,5,139,Nellore,49,Male,Vegetarian,Jan,Winter,V3
 92,133,1356,Sabudana Khichdi,"Sabudana, Peanuts, Potatoes, Spices",2.8,2024-07-29,4,193,Mau,30,Female,Vegetarian,Jul,Monsoon,V5
 192,105,1389,Chicken Curry,"Chicken, Onion, Tomatoes, Spices",1.9,2024-06-27,5,160,Motihari,43,Female,Non-Vegetarian,Jun,Winter,V1
 185,125,1153,Roti,"Wheat Flour, Water, Ghee",4.3,2024-02-28,1,126,Panihati,36,Female,Vegetarian,Feb,Monsoon,V5
@@ -1567,7 +1567,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 167,123,1164,Egg Curry,"Eggs, Onion, Tomatoes, Spices",1.9,2024-06-29,3,128,Jodhpur,40,Female,Non-Vegetarian,Jun,Winter,V8
 146,132,1128,Chicken Curry,"Chicken, Onion, Tomatoes, Spices",3.3,2024-08-05,1,127,Nangloi Jat,41,Male,Non-Vegetarian,Aug,Monsoon,V6
 191,123,1175,Thepla,"Wheat Flour, Fenugreek Leaves, Spices",2.0,2024-03-09,3,71,Shivpuri,43,Female,Vegetarian,Mar,Monsoon,V5
-122,142,1165,Rava Upma,"Semolina, Mustard Seeds, Currys, Vegetables",1.8,2024-01-08,4,199,Howrah,21,Female,Vegetarian,Jan,Monsoon,V7
+122,142,1165,Rava Upma,"Semolina, Mustard Seeds, Curry Leaves, Vegetables",1.8,2024-01-08,4,199,Howrah,21,Female,Vegetarian,Jan,Monsoon,V7
 167,123,1164,Egg Curry,"Eggs, Onion, Tomatoes, Spices",1.9,2024-06-29,3,128,Jodhpur,40,Female,Non-Vegetarian,Jun,Winter,V8
 80,106,1489,Gajar Halwa,"Carrots, Milk, Sugar, Ghee, Cardamom",1.3,2024-04-07,3,59,Raichur,38,Female,Vegetarian,Apr,Winter,V4
 194,116,1354,Idli,"Rice, Urad Dal, Fenugreek Seeds",4.0,2024-09-19,2,143,Pimpri-Chinchwad,28,Female,Vegetarian,Sep,Winter,V3
@@ -1824,13 +1824,13 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 149,114,1202,Korma,"Meat or Vegetables, Yogurt, Spices",3.8,2024-04-05,1,178,Cuttack,47,Male,Non-Vegetarian,Apr,Monsoon,V3
 15,135,1376,Biryani,"Basmati Rice, Chicken or Vegetables, Spices",1.1,2024-03-17,2,165,Rewa,25,Female,Non-Vegetarian,Mar,Monsoon,V2
 80,106,1489,Gajar Halwa,"Carrots, Milk, Sugar, Ghee, Cardamom",1.3,2024-04-07,3,59,Raichur,38,Female,Vegetarian,Apr,Winter,V4
-30,114,1151,Aloo Gobi,"Potatoes, Calcium Carbonate, Sodium Nitrite, Spices",4.8,2024-02-29,3,187,Raiganj,36,Male,Vegetarian,Feb,Winter,V2
+30,114,1151,Aloo Gobi,"Potatoes, Cauliflower, Spices",4.8,2024-02-29,3,187,Raiganj,36,Male,Vegetarian,Feb,Winter,V2
 141,142,1130,Haldi Ki Sabzi,"Turmeric Root, Yogurt, Spices",2.2,2024-05-03,4,115,Rajpur Sonarpur,22,Female,Vegetarian,May,Winter,V1
 53,106,1191,Rava Upma,"Semolina, Mustard Seeds, Curry Leaves, Vegetables",4.6,2024-02-22,5,93,Gaya,35,Female,Vegetarian,Feb,Winter,V8
 91,121,1205,Masoor Dal,"Red Lentils, Onion, Garlic, Tomatoes, Spices",3.8,2024-04-13,4,75,Indore,31,Male,Vegetarian,Apr,Monsoon,V10
 66,134,1449,Thepla,"Wheat Flour, Fenugreek Leaves, Spices",4.7,2024-01-01,1,103,Akola,39,Female,Vegetarian,Jan,Monsoon,V4
 194,116,1354,Idli,"Rice, Urad Dal, Fenugreek Seeds",4.0,2024-09-19,2,143,Pimpri-Chinchwad,28,Female,Vegetarian,Sep,Winter,V3
-7,122,1000,Farofa,"Flattened Rice, Mustard Seeds, Curry Leaves, Onion, Spices",4.8,2024-09-17,3,129,Mau,37,Female,Vegetarian,Sep,Monsoon,V5
+7,122,1000,Poha,"Flattened Rice, Mustard Seeds, Curry Leaves, Onion, Spices",4.8,2024-09-17,3,129,Mau,37,Female,Vegetarian,Sep,Monsoon,V5
 103,149,1065,Palak Paneer,"Spinach, Paneer, Onion, Tomatoes, Spices",3.5,2024-08-15,3,119,Madhyamgram,37,Male,Vegetarian,Aug,Winter,V1
 76,111,1432,Sabudana Khichdi,"Sabudana, Peanuts, Potatoes, Spices",3.1,2024-01-09,3,113,Siwans,42,Male,Vegetarian,Jan,Summer,V1
 111,145,1229,Haldi Ki Sabzi,"Turmeric Root, Yogurt, Spices",2.7,2024-02-08,5,56,Nanded,37,Male,Vegetarian,Feb,Summer,V6
@@ -1849,7 +1849,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 87,146,1071,Aloo Paratha,"Potatoes, Wheat Flour, Ghee, Spices",1.2,2024-04-29,1,159,Surendranagar Dudhrej,44,Female,Vegetarian,Apr,Monsoon,V2
 103,149,1065,Palak Paneer,"Spinach, Paneer, Onion, Tomatoes, Spices",3.5,2024-08-15,3,119,Madhyamgram,37,Male,Vegetarian,Aug,Winter,V1
 127,109,1437,Aloo Paratha,"Potatoes, Wheat Flour, Ghee, Spices",1.7,2024-09-08,3,120,Sikar,32,Female,Vegetarian,Sep,Monsoon,V1
-32,121,1455,Egg Curry,"Eggs, Onions, Tomatoes, Spices",2.2,2024-06-30,1,123,Chennai,36,Female,Non-Vegetarian,Jun,Winter,V4
+32,121,1455,Egg Curry,"Eggs, Onion, Tomatoes, Spices",2.2,2024-06-30,1,123,Chennai,36,Female,Non-Vegetarian,Jun,Winter,V4
 151,127,1233,Rajma Chawal,"Kidney Beans, Rice, Onion, Garlic, Spices",4.1,2024-07-10,4,77,Katni,34,Male,Vegetarian,Jul,Summer,V6
 37,120,1326,Sabudana Khichdi,"Sabudana, Peanuts, Potatoes, Spices",3.2,2024-06-26,5,158,Tiruppur,49,Male,Vegetarian,Jun,Summer,V2
 19,125,1297,Sabudana Khichdi,"Sabudana, Peanuts, Potatoes, Spices",4.5,2024-03-07,5,164,Gandhidham,38,Female,Vegetarian,Mar,Summer,V5
@@ -1994,7 +1994,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 89,130,1275,Thepla,"Wheat Flour, Fenugreek Leaves, Spices",2.6,2024-01-04,2,69,Jaunpur,35,Female,Vegetarian,Jan,Monsoon,V8
 26,128,1364,Idli,"Rice, Urad Dal, Fenugreek Seeds",2.8,2024-04-06,2,116,Katni,29,Male,Vegetarian,Apr,Monsoon,V6
 121,138,1256,Matar Paneer,"Paneer, Peas, Onion, Tomatoes, Spices",4.2,2024-08-21,1,195,Hospet,21,Female,Vegetarian,Aug,Winter,V5
-69,139,1368,Boredom Buster,"Yeast, Spice Mix, Oil",1.8,2024-06-26,1,166,Jodhpur,37,Female,Vegetarian,Jun,Winter,V8
+69,139,1368,Paneer Platter,"Yeast,Paneer, Spice Mix, Oil",1.8,2024-06-26,1,166,Jodhpur,37,Female,Vegetarian,Jun,Winter,V8
 147,130,1228,Rava Upma,"Semolina, Mustard Seeds, Curry Leaves, Vegetables",1.1,2024-03-08,1,157,Phusro,31,Male,Vegetarian,Mar,Winter,V3
 163,115,1282,Aloo Paratha,"Potatoes, Wheat Flour, Ghee, Spices",1.4,2024-08-18,3,136,Bongaigaon,43,Male,Vegetarian,Aug,Summer,V4
 79,111,1305,Poha,"Flattened Rice, Mustard Seeds, Curry Leaves, Onion, Spices",4.1,2024-01-04,1,65,Naihati,38,Male,Vegetarian,Jan,Monsoon,V2
@@ -2119,7 +2119,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 56,113,1244,Masoor Dal,"Red Lentils, Onion, Garlic, Tomatoes, Spices",4.2,2024-02-19,4,129,Gurgaon,37,Female,Vegetarian,Feb,Summer,V2
 16,138,1299,Poha,"Flattened Rice, Mustard Seeds, Curry Leaves, Onion, Spices",1.8,2024-06-11,3,122,Srinagar,45,Male,Vegetarian,Jun,Monsoon,V5
 2,113,1152,Dosa,"Rice, Urad Dal, Potatoes, Spices",4.1,2024-09-04,2,86,Bally,43,Male,Vegetarian,Sep,Summer,V7
-129,142,1310,Mutton Keema,"Minced Mixed Vegetables, Onion, Garlic, Spices",1.2,2024-02-21,2,140,Chapra,37,Female,Non-Vegetarian,Feb,Summer,V7
+129,142,1310,Mutton Keema,"Minced Mutton, Onion, Garlic, Spices",1.2,2024-02-21,2,140,Chapra,37,Female,Non-Vegetarian,Feb,Summer,V7
 56,113,1244,Masoor Dal,"Red Lentils, Onion, Garlic, Tomatoes, Spices",4.2,2024-02-19,4,129,Gurgaon,37,Female,Vegetarian,Feb,Summer,V2
 186,115,1305,Chawal,"Rice, Water, Salt",2.2,2024-05-04,2,104,Proddatur,20,Male,Vegetarian,May,Summer,V5
 135,103,1263,Dal Tadka,"Yellow Lentils, Onion, Garlic, Tomatoes, Spices",3.0,2024-07-01,4,184,Saharsa,24,Male,Vegetarian,Jul,Monsoon,V2
@@ -2185,7 +2185,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 194,116,1354,Idli,"Rice, Urad Dal, Fenugreek Seeds",4.0,2024-09-19,2,143,Pimpri-Chinchwad,28,Female,Vegetarian,Sep,Winter,V3
 146,132,1128,Chicken Curry,"Chicken, Onion, Tomatoes, Spices",3.3,2024-08-05,1,127,Nangloi Jat,41,Male,Non-Vegetarian,Aug,Monsoon,V6
 57,130,1196,Egg Curry,"Eggs, Onion, Tomatoes, Spices",2.3,2024-02-24,4,73,Junagadh,48,Male,Non-Vegetarian,Feb,Summer,V10
-144,123,1397,Idsar,"Sarson Ka Saag, Yogurt, Spices",4.2,2024-04-09,2,175,Bijapur,23,Male,Vegetarian,Apr,Winter,V3
+144,123,1397,Idhar,"Lentils, Oil, Yogurt, Spices",4.2,2024-04-09,2,175,Bijapur,23,Male,Vegetarian,Apr,Winter,V3
 125,125,1028,Haldi Ki Sabzi,"Turmeric Root, Yogurt, Spices",2.7,2024-02-15,3,93,Delhi,46,Female,Vegetarian,Feb,Monsoon,V3
 136,112,1133,Masoor Dal,"Red Lentils, Onion, Garlic, Tomatoes, Spices",1.1,2024-01-24,5,85,Bhubaneswar,28,Female,Vegetarian,Jan,Summer,V8
 74,139,1278,Thepla,"Wheat Flour, Fenugreek Leaves, Spices",3.9,2024-05-01,3,149,Bhatpara,32,Male,Vegetarian,May,Winter,V8
@@ -2402,7 +2402,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 37,110,1326,Sabudana Khichdi,"Sabudana, Peanuts, Potatoes, Spices",3.2,2024-06-26,5,158,Tiruppur,49,Male,Vegetarian,Jun,Summer,V2
 143,125,1144,Aloo Gobi,"Potatoes, Cauliflower, Onion, Garlic, Spices",4.1,2024-02-02,5,123,Ahmednagar,41,Male,Vegetarian,Feb,Monsoon,V2
 149,114,1202,Korma,"Meat or Vegetables, Yogurt, Spices",3.8,2024-04-05,1,178,Cuttack,47,Male,Non-Vegetarian,Apr,Monsoon,V3
-150,135,1377, Dosa,"Rice, Urad Dal, Potatoes, Spices",1.3,2024-01-28,3,185,Gaya,46,Female,Vegetarian,Jan,Winter,V1
+150,135,1377,Dosa,"Rice, Urad Dal, Potatoes, Spices",1.3,2024-01-28,3,185,Gaya,46,Female,Vegetarian,Jan,Winter,V1
 66,134,1449,Thepla,"Wheat Flour, Fenugreek Leaves, Spices",4.7,2024-01-01,1,103,Akola,39,Female,Vegetarian,Jan,Monsoon,V4
 100,131,1244,Aloo Gobi,"Potatoes, Cauliflower, Onion, Garlic, Spices",3.5,2024-06-29,2,166,Mysore,26,Male,Vegetarian,Jun,Monsoon,V5
 24,101,1485,Gajar Halwa,"Carrots, Milk, Sugar, Ghee, Cardamom",4.9,2024-04-14,4,199,Indore,30,Male,Vegetarian,Apr,Monsoon,V4
@@ -2528,7 +2528,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 158,143,1229,Rajma Chawal,"Kidney Beans, Rice, Onion, Garlic, Spices",4.1,2024-03-10,1,154,Aurangabad,24,Female,Vegetarian,Mar,Winter,V7
 3,106,1337,Thepla,"Wheat Flour, Fenugreek Leaves, Spices",4.4,2024-03-02,3,98,Bettiah,38,Female,Vegetarian,Mar,Monsoon,V3
 110,103,1355,Chawal,"Rice, Water, Salt",4.3,2024-01-08,4,193,Proddatur,37,Female,Vegetarian,Jan,Monsoon,V2
-26,128,1364, Idli,"Rice, Urad Dal, Fenugreek Seeds",2.8,2024-04-06,2,116,Katni,29,Male,Vegetarian,Apr,Monsoon,V6
+26,128,1364,Idli,"Rice, Urad Dal, Fenugreek Seeds",2.8,2024-04-06,2,116,Katni,29,Male,Vegetarian,Apr,Monsoon,V6
 92,133,1356,Sabudana Khichdi,"Sabudana, Peanuts, Potatoes, Spices",2.8,2024-07-29,4,193,Mau,30,Female,Vegetarian,Jul,Monsoon,V5
 46,130,1309,Idli,"Rice, Urad Dal, Fenugreek Seeds",2.9,2024-02-11,3,68,Naihati,44,Male,Vegetarian,Feb,Summer,V7
 148,117,1176,Masoor Dal,"Red Lentils, Onion, Garlic, Tomatoes, Spices",3.7,2024-02-08,1,103,Chandigarh,28,Male,Vegetarian,Feb,Monsoon,V1
@@ -2728,7 +2728,6 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 126,124,1350,Biryani,"Basmati Rice, Chicken or Vegetables, Spices",4.7,2024-08-12,3,119,Raichur,37,Male,Non-Vegetarian,Aug,Winter,V9
 154,130,1097,Aloo Paratha,"Potatoes, Wheat Flour, Ghee, Spices",3.6,2024-03-12,1,83,Bhubaneswar,33,Female,Vegetarian,Mar,Monsoon,V10
 166,138,1491,Dal Tadka,"Yellow Lentils, Onion, Garlic, Tomatoes, Spices",4.2,2024-02-03,5,145,Panipat,44,Female,Vegetarian,Feb,Monsoon,V6
-113,114,1448,Gaja,"Madura Vannaa, Mustard Seeds, Curry Leaves, Onion, Spices",2.1,2024-03-28,2,146,Kavali,40,Male,Vegetarian,Mar,Summer,V2
 102,133,1254,Chicken Curry,"Chicken, Onion, Tomatoes, Spices",1.7,2024-03-12,5,192,Gorakhpur,40,Female,Non-Vegetarian,Mar,Summer,V8
 133,118,1425,Biryani,"Basmati Rice, Chicken or Vegetables, Spices",3.3,2024-01-02,5,118,Katihar,49,Male,Non-Vegetarian,Jan,Monsoon,V8
 197,133,1021,Chawal,"Rice, Water, Salt",4.2,2024-06-22,5,69,Kavali,44,Male,Vegetarian,Jun,Summer,V2
@@ -2739,7 +2738,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 86,148,1197,Sabudana Khichdi,"Sabudana, Peanuts, Potatoes, Spices",4.6,2024-07-08,2,79,Pune,35,Female,Vegetarian,Jul,Monsoon,V8
 131,146,1153,Aloo Gobi,"Potatoes, Cauliflower, Onion, Garlic, Spices",3.3,2024-07-02,3,160,Muzaffarpur,40,Female,Vegetarian,Jul,Winter,V10
 186,115,1305,Chawal,"Rice, Water, Salt",2.2,2024-05-04,2,104,Proddatur,20,Male,Vegetarian,May,Summer,V5
-197,133,1021,Chawal,"Rice, Water, Salty Flavor",4.2,2024-06-22,5,69,Kavali,44,Male,Vegetarian,Jun,Summer,V2
+197,133,1021,Chawal,"Rice, Water, Salt",4.2,2024-06-22,5,69,Kavali,44,Male,Vegetarian,Jun,Summer,V2
 59,142,1071,Biryani,"Basmati Rice, Chicken or Vegetables, Spices",4.3,2024-07-23,5,101,Ghaziabad,27,Female,Non-Vegetarian,Jul,Winter,V8
 142,119,1047,Chawal,"Rice, Water, Salt",2.7,2024-04-13,4,79,Sangli-Miraj & Kupwad,44,Female,Vegetarian,Apr,Monsoon,V4
 139,140,1413,Chawal,"Rice, Water, Salt",2.7,2024-07-22,5,175,Katihar,31,Male,Vegetarian,Jul,Monsoon,V1
@@ -2771,7 +2770,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 102,133,1254,Chicken Curry,"Chicken, Onion, Tomatoes, Spices",1.7,2024-03-12,5,192,Gorakhpur,40,Female,Non-Vegetarian,Mar,Summer,V8
 63,112,1068,Matar Paneer,"Paneer, Peas, Onion, Tomatoes, Spices",1.9,2024-03-30,1,60,Haridwar,33,Female,Vegetarian,Mar,Winter,V4
 19,125,1297,Sabudana Khichdi,"Sabudana, Peanuts, Potatoes, Spices",4.5,2024-03-07,5,164,Gandhidi,30,Female,Vegetarian,Mar,Summer,V5
-5,124,1380,Egg curry,"Eggs, Onion, Tomatoes, Spices",2.0,2024-08-17,2,154,Katni,45,Male,Non-Vegetarian,Aug,Summer,V5
+5,124,1380,Egg Curry,"Eggs, Onion, Tomatoes, Spices",2.0,2024-08-17,2,154,Katni,45,Male,Non-Vegetarian,Aug,Summer,V5
 110,103,1355,Chawal,"Rice, Water, Salt",4.3,2024-01-08,4,193,Proddatur,37,Female,Vegetarian,Jan,Monsoon,V2
 146,132,1128, Chicken Curry,"Chicken, Onion, Tomatoes, Spices",3.3,2024-08-05,1,127,Nangloi Jat,41,Male,Non-Vegetarian,Aug,Monsoon,V6
 135,103,1263,Dal Tadka,"Yellow Lentils, Onion, Garlic, Tomatoes, Spices",3.0,2024-07-01,4,184,Saharsa,24,Male,Vegetarian,Jul,Monsoon,V2
@@ -2940,7 +2939,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 38,138,1065,Biryani,"Basmati Rice, Chicken or Vegetables, Spices",3.1,2024-05-27,2,53,Bidhannagar,23,Female,Non-Vegetarian,May,Summer,V3
 76,111,1432,Sabudana Khichdi,"Sabudana, Peanuts, Potatoes, Spices",3.1,2024-01-09,3,113,Siwan,42,Male,Vegetarian,Jan,Summer,V1
 139,140,1413,Chawal,"Rice, Water, Salt",2.7,2024-07-22,5,175,Katihar,31,Male,Vegetarian,Jul,Monsoon,V1
-38,138,1065,Biryani,"Basmati Rice, Chicken or VEG Power Pack, Onion, Spices",3.1,2024-05-27,2,118,Bidhannaga,23,Female,Non-Vegetarian,May,Summer,V4
+38,138,1065,Biryani,"Basmati Rice, Chicken or Vegetables, Onion, Spices",3.1,2024-05-27,2,118,Bidhannaga,23,Female,Non-Vegetarian,May,Summer,V4
 189,116,1077,Palak Paneer,"Spinach, Paneer, Onion, Tomatoes, Spices",1.8,2024-07-15,1,72,Jehanabad,24,Female,Vegetarian,Jul,Monsoon,V7
 71,125,1490,Roti,"Wheat Flour, Water, Ghee",2.2,2024-07-20,2,84,Khora ,32,Male,Vegetarian,Jul,Monsoon,V4
 181,149,1412,Thepla,"Wheat Flour, Fenugreek Leaves, Spices",2.3,2024-07-13,3,141,Kakinada,34,Female,Vegetarian,Jul,Winter,V10
@@ -2956,7 +2955,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 100,131,1244,Aloo Gobi,"Potatoes, Cauliflower, Onion, Garlic, Spices",3.5,2024-06-29,2,166,Mysore,26,Male,Vegetarian,Jun,Monsoon,V5
 152,147,1309,Biryani,"Basmati Rice, Chicken or Vegetables, Spices",2.9,2024-02-01,2,59,Chennai,26,Female,Non-Vegetarian,Feb,Summer,V9
 10,123,1322,Gajar Halwa,"Carrots, Milk, Sugar, Ghee, Cardamom",1.2,2024-04-18,3,60,Muzaffarpur,28,Male,Vegetarian,Apr,Summer,V6
-7,122,1000,Fast Food,"Meat or Vegetables, Spices",1.9,2024-04-29,3,105,Mercedez,21,Female,Non-Vegetarian,Apr,Summer,V7
+7,122,1000,Biryani,"Meat, Oil, Spices",1.9,2024-04-29,3,105,Mercedez,21,Female,Non-Vegetarian,Apr,Summer,V7
 48,139,1343,Sarson Ka Saag,"Mustard Greens, Spinach, Onion, Garlic, Spices",3.5,2024-08-27,3,110,Bulandshahr,42,Male,Vegetarian,Aug,Monsoon,V3
 197,133,1021,Chawal,"Rice, Water, Salt",4.2,2024-06-22,5,69,Kavali,44,Male,Vegetarian,Jun,Summer,V2
 182,119,1088,Haldi Ki Sabzi,"Turmeric Root, Yogurt, Spices",2.8,2024-06-11,3,93,Udaipur,40,Female,Vegetarian,Jun,Summer,V9
@@ -2978,7 +2977,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 128,146,1209,Kadhi,"Gram Flour, Yogurt, Spices",1.0,2024-06-09,2,193,Gaya,29,Male,Vegetarian,Jun,Winter,V10
 11,149,1173,Mutton Keema,"Minced Mutton, Onion, Garlic, Spices",4.3,2024-05-22,3,149,Shimoga,33,Male,Non-Vegetarian,May,Monsoon,V7
 9,127,1363,Palak Paneer,"Spinach, Paneer, Onion, Tomatoes, Spices",4.1,2024-02-06,2,180,Bhusawal,31,Female,Vegetarian,Feb,Monsoon,V2
-96,118,1147,Kadi,"Ground Water, Mustard Seeds, Curry Leaves, Vegetables",2.6,2024-08-30,1,136,Bellary,48,Male,Vegetarian,Aug,Summer,V9
+96,118,1147,Kadhi,"Gram Flour, Yogurt, Spices",2.6,2024-08-30,1,136,Bellary,48,Male,Vegetarian,Aug,Summer,V9
 190,133,1336,Poha,"Flattened Rice, Mustard Seeds, Curry Leaves, Onion, Spices",1.3,2024-04-19,4,160,Naihati,38,Male,Vegetarian,Apr,Summer,V2
 186,115,1305,Chawal,"Rice, Water, Salt",2.2,2024-05-04,2,104,Proddatur,20,Male,Vegetarian,May,Summer,V5
 160,124,1245,Dal Tadka,"Yellow Lentils, Onion, Garlic, Tomatoes, Spices",3.0,2024-01-03,4,102,Saharsa,22,Female,Vegetarian,Jan,Monsoon,V1
@@ -3020,7 +3019,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 190,133,1336,Dosa,"Rice, Urad Dal, Potatoes, Spices",1.8,2024-08-31,2,137,Narasaraopet,40,Male,Vegetarian,Aug,Monsoon,V1
 136,112,1133,Masoor Dal,"Red Lentils, Onion, Garlic, Tomatoes, Spices",1.1,2024-01-24,5,85,Bhubaneswar,28,Female,Vegetarian,Jan,Summer,V8
 33,138,1137,Matar Paneer,"Paneer, Peas, Onion, Tomatoes, Spices",4.8,2024-07-26,2,50,Thrissur,45,Female,Vegetarian,Jul,Monsoon,V9
-33,138,1137,Malpagari,"Korma Vegetables, Yogurt, Spices",2.9,2024-08-28,2,57,Shivpuri,29,Male,Vegetarian,Aug,Monsoon,V5
+33,138,1137,Mutton Korma,"Korma Vegetables, Yogurt, Spices",2.9,2024-08-28,2,57,Shivpuri,29,Male,Vegetarian,Aug,Monsoon,V5
 133,118,1425,Biryani,"Basmati Rice, Chicken or Vegetables, Spices",3.3,2024-01-02,5,118,Katihar,49,Male,Non-Vegetarian,Jan,Monsoon,V8
 168,135,1469,Sabudana Khichdi,"Sabudana, Peanuts, Potatoes, Spices",2.8,2024-01-24,1,176,Davanagere,39,Male,Vegetarian,Jan,Winter,V10
 134,149,1083,Roti,"Wheat Flour, Water, Ghee",4.5,2024-03-21,5,119,Hosur,20,Male,Vegetarian,Mar,Summer,V10
@@ -3102,7 +3101,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 33,138,1137,Matar Paneer,"Paneer, Peas, Onion, Tomatoes, Spices",4.8,2024-07-26,2,50,Thrissur,45,Female,Vegetarian,Jul,Monsoon,V9
 37,110,1326,Sabudana Khichdi,"Sabudana, Peanuts, Potatoes, Spices",3.2,2024-06-26,5,158,Tiruppur,49,Male,Vegetarian,Jun,Summer,V2
 152,147,1309,Biryani,"Basmati Rice, Chicken or Vegetables, Spices",2.9,2024-02-01,2,59,Chennai,26,Female,Non-Vegetarian,Feb,Summer,V9
-165,118,1350,Pulao,"Base Cooked Basmati Rice, Mixed Vegetables, Onion, Spices",2.7,2024-07-06,2,118,Hapur,21,Female,Vegetarian,Jul,Winter,V7
+165,118,1350,Pulao,"Basmati Rice, Mixed Vegetables, Onion, Spices",2.7,2024-07-06,2,118,Hapur,21,Female,Vegetarian,Jul,Winter,V7
 165,118,1350,Pulled Pork,"Smoked Meat, Mustard Seeds, Curry Leaves, Onion, Spices",4.0,2024-02-08,2,111,Berhampur,36,Female,Non-Vegetarian,Feb,Monsoon,V2
 112,132,1115,Sarson Ka Saag,"Mustard Greens, Spinach, Onion, Garlic, Spices",1.1,2024-03-30,2,122,Jamalpur,26,Female,Vegetarian,Mar,Summer,V4
 175,100,1471,Haldi Ki Sabzi,"Turmeric Root, Yogurt, Spices",3.5,2024-03-29,1,111,Sonipat,38,Male,Vegetarian,Mar,Winter,V4
@@ -3205,7 +3204,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 173,122,1425,Pulao,"Basmati Rice, Mixed Vegetables, Onion, Spices",1.1,2024-01-24,4,186,Muzaffarnagar,45,Female,Vegetarian,Jan,Winter,V3
 19,125,1297,Sabudana Khichdi,"Sabudana, Peanuts, Potatoes, Spices",4.5,2024-03-07,5,164,Hospet,30,Female,Vegetarian,Mar,Summer,V5
 123,120,1442,Dosa,"Rice, Urad Dal, Potatoes, Spices",3.3,2024-04-28,5,81,Jamshedpur,25,Female,Vegetarian,Apr,Monsoon,V6
-76,111,1432,Sabudana Khicri,"Sabudana, Peanuts, Potatoes, Spices",3.1,2024-01-09,3,118,Siwan,42,Male,Vegetarian,Jan,Summer,V1
+76,111,1432,Sabudana Khichdi,"Sabudana, Peanuts, Potatoes, Spices",3.1,2024-01-09,3,118,Siwan,42,Male,Vegetarian,Jan,Summer,V1
 132,125,1463,Dosa,"Rice, Urad Dal, Potatoes, Spices",3.3,2024-01-28,5,81,Kamalpur,21,Male,Vegetarian,Jan,Winter,V1
 97,126,1375,Thepla,"Wheat Flour, Fenugreek Leaves, Spices",2.9,2024-07-30,4,193,Sagar,29,Male,Vegetarian,Jul,Winter,V4
 12,141,1294,Rajma Chawal,"Kidney Beans, Rice, Onion, Garlic, Spices",1.4,2024-08-21,1,177,Muzaffarpur,23,Male,Vegetarian,Aug,Monsoon,V4
@@ -3302,7 +3301,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 138,127,1060,Korma,"Meat or Vegetables, Yogurt, Spices",4.0,2024-01-26,1,187,Bardhaman,42,Male,Non-Vegetarian,Jan,Winter,V3
 180,128,1160,Rajma Chawal,"Kidney Beans, Rice, Onion, Garlic, Spices",4.2,2024-01-24,5,139,Nellore,49,Male,Vegetarian,Jan,Winter,V3
 137,141,1078,Fish Fry,"Fish, Spices, Oil",3.7,2024-08-21,3,112,Nagercoil,35,Male,Non-Vegetarian,Aug,Summer,V5
-182,119,1088,Haldi Ki Sabzi,"Tribolium Castor, Yogurt, Spices",2.8,2024-06-11,3,98,Udaipur,44,Female,Vegetarian,Jun,Summer,V9
+182,119,1088,Haldi Ki Sabzi,"Turmeric Root Yogurt, Spices",2.8,2024-06-11,3,98,Udaipur,44,Female,Vegetarian,Jun,Summer,V9
 192,105,1389,Chicken Curry,"Chicken, Onion, Tomatoes, Spices",1.9,2024-06-27,5,160,Motihari,43,Female,Non-Vegetarian,Jun,Winter,V1
 134,149,1083,Roti,"Wheat Flour, Water, Ghee",4.5,2024-03-21,5,119,Hosur,20,Male,Vegetarian,Mar,Summer,V10
 102,133,1254,Chicken Curry,"Chicken, Onion, Tomatoes, Spices",1.7,2024-03-12,5,192,Gorakhpur,40,Female,Non-Vegetarian,Mar,Summer,V8
@@ -3558,7 +3557,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 32,121,1455,Egg Curry,"Eggs, Onion, Tomatoes, Spices",2.2,2024-06-30,1,123,Chennai,36,Female,Non-Vegetarian,Jun,Winter,V4
 131,146,1153,Aloo Gobi,"Potatoes, Cauliflower, Onion, Garlic, Spices",3.3,2024-07-02,3,160,Muzaffarpur,40,Female,Vegetarian,Jul,Winter,V10
 119,123,1074,Haldi Ki Sabzi,"Turmeric Root, Yogurt, Spices",1.3,2024-08-29,2,83,Tadepalligudem,47,Female,Vegetarian,Aug,Summer,V3
-194,116,1354,Idli,"Red Lentils, Water, Ghee",4.0,2024-09-19,2,143,Sasaram,20,Male,Vegetarian,Sep,Winter,V1
+194,116,1354,Idli,"Rice, Urad Dal, Fenugreek Seed ",4.0,2024-09-19,2,143,Sasaram,20,Male,Vegetarian,Sep,Winter,V1
 139,140,1413,Chawal,"Rice, Water, Salt",2.7,2024-07-22,5,175,Katihar,31,Male,Vegetarian,Jul,Monsoon,V1
 65,100,1417,Thepla,"Wheat Flour, Fenugreek Leaves, Spices",1.9,2024-07-01,1,90,Amritsar,45,Male,Vegetarian,Jul,Monsoon,V7
 186,115,1305,Chawal,"Rice, Water, Salt",2.2,2024-05-04,2,104,Proddatur,20,Male,Vegetarian,May,Summer,V5
@@ -3610,7 +3609,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 81,123,1191,Rajma Chawal,"Kidney Beans, Rice, Onion, Garlic, Spices",3.6,2024-03-17,5,129,Patna,39,Female,Vegetarian,Mar,Summer,V2
 199,132,1123,Masoor Dal,"Red Lentils, Onion, Garlic, Tomatoes, Spices",4.8,2024-05-16,4,129,Shivpuri,22,Male,Vegetarian,May,Monsoon,V2
 61,119,1218,Poha,"Flattened Rice, Mustard Seeds, Curry Leaves, Onion, Spices",2.0,2024-03-05,4,111,Raiganj,20,Male,Vegetarian,Mar,Summer,V10
-174,102,1114,Chicken Curry,"Chained Chicken, Onion, Tomatoes, Spices",1.7,2024-09-07,5,67,Fatehpur,27,Male,Non-Vegetarian,Sep,Monsoon,V9
+174,102,1114,Chicken Curry,"Chicken, Onion, Tomatoes, Spices",1.7,2024-09-07,5,67,Fatehpur,27,Male,Non-Vegetarian,Sep,Monsoon,V9
 155,146,1252,Aloo Paratha,"Potatoes, Wheat Flour, Ghee, Spices",4.3,2024-04-07,3,89,Farrukhabad,44,Female,Vegetarian,Apr,Winter,V8
 54,102,1441,Korma,"Meat or Vegetables, Yogurt, Spices",2.4,2024-04-06,5,90,Bijapur,29,Female,Non-Vegetarian,Apr,Winter,V2
 65,100,1417,Thepla,"Wheat Flour, Fenugreek Leaves, Spices",1.9,2024-07-01,1,90,Amritsar,45,Male,Vegetarian,Jul,Monsoon,V7
@@ -3734,12 +3733,12 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 95,127,1335,Thepla,"Wheat Flour, Fenugreek Leaves, Spices",4.6,2024-03-31,4,193,Chennai,41,Female,Vegetarian,Mar,Summer,V2
 40,140,1371,Aloo Paratha,"Potatoes, Wheat Flour, Ghee, Spices",4.3,2024-01-28,5,78,Surendranagar Dudhrej,39,Male,Vegetarian,Jan,Monsoon,V3
 105,101,1487,Biryani,"Basmati Rice, Chicken or Vegetables, Spices",3.8,2024-01-03,3,74,Hazaribagh,25,Male,Non-Vegetarian,Jan,Summer,V2
-167,123,1164,EggCurry,"Eggs, Onion, Tomatoes, Spices",1.9,2024-06-29,3,128,Jodhpur,40,Female,Non-Vegetarian,Jun,Winter,V8
+167,123,1164,Egg Curry,"Eggs, Onion, Tomatoes, Spices",1.9,2024-06-29,3,128,Jodhpur,40,Female,Non-Vegetarian,Jun,Winter,V8
 154,130,1097,Aloo Paratha,"Potatoes, Wheat Flour, Ghee, Spices",3.6,2024-03-12,1,83,Bhubaneswar,33,Female,Vegetarian,Mar,Monsoon,V10
 157,106,1178,Rava Upma,"Semolina, Mustard Seeds, Curry Leaves, Vegetables",3.0,2024-03-16,4,128,Gorakhpur,48,Male,Vegetarian,Mar,Summer,V9
 159,103,1380,Aloo Gobi,"Potatoes, Cauliflower, Onion, Garlic, Spices",3.3,2024-08-22,1,187,Thiruvananthapuram,40,Male,Vegetarian,Aug,Monsoon,V9
 123,120,1442,Dosa,"Rice, Urad Dal, Potatoes, Spices",3.3,2024-04-28,5,81,Jamshedpur,25,Female,Vegetarian,Apr,Monsoon,V6
-156,148,1190,Idli,"Red Lentils, Fenugreek Seeds, Water",2.8,2024-07-08,5,195,Mehsana,48,Male,Vegetarian,Jul,Monsoon,V1
+156,148,1190,Idli,"Rice, Urad Dal, Fenugreek Seed ",2.8,2024-07-08,5,195,Mehsana,48,Male,Vegetarian,Jul,Monsoon,V1
 129,142,1310,Mutton Keema,"Minced Mutton, Onion, Garlic, Spices",1.2,2024-02-21,2,140,Chapra,37,Female,Non-Vegetarian,Feb,Summer,V7
 45,104,1206,Haldi Ki Sabzi,"Turmeric Root, Yogurt, Spices",3.2,2024-05-03,4,141,Parbhani,47,Female,Vegetarian,May,Monsoon,V5
 97,126,1375,Thepla,"Wheat Flour, Fenugreek Leaves, Spices",2.9,2024-07-30,4,193,Sagar,29,Male,Vegetarian,Jul,Winter,V4
@@ -3841,7 +3840,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 43,100,1126,Thepla,"Wheat Flour, Fenugreek Leaves, Spices",1.5,2024-04-14,1,125,Mahbubnagar,48,Female,Vegetarian,Apr,Winter,V9
 6,141,1250,Haldi Ki Sabzi,"Turmeric Root, Yogurt, Spices",3.5,2024-05-02,3,113,Kulti,21,Female,Vegetarian,May,Summer,V7
 41,131,1359,Pulao,"Basmati Rice, Mixed Vegetables, Onion, Spices",4.4,2024-09-04,3,191,Bally,36,Female,Vegetarian,Sep,Summer,V5
-189,116,1077,Palawan,"Coconut, Palm Trees, Fish, Spices",4.3,2024-03-12,1,176,Kavaratha,40,Male,Vegetarian,Mar,Monsoon,V5
+189,116,1077,Dal-Pakawan,"Lentils, Oil,Spices",4.3,2024-03-12,1,176,Kavaratha,40,Male,Vegetarian,Mar,Monsoon,V5
 37,110,1326,Sabudana Khichdi,"Sabudana, Peanuts, Potatoes, Spices",3.2,2024-06-26,5,158,Tiruppur,49,Male,Vegetarian,Jun,Summer,V2
 199,132,1123,Masoor Dal,"Red Lentils, Onion, Garlic, Tomatoes, Spices",4.8,2024-05-16,4,129,Shivpuri,22,Male,Vegetarian,May,Monsoon,V2
 12,141,1294,Rajma Chawal,"Kidney Beans, Rice, Onion, Garlic, Spices",1.4,2024-08-21,1,177,Muzaffarpur,23,Male,Vegetarian,Aug,Monsoon,V4
@@ -3899,7 +3898,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 162,145,1296,Palak Paneer,"Spinach, Paneer, Onion, Tomatoes, Spices",1.5,2024-07-26,5,143,Karimnagar,36,Male,Vegetarian,Jul,Monsoon,V6
 194,116,1354,Idli,"Rice, Urad Dal, Fenugreek Seeds",4.0,2024-09-19,2,143,Pimpri-Chinchwad,28,Female,Vegetarian,Sep,Winter,V3
 128,146,1209,Kadhi,"Gram Flour, Yogurt, Spices",1.0,2024-06-09,2,193,Gaya,29,Male,Vegetarian,Jun,Winter,V10
-125,125,1028,Haldi Ki Sabzi,"Tristain, Yellow Peas, Mixed Spices",2.2,2024-02-15,2,160,Delhi,49,Female,Vegetarian,Feb,Monsoon,V3
+125,125,1028,Haldi Ki Sabzi,"Turmeric Root, Yogurt, Spices",2.2,2024-02-15,2,160,Delhi,49,Female,Vegetarian,Feb,Monsoon,V3
 11,149,1173,Mutton Keema,"Minced Mutton, Onion, Garlic, Spices",4.3,2024-05-22,3,149,Shimoga,33,Male,Non-Vegetarian,May,Monsoon,V7
 197,133,1021,Chawal,"Rice, Water, Salt",4.2,2024-06-22,5,69,Kavali,44,Male,Vegetarian,Jun,Summer,V2
 88,138,1382,Aloo Gobi,"Potatoes, Cauliflower, Onion, Garlic, Spices",1.5,2024-06-13,1,186,Thoothukudi,40,Female,Vegetarian,Jun,Monsoon,V9
@@ -4454,15 +4453,15 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 60,124,1264,Pulao,"Basmati Rice, Mixed Vegetables, Onion, Spices",2.5,2024-01-30,3,139,Tinsukia,31,Female,Vegetarian,Jan,Monsoon,V3
 165,118,1350,Pulao,"Basmati Rice, Mixed Vegetables, Onion, Spices",2.7,2024-07-06,2,118,Hapur,21,Female,Vegetarian,Jul,Winter,V7
 135,103,1263,Dal Tadka,"Yellow Lentils, Onion, Garlic, Tomatoes, Spices",3.0,2024-07-01,4,184,Saharsa,24,Male,Vegetarian,Jul,Monsoon,V2
-124,109,1363,Flattened Rice,"Wheat Flour, Water, Ghee",4.8,2024-05-30,3,130,Bellary,45,Male,Vegetarian,May,Monsoon,V9
+124,109,1363,Poha,"Flattened Rice, Mustard Seeds, Curry Leaves, Onion, Spices",4.8,2024-05-30,3,130,Bellary,45,Male,Vegetarian,May,Monsoon,V9
 76,111,1432,Sabudana Khichdi,"Sabudana, Peanuts, Potatoes, Spices",3.1,2024-01-09,3,113,Siwan,42,Male,Vegetarian,Jan,Summer,V1
 64,140,1124,Roti,"Wheat Flour, Water, Ghee",1.4,2024-09-06,3,73,Guttipuram,35,Female,Vegetarian,Sep,Monsoon,V10
 148,117,1176,Masoor Dal,"Red Lentils, Onion, Garlic, Tomatoes, Spices",3.7,2024-02-08,1,103,Chandigarh,28,Male,Vegetarian,Feb,Monsoon,V1
 147,130,1228,Rava Upma,"Semolina, Mustard Seeds, Curry Leaves, Vegetables",1.1,2024-03-08,1,157,Phusro,31,Male,Vegetarian,Mar,Winter,V3
 119,123,1074,Haldi Ki Sabzi,"Turmeric Root, Yogurt, Spices",1.3,2024-08-29,2,83,Tadepalligudem,47,Female,Vegetarian,Aug,Summer,V3
 79,111,1305,Poha,"Flattened Rice, Mustard Seeds, Curry Leaves, Onion, Spices",4.1,2024-01-04,1,65,Naihati,38,Male,Vegetarian,Jan,Monsoon,V2
-57,130,1196,EggCurry,"Eggs, Onion, Tomatoes, Spices",2.3,2024-02-24,4,73,Junagadh,48,Male,Non-Vegetarian,Feb,Summer,V10
-60,124,1264,Pulao,"Basmati Rice, Mixed Vegetsories, Onion, Spices",2.5,2024-01-30,3,139,Tinsukia,31,Female,Vegetarian,Jan,Monsoon,V3
+57,130,1196,Egg Curry,"Eggs, Onion, Tomatoes, Spices",2.3,2024-02-24,4,73,Junagadh,48,Male,Non-Vegetarian,Feb,Summer,V10
+60,124,1264,Pulao,"Basmati Rice, Mixed Vegetables, Onion, Spices",2.5,2024-01-30,3,139,Tinsukia,31,Female,Vegetarian,Jan,Monsoon,V3
 40,140,1371,Aloo Paratha,"Potatoes, Wheat Flour, Ghee, Spices",4.3,2024-01-28,5,78,Surendranagar Dudhrej,39,Male,Vegetarian,Jan,Monsoon,V3
 78,132,1063,Fish Fry,"Fish, Spices, Oil",3.8,2024-03-13,2,120,Kolhapur,36,Female,Non-Vegetarian,Mar,Summer,V1
 95,106,1181,Rava Upma,"Semolina, Mustard Seeds, Curry Leaves, Vegetables",4.9,2024-05-30,3,98,Nagaon,44,Male,Vegetarian,May,Summer,V8
@@ -4874,7 +4873,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 96,118,1147,Kadhi,"Gram Flour, Yogurt, Spices",4.0,2024-09-14,4,154,Jamalpur,48,Male,Vegetarian,Sep,Winter,V8
 191,123,1175,Thepla,"Wheat Flour, Fenugreek Leaves, Spices",2.0,2024-03-09,3,71,Shivpuri,43,Female,Vegetarian,Mar,Monsoon,V5
 118,146,1269,Poha,"Flattened Rice, Mustard Seeds, Curry Leaves, Onion, Spices",3.6,2024-07-28,3,81,Jamshedpur,47,Male,Vegetarian,Jul,Summer,V2
-57,130,1196,Egg curry,"Eggs, Onion, Tomatoes, Spices",2.3,2024-02-24,4,73,Junagadh,48,Male,Non-Vegetarian,Feb,Summer,V10
+57,130,1196,Egg Curry,"Eggs, Onion, Tomatoes, Spices",2.3,2024-02-24,4,73,Junagadh,48,Male,Non-Vegetarian,Feb,Summer,V10
 139,140,1413,Chawal,"Rice, Water, Salt",2.7,2024-07-22,5,175,Katihar,31,Male,Vegetarian,Jul,Monsoon,V1
 142,119,1047,Chawal,"Rice, Water, Salt",2.9,2024-04-13,4,79,Sangli-Miraj & Kupwad,44,Female,Vegetarian,Apr,Monsoon,V4
 169,130,1321,Masoor Dal,"Red Lentils, Onion, Garlic, Tomatoes, Spices",2.1,2024-05-12,3,127,Muzaffarpur,40,Female,Vegetarian,May,Summer,V6
@@ -4885,7 +4884,6 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 164,124,1176,Palak Paneer,"Spinach, Paneer, Onion, Tomatoes, Spices",3.9,2024-09-17,4,56,Kamarhati,48,Female,Vegetarian,Sep,Summer,V5
 123,120,1442,Dosa,"Rice, Urad Dal, Potatoes, Spices",3.3,2024-04-28,5,81,Jamshedpur,25,Female,Vegetarian,Apr,Monsoon,V6
 90,121,1205,Haldi Ki Sabzi,"Turmeric Root, Yogurt, Spices",3.5,2024-06-11,4,111,Udaipur,44,Female,Vegetarian,Jun,Summer,V9
-59,142,1071,Biryani,"Basmati Rice, Chickpeas, Onion, Spices",4.3,2024-07-23,5,101,Ghaziabad,27,Female,Vegetarian,Jul,Winter,V8
 128,146,1209,Kadhi,"Gram Flour, Yogurt, Spices",1.0,2024-06-09,2,193,Gaya,29,Male,Vegetarian,Jun,Winter,V10
 50,139,1275,FISH FEATURE,"Fish, Spices, Oil",4.3,2024-07-08,5,116,Jolapenger,40,Male,Non-Vegetarian,Jul,Summer,V5
 146,132,1128,Chicken Curry,"Chicken, Onion, Tomatoes, Spices",3.3,2024-08-05,1,127,Nangloi Jat,41,Male,Non-Vegetarian,Aug,Monsoon,V6
@@ -4983,7 +4981,7 @@ Order_ID,User_ID,Dish_ID,Dish_Name,Ingredients_List,Dish_Rating,Order_Date,Quant
 99,106,1356,Masoor Dal,"Red Lentils, Onion, Garlic, Tomatoes, Spices",2.1,2024-02-20,3,99,Pune,28,Female,Vegetarian,Feb,Monsoon,V4
 193,115,1156,Fish Fry,"Fish, Spices, Oil",2.0,2024-05-07,1,156,Jammu,41,Male,Non-Vegetarian,May,Monsoon,V1
 64,140,1124,Roti,"Wheat Flour, Water, Ghee",1.4,2024-09-06,3,73,Gudivada,37,Male,Vegetarian,Sep,Monsoon,V8
-8,122,1395,Aloo Pohtau,"Potatoes, Fish, Spices",4.0,2024-08-28,2,118,Thiruvananthapuram,40,Male,Vegetarian,Aug,Monsoon,V1
+8,122,1395,Aloo Pohtau,"Potatoes, Fish, Spices",4.0,2024-08-28,2,118,Thiruvananthapuram,40,Male,Non-Vegetarian,Aug,Monsoon,V1
 2,113,1152,Dosa,"Rice, Urad Dal, Potatoes, Spices",4.1,2024-01-14,2,86,Ambarnath,21,Male,Vegetarian,Jan,Summer,V6
 76,111,1432,Sabudana Khichdi,"Sabudana, Peanuts, Potatoes, Spices",3.1,2024-01-09,3,113,Siwan,42,Male,Vegetarian,Jan,Summer,V1
 85,130,1019,Chawal,"Rice, Water, Salt",4.4,2024-04-29,1,139,Sultan Pur Majra,48,Male,Vegetarian,Apr,Monsoon,V4

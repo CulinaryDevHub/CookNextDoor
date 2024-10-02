@@ -14,7 +14,7 @@ bcrypt = Bcrypt(app)
 def welcome():
     return 'Hello World'
 
-with open('preprocessed_data.pkl', 'rb') as f:
+with open('data_preprocessed.pkl', 'rb') as f:
     data = pickle.load(f)
 
 @app.route('/recommend', methods=['POST'])
@@ -29,6 +29,7 @@ def get_recommendations():
     if isinstance(recommendations, str):  
         return jsonify({"message": recommendations}), 404
     return jsonify(recommendations), 200
+
 
 if __name__ == '__main__':
     app.run(debug=True)

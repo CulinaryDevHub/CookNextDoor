@@ -20,5 +20,5 @@ data['Dish_Name'] = data['Dish_Name'].fillna('').apply(lambda x: clean_text(x) i
 data['Dish_Rating'] = data['Dish_Rating'].fillna(0)
 data['Order_Price'] = data['Order_Price'].fillna(0)
 
-with open('preprocessed_data.pkl', 'wb') as f:
+with open('data_preprocessed.pkl', 'wb') as f:
     pickle.dump(data, f)

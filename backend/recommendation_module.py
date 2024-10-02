@@ -3,7 +3,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import pandas as pd
 import pickle
 
-with open('preprocessed_data.pkl', 'rb') as f:
+with open('data_preprocessed.pkl', 'rb') as f:
     data = pickle.load(f)
 
 def recommend_dishes(user_dish_name, user_preferences, excluded_ingredients):
