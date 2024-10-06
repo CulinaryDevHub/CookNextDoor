@@ -1,16 +1,16 @@
 import React, { useContext, useState, useEffect } from 'react'
 import './LoginPopup.css'
 // import { assets } from '../../assets/assets'
-// import { StoreContext } from '../../Context/StoreContext'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import { StoreContext } from '../../context/StoreContext'
 
 const LoginPopup = ({ setShowLogin }) => {
 
-    // const { setToken, url,loadCartData } = useContext(StoreContext)
-    const [token, setToken] = useState("")
+    const { setToken, url } = useContext(StoreContext) || {}
+    // const [token, setToken] = useState("")
     const [currState, setCurrState] = useState("Login");
-    const url = "http://localhost:5000"
+    // const url = "http://localhost:5000"
 
     const [data, setData] = useState({
         user_type: "",
@@ -27,7 +27,6 @@ const LoginPopup = ({ setShowLogin }) => {
         const value = event.target.value
         setData(data => ({ ...data, [name]: value }))
     }
-
     const onLogin = async (e) => {
         e.preventDefault()
 
