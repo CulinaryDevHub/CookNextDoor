@@ -77,16 +77,16 @@ position: relative;
     width: 20px;
 }
 .navbar-profile-dropdown li:hover{
-    color: #FF4C24;
+    color: #093B31;
 }
 .navbar-profile:hover .navbar-profile-dropdown{
     display: flex;
     flex-direction: column;
     gap: 10px;
-    background-color: #fff2ef;
+    background-color: #d8e6e3f5;
     padding: 12px 25px;
     border-radius: 4px;
-    border: 1px solid tomato;
+    border: 1px solid #093B31;
     outline: 2px solid white;
     list-style: none;
 }

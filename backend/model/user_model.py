@@ -26,15 +26,22 @@ class user_model():
         
     def user_addone_model(self, data):
         # self.cur.execute(f"INSERT INTO User (user_type, email, password, firstname, lastname, contact, address) values ('{data['user_type']}', '{data['email']}', '{data['password']}', '{data['firstname']}', '{data['lastname']}', '{data['contact']}', '{data['address']}');")
-
+        
         # Hash the password
         hashed_password = bcrypt.generate_password_hash(data['password']).decode('utf-8')
-
+        
         # Use parameterized queries to prevent SQL injection
-        query = """
-            INSERT INTO User (user_type, email, password, firstname, lastname, contact, address)
-            VALUES (%s, %s, %s, %s, %s, %s, %s);
-        """
+        if data['user_type'] == 'cook':
+            query = """
+                INSERT INTO Cook (user_type, email, password, firstname, lastname, contact, address)
+                VALUES (%s, %s, %s, %s, %s, %s, %s);
+            """
+        if data['user_type'] == 'customer':
+            query = """
+                INSERT INTO Customer (user_type, email, password, firstname, lastname, contact, address)
+                VALUES (%s, %s, %s, %s, %s, %s, %s);
+            """
+        
         self.cur.execute(query, (
             data['user_type'],
             data['email'],
@@ -45,10 +52,17 @@ class user_model():
             data['address']
         ))
 
-        return "added"
+        return jsonify({'message': 'User added successfully', 'success': True}), 200;
 
-    def get_user_by_email(self, email):
-        query = f"SELECT * FROM User WHERE email = '{email}'"
+
+    def get_user_by_email(self, email, user_type):
+
+        if user_type == 'cook':
+            query = f"SELECT * FROM Cook WHERE email = '{email}'"
+        if user_type == 'customer':
+            query = f"SELECT * FROM Customer WHERE email = '{email}'"
+
+        # query = f"SELECT * FROM User WHERE email = '{email}'"
         self.cur.execute(query)
         
         # Fetch the first result
