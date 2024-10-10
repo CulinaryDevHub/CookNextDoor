@@ -4,6 +4,10 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Navbar from './Component/Navbar/Navbar.jsx'
 import Header from './Component/Header/Header.jsx'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import CartPage from './Component/Cart/CartPage.jsx';
+import OrderConfirmation from './Component/Cart/OrderConfirmation.jsx';
+
 // import Home from './pages/Home/Home.jsx'
 // import Cart from './pages/Cart/Cart.jsx'
 // import PlaceOrder from './pages/PlaceOrder/PlaceOrder.jsx'
@@ -15,15 +19,16 @@ function App() {
     <>
       <Navbar/>
       <Header/>
-      {/* <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/cart' element={<Cart />}/>
-          <Route path='/order' element={<PlaceOrder />}/>
-          <Route path='/myorders' element={<MyOrders />}/>
-          <Route path='/verify' element={<Verify />}/>
-      </Routes> */}
+      {<Router>
+      <Routes>
+        <Route path="/" element={<CartPage />} />
+        <Route path="/order-confirmation" element={<OrderConfirmation />} />
+        {/* Add more routes as needed */}
+      </Routes>
+    </Router>}
     </>
-  )
-}
+  );
+};
+
 
 export default App

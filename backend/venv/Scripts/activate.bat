@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\HP\OneDrive\Documents\miniProject\CookNextDoor\backend\venv
+set VIRTUAL_ENV=C:\Users\AKANSHA\Desktop\MiniP_Cart\CookNextDoor\backend\venv
 
 if not defined PROMPT set PROMPT=$P$G
 
