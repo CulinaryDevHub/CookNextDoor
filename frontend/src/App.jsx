@@ -2,8 +2,15 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import React from 'react';
 import Navbar from './Component/Navbar/Navbar.jsx'
 import Header from './Component/Header/Header.jsx'
+import Navbar from './Component/Navbar/Navbar.jsx'
+import Header from './Component/Header/Header.jsx'
+import VendorDashboard from './Component/VendorDashboard.jsx';
+import VendorDetails from './Component/VendorDetails.jsx';
+import VendorList from './Component/VendorList.jsx';
+import CustomerPage from './Component/CustomerPage.jsx';
 // import Home from './pages/Home/Home.jsx'
 // import Cart from './pages/Cart/Cart.jsx'
 // import PlaceOrder from './pages/PlaceOrder/PlaceOrder.jsx'
@@ -22,6 +29,15 @@ function App() {
           <Route path='/myorders' element={<MyOrders />}/>
           <Route path='/verify' element={<Verify />}/>
       </Routes> */}
+      <Router>
+      <Routes>
+        <Route path="/vendor/:vendorId" element={<VendorDetails />} />
+        <Route path="/vendors" element={<VendorList />} />
+        <Route path="/dashboard/:vendorId" element={<VendorDashboard />} />
+        <Route path="/customer" element={<CustomerPage />} /> 
+        <Route path="/" element={<VendorList />} />
+      </Routes>
+    </Router>
     </>
   )
 }

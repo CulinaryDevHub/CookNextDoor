@@ -1,0 +1,39 @@
+/* src/styles/VendorDetails.css */
+
+.vendor-details-container {
+    background-color: #f3f4f6;
+    min-height: 100vh;
+    padding: 24px;
+  }
+  
+  .vendor-details-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #1f2937;
+    margin-bottom: 24px;
+  }
+  
+  .vendor-menu-list {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 24px;
+  }
+  
+  .vendor-menu-item {
+    background-color: white;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .vendor-menu-item:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+  
+  .menu-price {
+    color: #10b981;
+    font-weight: bold;
+  }
+  
