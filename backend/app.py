@@ -6,6 +6,8 @@ app = Flask(__name__)
 bcrypt = Bcrypt(app)
 CORS(app)
 
+CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}},  methods=["GET", "POST", "OPTIONS"]) 
+
 @app.route("/")
 def welcome():
     return "Hello World"
