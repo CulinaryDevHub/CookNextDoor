@@ -5,12 +5,11 @@ import './App.css'
 import React from 'react';
 import Navbar from './Component/Navbar/Navbar.jsx'
 import Header from './Component/Header/Header.jsx'
-import Navbar from './Component/Navbar/Navbar.jsx'
-import Header from './Component/Header/Header.jsx'
 import VendorDashboard from './Component/VendorDashboard.jsx';
 import VendorDetails from './Component/VendorDetails.jsx';
 import VendorList from './Component/VendorList.jsx';
 import CustomerPage from './Component/CustomerPage.jsx';
+import Recommendation from './pages/Recommendation/recommendation.jsx'
 // import Home from './pages/Home/Home.jsx'
 // import Cart from './pages/Cart/Cart.jsx'
 // import PlaceOrder from './pages/PlaceOrder/PlaceOrder.jsx'
@@ -22,6 +21,7 @@ function App() {
     <>
       <Navbar/>
       <Header/>
+      <Recommendation/>
       {/* <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/cart' element={<Cart />}/>
