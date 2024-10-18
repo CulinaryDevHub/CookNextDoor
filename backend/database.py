@@ -20,27 +20,31 @@ def create_tables():
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS vendors (
         vendor_id INT AUTO_INCREMENT PRIMARY KEY,
+        user_type ENUM('vendor', 'customer') NOT NULL,
         email VARCHAR(255),
-        password_hash VARCHAR(255),
-        first_name VARCHAR(100),
-        last_name VARCHAR(100),
-        contact_number VARCHAR(20),
-        address_id INT(11)
+        password VARCHAR(255),
+        firstname VARCHAR(100),
+        lastname VARCHAR(100),
+        contact VARCHAR(20),
+        address TEXT
     )
     """)
 
-    # Create Customers table
     cursor.execute("""
-    CREATE TABLE IF NOT EXISTS customers (
-        customer_id INT AUTO_INCREMENT PRIMARY KEY,
-        email VARCHAR(255),
-        password_hash VARCHAR(255),
-        first_name VARCHAR(100),
-        last_name VARCHAR(100),
-        contact_number VARCHAR(20),
-        address_id INT(11)
-    )
-    """)
+    CREATE TABLE Customer (
+    customer_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_type ENUM('vendor', 'customer') NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    firstname VARCHAR(100),
+    lastname VARCHAR(100),
+    contact VARCHAR(10),
+    address TEXT
+);    
+    """
+)
+
+   
 
     # Create Dishes table
     cursor.execute("""
@@ -69,11 +73,13 @@ def create_tables():
         delivery_address_id INT,
         placed_at TIMESTAMP,
         delivered_at TIMESTAMP,
-        FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+        FOREIGN KEY (customer_id) REFERENCES Customer(customer_id),
         FOREIGN KEY (vendor_id) REFERENCES vendors(vendor_id),
         FOREIGN KEY (dish_id) REFERENCES dishes(dish_id)
     )
     """)
+
+
 
     connection.commit()
     connection.close()

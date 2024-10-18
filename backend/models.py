@@ -9,6 +9,14 @@ def get_vendors():
     connection.close()
     return vendors
 
+def get_vendors(vendor_id):
+    connection = get_db_connection()
+    cursor = connection.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM vendors where vendor_id = %s", (vendor_id,))
+    vendors = cursor.fetchall()
+    connection.close()
+    return vendors
+
 # Get all dishes by vendor
 def get_dishes_by_vendor(vendor_id):
     connection = get_db_connection()

@@ -5,10 +5,14 @@ from flask_cors import CORS
 import numpy as np
 import pickle 
 from recommendation_module import recommend_dishes 
+from flask_cors import CORS
+
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
 CORS(app)
+
+CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}},  methods=["GET", "POST", "OPTIONS"]) 
 
 @app.route("/")
 def welcome():
@@ -42,8 +46,11 @@ def get_recommendations():
         return jsonify({"message": recommendations}), 404
     return jsonify(recommendations), 200
 
+
+
+
 if __name__ == "__main__":
     app.run(debug=True)
 
 
-from controller import * 
+from controller import *
