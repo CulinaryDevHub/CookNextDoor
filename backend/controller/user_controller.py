@@ -95,8 +95,10 @@ def create_token():
 
     # if not user['password'] == password:
     #     return jsonify({"error": "Invalid password"}), 401
-      
-    access_token = create_access_token(identity=email)
+    if user["user_type"] == "customer":  
+        access_token = create_access_token(identity=user['customer_id'])
+    elif user["user_type"] == "vendor":  
+        access_token = create_access_token(identity=user['vendor_id'])
     #response = {"access_token":access_token}
   
     return jsonify({
@@ -106,3 +108,63 @@ def create_token():
     })
 
     # return "Login successful"
+
+@app.route('/api/dishes', methods=['GET'])
+def get_dishes():
+    return obj.getall_dishes()  # Replace `your_class_instance` with your actual instance
+
+@app.route(f'/api/cart/<int:customer_id>', methods=['GET'])
+def get_cart_items(customer_id):
+    # customer_id = request.args.get("customer_id", None)  # Fetch customer_id from query params
+    if customer_id is None:
+        return jsonify({"message": "customer_id is required", "success": False}), 400
+
+    try:
+        dishes = obj.get_cart_details(customer_id)  # Assuming this method returns valid cart details
+        # print(type(dishes))
+        # print(dishes)
+
+        dish_details = []
+        for dish in dishes:
+            # print(dish['dish_id'])
+            details = obj.get_dishDetails_by_dishId(dish["dish_id"])  # 'details' is a dict, not a Response now
+            if details["success"]:  # Ensure we only add successful dish details
+                dish_details.append(details)
+
+        # print(type(dish_details))
+        
+        return jsonify({"dish_details": dish_details, "success": True}),200
+    except Exception as e:
+        print(f"Error fetching cart items: {str(e)}")  # Log the error for debugging
+        return jsonify({"message": "Internal Server Error", "error": str(e), "success": False}), 500
+    
+@app.route('/api/cart/add', methods=['POST', 'OPTIONS'])
+def add_to_cart():
+    # customer_id = request.args.get("customer_id", None)  # Fetch customer_id from query params
+    
+    
+    # print(customer_id)
+    
+    try:
+        data = request.get_json()  # Get the JSON data from the request body
+        dish_id = data.get('dish_id')  # Fetch the dish_id
+        customer_id = data.get('customer_id')
+        print(f"Request data: {data}") 
+
+        if customer_id is None:
+            return jsonify({"message": "customer_id is required", "success": False}), 400
+        
+        cart_id = obj.get_cartId_by_custId(customer_id)
+        print(cart_id)
+
+        result = obj.addToCart(dish_id, cart_id)  # Call the function that adds the dish to the cart
+        print(type(result))
+        if isinstance(result, dict) and result.get('success'):  # Ensure result is a dictionary
+            return jsonify(result), 200  # Return a success response
+        else:
+            return jsonify(result), 500   # Handle any errors from the function
+        # return jsonify({'dish_id': dish_id, 'cart_id': cart_id, 'success': True}), 200;
+
+    except Exception as e:
+        print(f"Error fetching cart items details: {str(e)}")  # Log the error for debugging
+        return jsonify({"message": "Internal Server Error", "error": str(e), "success": False}), 500    

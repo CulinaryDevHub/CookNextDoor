@@ -11,6 +11,7 @@ CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}},  methods=["GE
 def welcome():
     return 'Hello World'
 
-
+if __name__ == '__main__':
+    app.run(debug=True)
 
 from controller import * 
