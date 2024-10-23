@@ -50,7 +50,7 @@ def create_tables():
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS dishes (
         dish_id INT AUTO_INCREMENT PRIMARY KEY,
-        vendor_id INT,
+        vendor_id INT NOT NULL,
         dish_name VARCHAR(255),
         description TEXT,
         ingredients TEXT,

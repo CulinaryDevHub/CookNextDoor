@@ -17,7 +17,7 @@ const StoreContextProvider = (props) => {
             }
         }
         loadData()
-    }, [])
+    }, [token])
 
     const contextValue = {
         url,

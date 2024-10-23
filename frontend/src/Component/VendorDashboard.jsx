@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { getVendorMenu, addDish, updateDish, deleteDish, getVendorOrders } from '../api';
-import '../styles/VendorDashboard.css'; 
+import '../styles/VendorDashboard.css';
 import { useParams } from 'react-router-dom';
 
 const VendorDashboard = () => {
@@ -14,7 +14,7 @@ const VendorDashboard = () => {
   const fetchMenu = useCallback(async () => {
     try {
       const response = await getVendorMenu(vendorId);
-      console.log(response.data); 
+      console.log(response.data);
       setMenu(response.data);
     } catch (error) {
       console.error('Error fetching menu', error);
@@ -42,9 +42,9 @@ const VendorDashboard = () => {
     }
 
     try {
-      await addDish({ 
-        dish_name: newDish.name, 
-        price: parseFloat(newDish.price),  // Ensure the price is a number
+      await addDish({
+        dish_name: newDish.name,
+        price: parseFloat(newDish.price), // Ensure the price is a number
         vendor_id: vendorId,
         description: newDish.description,
         ingredients: newDish.ingredients
@@ -95,7 +95,7 @@ const VendorDashboard = () => {
   return (
     <div className="vendor-dashboard-container">
       <h2 className="vendor-dashboard-title">Vendor Dashboard</h2>
-      
+
       {/* Menu Section */}
       <div className="menu-section">
         <h3 className="section-title">Your Menu</h3>
@@ -148,7 +148,10 @@ const VendorDashboard = () => {
                   </>
                 ) : (
                   <>
-                    <span>{dish.dish_name} - ${dish.price}</span>
+                    <span><strong>Name:</strong> {dish.dish_name}</span> <br />
+                    <span><strong>Price:</strong> ${dish.price}</span> <br />
+                    <span><strong>Description:</strong> {dish.description || "No description provided"}</span> <br />
+                    <span><strong>Ingredients:</strong> {dish.ingredients || "No ingredients provided"}</span> <br />
                     <button
                       className="edit-button"
                       onClick={() => handleEditDish(dish)}

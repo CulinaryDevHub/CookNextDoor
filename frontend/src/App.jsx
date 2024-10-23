@@ -15,6 +15,8 @@ import VendorDetails from './Component/VendorDetails.jsx';
 import VendorList from './Component/VendorList.jsx';
 import CustomerPage from './Component/CustomerPage.jsx';
 import Recommendation from './pages/Recommendation/recommendation.jsx'
+import Optimisation from './pages/Optimisation/optimisation.jsx'
+
 // import Home from './pages/Home/Home.jsx'
 // import Cart from './pages/Cart/Cart.jsx'
 // import PlaceOrder from './pages/PlaceOrder/PlaceOrder.jsx'
@@ -38,6 +40,7 @@ function App() {
           {/* <Navbar setShowLogin={setShowLogin}/> */}
           {/* <Header /> */}
           <Recommendation/>
+          <Optimisation/>
           <Routes>
             <Route path='/' element={<Home />} />
             

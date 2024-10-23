@@ -1,61 +1,65 @@
-/* src/styles/CustomerPage.css */
+/* Vendor List Styles */
+.vendor-list-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: #f9fafb; /* Tailwind's bg-gray-50 */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Tailwind's shadow-sm */
+}
 
-.customer-page-container {
-    background-color: #f3f4f6; /* Equivalent to Tailwind's bg-gray-100 */
-    padding: 24px;
-  }
-  
-  .customer-page-title {
-    font-size: 2rem; /* Tailwind's text-2xl */
-    font-weight: bold; /* Tailwind's font-bold */
-    text-align: center; /* Tailwind's text-center */
-    margin-bottom: 24px; /* Tailwind's mb-6 */
-  }
-  
-  .dish-list {
-    display: grid; /* Tailwind's grid */
-    grid-template-columns: repeat(3, 1fr); /* Tailwind's grid-cols-3 */
-    gap: 16px; /* Tailwind's gap-4 */
-  }
-  
-  .dish-item {
-    border: 1px solid #e5e7eb; /* Tailwind's border */
-    padding: 16px; /* Tailwind's p-4 */
-    background-color: white; /* Tailwind's bg-white */
-    border-radius: 8px; /* Tailwind's rounded */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Tailwind's shadow-sm */
-  }
-  
-  .dish-name {
-    font-size: 1.5rem; /* Tailwind's text-xl */
-    font-weight: bold; /* Tailwind's font-bold */
-  }
-  
-  .dish-price, .dish-vendor {
-    margin-top: 8px; /* Tailwind's mt-2 */
-    color: #374151; /* Tailwind's text-gray-700 */
-  }
-  
-  .view-menu-button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  
-  .view-menu-button:hover {
-    background-color: #45a049;
-  }
-  
-  .vendor-item {
-    color: black; /* Ensure text is visible */
-    display: block; /* Ensure the content isn't hidden */
-    margin: 10px 0;
-  }
-  
-  .vendor-name, .vendor-description, .vendor-location {
-    font-size: 16px; /* Ensure readable font size */
-  }
-  
+.vendor-list-title {
+  font-size: 2.5rem; /* Tailwind's text-3xl */
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 32px;
+  color: #111827; /* Tailwind's text-gray-900 */
+}
+
+.vendor-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 24px; /* Tailwind's gap-6 */
+}
+
+.vendor-item {
+  background-color: #ffffff; /* Tailwind's bg-white */
+  padding: 24px; /* Tailwind's p-6 */
+  border-radius: 12px; /* Tailwind's rounded-xl */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+  text-align: center;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.vendor-item:hover {
+  transform: translateY(-5px); /* Lift on hover */
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12); /* Stronger shadow on hover */
+}
+
+.vendor-item h2 {
+  font-size: 1.75rem; /* Tailwind's text-2xl */
+  font-weight: bold;
+  color: #1f2937; /* Tailwind's text-gray-800 */
+  margin-bottom: 8px;
+}
+
+.vendor-item p {
+  font-size: 1rem; /* Tailwind's text-base */
+  color: #6b7280; /* Tailwind's text-gray-500 */
+  margin-bottom: 16px;
+}
+
+.view-menu-button {
+  padding: 12px 24px;
+  background-color: #3b82f6; /* Tailwind's bg-blue-500 */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.view-menu-button:hover {
+  background-color: #2563eb; /* Tailwind's bg-blue-600 */
+}

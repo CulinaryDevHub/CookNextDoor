@@ -2,9 +2,9 @@ import mysql.connector
 import json
 from flask import jsonify
 from flask_bcrypt import Bcrypt
-from app import app
 
-bcrypt = Bcrypt(app)
+
+bcrypt = Bcrypt()
 
 class UserModel():
     def __init__(self):
