@@ -10,6 +10,9 @@ import LoginPopup from './Component/LoginPopup/LoginPopup.jsx'
 import Home from './pages/Home/Home.jsx'
 import { StoreContextProvider } from './context/StoreContext.jsx'
 import Cart from './Component/Cart.jsx'
+import OrderConfirmation from './Component/OrderConfirmation'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import Home from './pages/Home/Home.jsx'
 // import Cart from './pages/Cart/Cart.jsx'
 // import PlaceOrder from './pages/PlaceOrder/PlaceOrder.jsx'
@@ -22,6 +25,7 @@ function App() {
   return (
     <>
     <StoreContextProvider>
+    <ToastContainer />
       {showLogin ? <LoginPopup setShowLogin={setShowLogin} /> : <></>}
       
       <div className='app'>
@@ -31,6 +35,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/cart' element={<Cart />}/>
+            <Route path="/order-confirmation" element={<OrderConfirmation />} />
           {/* <Route path='/order' element={<PlaceOrder />}/>
           <Route path='/myorders' element={<MyOrders />}/>
           <Route path='/verify' element={<Verify />}/> */}

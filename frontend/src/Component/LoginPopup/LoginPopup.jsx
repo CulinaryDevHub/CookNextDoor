@@ -52,18 +52,20 @@ const LoginPopup = ({ setShowLogin }) => {
             }
 
             const result = response.data;
+            console.log(result);
+            
 
-            if (result) {                
+            if (result.success) {                
                 setToken(result.token);
                 localStorage.setItem("token", result.token);
-                // loadCartData({token:response.data.token})
                 setShowLogin(false);
             } else {
-                toast.error(result.message);
+                // toast.error(result.error || "Unauthorized");
+                alert("Unauthorized")
             }
         } catch (error) {
             console.error('Error during login:', error);
-            toast.error("An error occurred during the request");
+            toast.error("An error occurred during Login");
         }
     }
 

@@ -207,7 +207,7 @@ class user_model():
             self.cur.execute(query,(customer_id,))
 
             cart_id = self.cur.fetchone()
-            print(f'cart_id: {cart_id}')
+            # print(f'cart_id: {cart_id}')
 
             return cart_id
         
@@ -221,13 +221,37 @@ class user_model():
                 INSERT INTO cart_items (cart_id, dish_id) VALUES (%s, %s)
             """
             cart_id = cart_data['cart_id']
-            print(f"Executing query: {query} with cart_id: {cart_id}, dish_id: {dish_id}")
+            # print(f"Executing query: {query} with cart_id: {cart_id}, dish_id: {dish_id}")
             self.cur.execute(query,(cart_id, dish_id,))
             self.con.commit()
-            print("yes added")
+            # print("yes added")
 
             return {"message": "Dish added successfully", "success": True}
 
+        except Exception as e:
+            print(f"Error fetching cart items: {str(e)}")  # Log the error for debugging
+            return jsonify({"message": "Internal Server Error", "error": str(e), "success": False}), 500
+        
+    def removeFromCart(self, cart_data, dish_id):
+        try:
+            query = "DELETE FROM cart_items WHERE cart_id = %s and dish_id = %s"
+            cart_id = cart_data['cart_id']
+            self.cur.execute(query,(cart_id, dish_id,))
+            self.con.commit()
+
+            return jsonify({"message": "dish deleted successfully", "success": True}), 200
+        except Exception as e:
+            print(f"Error deleting cart items: {str(e)}")  # Log the error for debugging
+            return jsonify({"message": "Internal Server Error", "error": str(e), "success": False}), 500
+        
+    def get_user(self, email):
+        try:
+            query = "SELECT firstname, lastname, contact, address FROM Customer WHERE email=%s"
+            self.cur.execute(query, (email,))
+            result = self.cur.fetchone()
+
+            return result
+        
         except Exception as e:
             print(f"Error fetching cart items: {str(e)}")  # Log the error for debugging
             return jsonify({"message": "Internal Server Error", "error": str(e), "success": False}), 500

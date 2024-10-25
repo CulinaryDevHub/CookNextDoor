@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 import os
 from flask_cors import CORS
 
-CORS(app, supports_credentials=True, resources={r"/*": {"origins": "http://localhost:5173"}},  methods=["GET", "POST", "OPTIONS"]) 
+CORS(app, supports_credentials=True, resources={r"/*": {"origins": "http://localhost:5173"}},  methods=["GET", "POST", "OPTIONS", "DELETE"]) 
 
 obj = user_model()
 
@@ -86,12 +86,12 @@ def create_token():
     #    return {"msg": "Wrong email or password"}, 401
     if user is None:
         print("User not found or returned None")
-        return jsonify({"error": "Wrong email or passwords"}), 401
+        return jsonify({"success": False, "error": "Wrong email or passwords"}), 401
       
     print(f"User found: {user}")
     if not bcrypt.check_password_hash(user['password'], password):
         print(f"Password check failed: {user['password']} != {password}")
-        return jsonify({"error": "Unauthorized"}), 401
+        return jsonify({"success": False, "error": "Unauthorized"}), 401
 
     # if not user['password'] == password:
     #     return jsonify({"error": "Invalid password"}), 401
@@ -102,6 +102,7 @@ def create_token():
     #response = {"access_token":access_token}
   
     return jsonify({
+        "success": True,
         "email": email,
         "token": access_token,
         "status": "Logged in Successfully "
@@ -126,12 +127,12 @@ def get_cart_items(customer_id):
 
         dish_details = []
         for dish in dishes:
-            # print(dish['dish_id'])
+            print(dish['dish_id'])
             details = obj.get_dishDetails_by_dishId(dish["dish_id"])  # 'details' is a dict, not a Response now
             if details["success"]:  # Ensure we only add successful dish details
-                dish_details.append(details)
+                dish_details.append({"details": details, "quantity": dish['quantity']})
 
-        # print(type(dish_details))
+        print(dish_details)
         
         return jsonify({"dish_details": dish_details, "success": True}),200
     except Exception as e:
@@ -149,13 +150,13 @@ def add_to_cart():
         data = request.get_json()  # Get the JSON data from the request body
         dish_id = data.get('dish_id')  # Fetch the dish_id
         customer_id = data.get('customer_id')
-        print(f"Request data: {data}") 
+        # print(f"Request data: {data}") 
 
         if customer_id is None:
             return jsonify({"message": "customer_id is required", "success": False}), 400
         
         cart_id = obj.get_cartId_by_custId(customer_id)
-        print(cart_id)
+        # print(cart_id)
 
         result = obj.addToCart(dish_id, cart_id)  # Call the function that adds the dish to the cart
         print(type(result))
@@ -167,4 +168,52 @@ def add_to_cart():
 
     except Exception as e:
         print(f"Error fetching cart items details: {str(e)}")  # Log the error for debugging
-        return jsonify({"message": "Internal Server Error", "error": str(e), "success": False}), 500    
+        return jsonify({"message": "Internal Server Error", "error": str(e), "success": False}), 500  
+    
+@app.route('/api/cart/remove', methods=['DELETE'])
+def remove_from_cart():
+    try:
+        data = request.get_json()  # Get the JSON data from the request body
+        dish_id = data.get('dish_id')  # Fetch the dish_id
+        customer_id = data.get('customer_id')
+        # print(f"Request data: {data}") 
+
+        if customer_id is None:
+            return jsonify({"message": "customer_id is required", "success": False}), 400
+        
+        cart_id = obj.get_cartId_by_custId(customer_id)
+        # print(cart_id)
+
+        result = obj.removeFromCart(cart_id, dish_id)
+
+        return result
+    
+    except Exception as e:
+        print(f"Error deleting cart items details: {str(e)}")  # Log the error for debugging
+        return jsonify({"message": "Internal Server Error", "error": str(e), "success": False}), 500  
+
+
+@app.route('/api/checkEmail', methods=['POST'])
+def check_email():
+    data = request.json
+    email = data.get('email')
+
+    if not email:
+        return jsonify({"error": "Email is required"}), 400
+
+    try:
+        result = obj.get_user(email)
+
+        if result:
+            # Debugging log: Print fetched result (for debugging purposes)
+            print(f"Fetched result from DB: {result}")
+
+            # Combine firstname and lastname into full name
+            result['name'] = f"{result['firstname']} {result['lastname']}"
+            del result['firstname'], result['lastname']  # Remove separate first/last names from response
+            return jsonify(result)
+        else:
+            return jsonify({"error": "Email not found , Verify again OR Register Yourself"}), 404
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500  

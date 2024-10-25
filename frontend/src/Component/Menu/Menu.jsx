@@ -39,7 +39,7 @@ const Menu = () => {
                             <p className='food-item-availability'>
                                 {item.availability_status ? 'Available' : 'Not Available'}
                             </p>
-                            <button className='align-middle text-center w-28 h-12 bg-[#86c2b6]' onClick={() => addToCart(item.dish_id)}>Add to Cart</button>
+                            <button className='align-middle text-center w-28 h-12 bg-[#86c2b6] rounded-lg' onClick={() => addToCart(item.dish_id)}>Add to Cart</button>
                         </div>
                     ))
                 ) : (
