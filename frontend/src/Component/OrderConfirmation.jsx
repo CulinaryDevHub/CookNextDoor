@@ -23,7 +23,6 @@ const OrderConfirmation = () => {
         marginBottom: '20px', 
         background: '#FFF',
         WebkitBackgroundClip: 'text',
-        color: '#FF5C00',
       }}>Order Confirmed!</h2>
       <p style={{ 
         fontSize: '20px', 

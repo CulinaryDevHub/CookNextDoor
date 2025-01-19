@@ -121,7 +121,7 @@ const Cart = () => {
         <div className='flex flex-col justify-center items-center'>
             {/* <h1 className='text-5xl font-semibold my-5 text-[#558177]'>Your Cart</h1> */}
             <h1 style={headingStyle}>
-                🍽️ Your Cart 🛒
+                🍽️ Customer's Cart 🛒
             </h1>
             <div style={{
                 marginBottom: '30px',
