@@ -1,6 +1,8 @@
 from flask import Flask
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
@@ -13,5 +15,3 @@ def welcome():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-from controller import * 

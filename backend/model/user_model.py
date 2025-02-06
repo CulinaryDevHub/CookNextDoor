@@ -3,7 +3,14 @@ import json
 from flask import jsonify
 from flask_bcrypt import Bcrypt
 from app import app
+import os
+from supabase import create_client, Client
+# DATABASE
+url: str = os.environ.get("SUPABASE_URL")
+key: str = os.environ.get("SUPABASE_KEY")
+supabase: Client = create_client(url, key)
 
+print(supabase)
 bcrypt = Bcrypt(app)
 
 class user_model():
