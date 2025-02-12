@@ -4,9 +4,9 @@
 **CookNextDoor** is an innovative home food delivery platform that connects home chefs with individuals who seek fresh, home-cooked meals, such as hostellers, busy professionals, and anyone craving authentic homemade food. The platform empowers home cooks, including housewives and retirees, by providing them with a means to earn an income while sharing their culinary skills.
 
 ## Features
-- **Personalized Meal Recommendations** using Machine Learning algorithms
+- **Personalized Meal Recommendations** using NLP 
+- **Menu Optimisation** using clustering algorithm to increase vendor profit
 - **Direct Chef-Consumer Communication** for customized orders
-- **Seasonal and Local Ingredient-Based Menus**
 - **Secure Authentication with JWT Tokens**
 - **Real-Time Recommendations and Demand Forecasting**
 
