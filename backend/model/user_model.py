@@ -2,119 +2,90 @@ import mysql.connector
 import json
 from flask import jsonify
 from flask_bcrypt import Bcrypt
-from app import app
+# from app import bcrypt
 import os
 from supabase import create_client, Client
-# DATABASE
-url: str = os.environ.get("SUPABASE_URL")
-key: str = os.environ.get("SUPABASE_KEY")
-supabase: Client = create_client(url, key)
+from dotenv import load_dotenv
+load_dotenv()
 
-print(supabase)
-bcrypt = Bcrypt(app)
 
 class user_model():
-    def __init__(self):
+    def __init__(self, bcrypt):
+        self.bcrypt = bcrypt
+
         try:
-            self.con=mysql.connector.connect(host="localhost", user="root", password="mysql@22Anshika", database="cooknextdoor")
-            self.con.autocommit=True
-            self.cur=self.con.cursor(dictionary=True)
-            print("Connection successful")
+            url: str = os.environ.get("SUPABASE_URL")
+            key: str = os.environ.get("SUPABASE_KEY")
+            self.supabase: Client = create_client(url, key)
+
+            print(self.supabase)
         except:
             print("error")
 
     def user_getall_model(self):
-        self.cur.execute("SELECT * FROM User")
-        result=self.cur.fetchall()
-        if len(result):
-            return json.dumps(result)
-        else:
-            return "No data found"
+        try:
+            response = self.supabase.table("customer").select("*").execute()
+
+            if response.data:
+                return json.dumps(response.data)  
+            else:
+                return "No data found"
+        except Exception as e:
+            return f"Error fetching data: {str(e)}"
         
     def user_addone_model(self, data):
-        # self.cur.execute(f"INSERT INTO User (user_type, email, password, firstname, lastname, contact, address) values ('{data['user_type']}', '{data['email']}', '{data['password']}', '{data['firstname']}', '{data['lastname']}', '{data['contact']}', '{data['address']}');")
-        
-        # Hash the password
-        hashed_password = bcrypt.generate_password_hash(data['password']).decode('utf-8')
-        
-        # Use parameterized queries to prevent SQL injection
-        if data['user_type'] == 'vendor':
-            query = """
-                INSERT INTO Vendor (user_type, email, password, firstname, lastname, contact, address)
-                VALUES (%s, %s, %s, %s, %s, %s, %s);
-            """
+        try:
+            # Hash the password
+            hashed_password = self.bcrypt.generate_password_hash(data['password']).decode('utf-8')
 
-            self.cur.execute(query, (
-            data['user_type'],
-            data['email'],
-            hashed_password,
-            data['firstname'],
-            data['lastname'],
-            data['contact'],
-            data['address']
-            ))
-            
-        elif data['user_type'] == 'customer':
-            query = """
-                INSERT INTO Customer (user_type, email, password, firstname, lastname, contact, address)
-                VALUES (%s, %s, %s, %s, %s, %s, %s);
-            """
-        
-            self.cur.execute(query, (
-                data['user_type'],
-                data['email'],
-                hashed_password,
-                data['firstname'],
-                data['lastname'],
-                data['contact'],
-                data['address']
-            ))
+            # Determine table name based on user type
+            table_name = "vendor" if data["user_type"] == "cook" else "customer"
 
-            # Get the `customer_id` of the newly inserted customer
-            customer_id = self.cur.lastrowid  # This will get the last inserted ID for auto_increment columns
+            # Insert user into the respective table
+            response = self.supabase.table(table_name).insert({
+                "user_type": data["user_type"],
+                "email": data["email"],
+                "password": hashed_password,
+                "firstname": data["firstname"],
+                "lastname": data["lastname"],
+                "contact": data["contact"],
+                "address": data["address"]
+            }).execute()
 
-            print(f"DEBUG: Inserted customer_id: {customer_id}")
-            
-            # Insert the new `customer_id` into the `cart` table
-            cart_query = """
-                INSERT INTO cart (customer_id) VALUES (%s);
-            """
-            self.cur.execute(cart_query, (customer_id,))
-            
+            if response.data:
+                if data["user_type"] == "customer":
+                    customer_id = response.data[0]["customer_id"]  # Get newly created customer ID
 
-        return jsonify({'message': 'User added successfully', 'success': True}), 200;
+                    # Insert customer ID into the cart table
+                    self.supabase.table("cart").insert({
+                        "customer_id": customer_id
+                    }).execute()
+
+                    print(f"DEBUG: Inserted customer_id: {customer_id} into cart.")
+
+                return json.dumps({'message': 'User added successfully', 'success': True}), 200
+            else:
+                return json.dumps({'message': 'Failed to insert data', 'success': False, 'error': response.error}), 400
+
+        except Exception as e:
+            print(f"Error: {str(e)}")
+            return json.dumps({'message': 'Server error occurred', 'success': False}), 500
 
 
     def get_user_by_email(self, email, user_type):
 
-        if user_type == 'vendor':
-            query = f"SELECT * FROM Vendor WHERE email = '{email}'"
-        if user_type == 'customer':
-            query = f"SELECT * FROM Customer WHERE email = '{email}'"
+        try:
+            table_name = "vendor" if user_type == "vendor" else "customer"
 
-        # query = f"SELECT * FROM User WHERE email = '{email}'"
-        self.cur.execute(query)
-        
-        # Fetch the first result
-        user = self.cur.fetchone()
-        # print(type(user))
-        
-        # return jsonify(user)
+            response = self.supabase.table(table_name).select("*").eq("email", email).execute()
 
-        # user_data = {
-        #     'user_id': user[0],
-        #     'user_type': user[1],
-        #     'email': user[2],
-        #     'password': user[3],  # The hashed password
-        #     'firstname': user[4],
-        #     'lastname': user[5],
-        #     'contact': user[6],
-        #     'address': user[7]
-        # }
+            if response.data:
+                return response.data[0]  # Return the first matching user
+            return None  # User not found
 
-        if not user:
-            return None  
-        return user
+        except Exception as e:
+            print(f"Error fetching user: {e}")
+            return None
     
     # def get_id_by_email(self, email):
     #     query = f"SELECT customer_id FROM Customer WHERE email = {email}"
@@ -123,130 +94,108 @@ class user_model():
     
     def getall_dishes(self):
         try:
-            # Define the SQL query
-            query = """ SELECT * FROM dishes """
-            
-            # Execute the query
-            self.cur.execute(query)
-            
-            # Fetch all results
-            dishes = self.cur.fetchall()
-            # print(dishes)
+            # Fetch all dishes from Supabase
+            response = self.supabase.table("dishes").select("*").execute()
 
-            if not dishes:
+            # Check if data exists
+            if not response.data:
                 return jsonify({"dishes": [], "success": True}), 200  # Return empty list if no dishes found
-            
-            # If you need to return a list of dictionaries for better JSON serialization
-            dish_list = []
-            for dish in dishes:
 
+            # Convert data to a list of dictionaries for JSON response
+            dish_list = []
+            for dish in response.data:
                 dish_list.append({
-                    "dish_id": dish['dish_id'],  # Accessing dictionary keys directly
-                    "vendor_id": dish['vendor_id'],
-                    "dish_name": dish['dish_name'],
-                    "description": dish['description'],
-                    "ingredients": dish['ingredients'],
-                    "price": str(dish['price']),  # Convert Decimal to string for JSON serialization
-                    "image_url": dish['image_url'] if dish['image_url'] else "",  # Provide empty string if None
-                    "availability_status": bool(dish['availability_status'])  # Convert to boolean
+                    "dish_id": dish.get("dish_id"),  # Use .get() to avoid KeyError
+                    "vendor_id": dish.get("vendor_id"),
+                    "dish_name": dish.get("dish_name"),
+                    "description": dish.get("description"),
+                    "ingredients": dish.get("ingredients"),
+                    "price": str(dish.get("price", "0")),  # Convert Decimal to string for JSON serialization
+                    "image_url": dish.get("image_url", ""),  # Provide empty string if None
+                    "availability_status": bool(dish.get("availability_status", False))  # Convert to boolean
                 })
-            
+
             return jsonify({"dishes": dish_list, "success": True}), 200
-        
+
         except Exception as e:
             print(f"ERROR: {str(e)}")  # Print the error for debugging
             return jsonify({"message": "Failed to retrieve dishes", "error": str(e), "success": False}), 500
 
-    def get_cart_details(self, customer_id):
-        
-        try:
-            query = """
-                SELECT dish_id, quantity FROM cart_items
-                WHERE cart_id = (
-                    SELECT cart_id FROM cart
-                    WHERE customer_id = %s
-                )
-            """
-            self.cur.execute(query, (customer_id,))  # Use parameterized query to prevent SQL injection
-
-            items = self.cur.fetchall()
-
-            item_list = [item for item in items]  # Simplified list comprehension
-
-            return item_list
-        
-        except Exception as e:
-            print(f"error:{str(e)}")
-            return jsonify({"message": "Failed to retrieve dishes", "error": str(e), "success": False}), 500
-        
-    def get_dishDetails_by_dishId(self, dish_id):
-        try:
-            query = f"SELECT * FROM dishes WHERE dish_id = %s"
-            # print("query")
-
-            self.cur.execute(query,(dish_id,))
-            # print("executed")
-
-            dish = self.cur.fetchone()
-            # print(dish)
-
-            # if dish:
-            #     dish_data = {
-            #         "dish_id": dish[0],
-            #         "vendor_id": dish[1],
-            #         "dish_name": dish[2],
-            #         "description": dish[3],
-            #         "price": dish[5],
-            #         "image_url": dish[6]
-            #     }
-            #     print(dish_data)
-
-            return {"dish": dish, "success": True}
-        
-        except Exception as e :
-            print(f"error:{str(e)}")
-            return jsonify({"message": "Failed to retrieve dishes", "error": str(e), "success": False}), 500
-        
     def get_cartId_by_custId(self, customer_id):
         try:
-            query = """SELECT cart_id FROM cart WHERE customer_id = %s"""
-
-            self.cur.execute(query,(customer_id,))
-
-            cart_id = self.cur.fetchone()
-            # print(f'cart_id: {cart_id}')
-
-            return cart_id
-        
-        except Exception as e :
-            print(f"error:{str(e)}")
-            return jsonify({"message": "Failed to retrieve cart_id", "error": str(e), "success": False}), 500  
-    
-    def addToCart(self, dish_id, cart_data):
-        try:
-            query = """
-                INSERT INTO cart_items (cart_id, dish_id) VALUES (%s, %s)
-            """
-            cart_id = cart_data['cart_id']
-            # print(f"Executing query: {query} with cart_id: {cart_id}, dish_id: {dish_id}")
-            self.cur.execute(query,(cart_id, dish_id,))
-            self.con.commit()
-            # print("yes added")
-
-            return {"message": "Dish added successfully", "success": True}
+            # Fetch the cart_id for the given customer_id
+            response = self.supabase.table("cart").select("cart_id").eq("customer_id", customer_id).execute()
+            if not response.data:
+                return None  # If no cart found, return None
+            return response.data[0]["cart_id"]  # Return cart_id
 
         except Exception as e:
-            print(f"Error fetching cart items: {str(e)}")  # Log the error for debugging
+            print(f"Error fetching cart ID: {str(e)}")
+            return jsonify({"message": "Failed to retrieve cart_id", "error": str(e), "success": False}), 500
+
+    def get_cart_details(self, customer_id):
+        try:
+            cart_id = self.get_cartId_by_custId(customer_id)
+            # Fetch dish_id and quantity for the given customer's cart
+            response = self.supabase.table("cart_items").select("dish_id, quantity").eq(
+                "cart_id", cart_id
+            ).execute()
+
+            if not response.data:
+                return []
+            return response.data  # Returns a list of cart items
+
+        except Exception as e:
+            print(f"Error fetching cart details: {str(e)}")
+            return jsonify({"message": "Failed to retrieve cart details", "error": str(e), "success": False}), 500
+
+
+    def get_dishDetails_by_dishId(self, dish_id):
+        try:
+            # Fetch dish details from Supabase
+            response = self.supabase.table("dishes").select("*").eq("dish_id", dish_id).execute()
+
+            if not response.data:
+                return {"dish": None, "success": False}
+
+            return {"dish": response.data[0], "success": True}
+
+        except Exception as e:
+            print(f"Error fetching dish details: {str(e)}")
+            return {"dish": None, "success": False, "error": str(e)} 
+            
+
+    def addToCart(self, dish_id, customer_id):
+        try:
+            cart_id = self.get_cartId_by_custId(customer_id)
+            if not cart_id:
+                return jsonify({"message": "Cart not found for the customer", "success": False}), 400
+
+            # Insert dish into the cart_items table
+            response = self.supabase.table("cart_items").insert({"cart_id": cart_id, "dish_id": dish_id}).execute()
+
+            if response.data:
+                return {"message": "Dish added successfully", "success": True}, 200
+            else:
+                return {"message": "Failed to add dish", "success": False}, 500
+
+        except Exception as e:
+            print(f"Error adding dish to cart: {str(e)}")
             return jsonify({"message": "Internal Server Error", "error": str(e), "success": False}), 500
         
-    def removeFromCart(self, cart_data, dish_id):
+    def removeFromCart(self, customer_id, dish_id):
         try:
-            query = "DELETE FROM cart_items WHERE cart_id = %s and dish_id = %s"
-            cart_id = cart_data['cart_id']
-            self.cur.execute(query,(cart_id, dish_id,))
-            self.con.commit()
+            cart_id = self.get_cartId_by_custId(customer_id)
+            if cart_id is None:
+                return jsonify({"message": "Cart not found", "success": False}), 404
+            
+            response = self.supabase.table("cart_items").delete().eq("cart_id", cart_id).eq("dish_id", dish_id).execute()
 
-            return jsonify({"message": "dish deleted successfully", "success": True}), 200
+            if response.data is not None:
+                return jsonify({"message": "Dish deleted successfully", "success": True}), 200
+            else:
+                return jsonify({"message": "Failed to delete dish from cart", "success": False}), 500
+
         except Exception as e:
             print(f"Error deleting cart items: {str(e)}")  # Log the error for debugging
             return jsonify({"message": "Internal Server Error", "error": str(e), "success": False}), 500

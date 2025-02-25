@@ -16,7 +16,7 @@ const StoreContextProvider = (props) => {
         if (token) {
             try {
                 const decoded = jwtDecode(token); // Decode the token
-                console.log(decoded.sub);
+                // console.log(decoded.sub);
 
                 return decoded.sub; // Return customer_id from the decoded token
             } catch (error) {
@@ -37,7 +37,7 @@ const StoreContextProvider = (props) => {
         } else {
             setCartItems((prev) => ({ ...prev, [dish_id]: prev[dish_id] + 1 }));
         }
-        console.log("after if");
+        // console.log("after if");
 
         // If there's a token, send the cart update request to the backend
         if (token && customer_id) {
@@ -76,7 +76,7 @@ const StoreContextProvider = (props) => {
         } else {
             setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))
         }
-        console.log("after if");
+        // console.log("after if");
 
         if (token && customer_id) {
             try {
@@ -124,7 +124,7 @@ useEffect(() => {
         if (localStorage.getItem("token")) {
             setToken(localStorage.getItem("token"))
             // await loadCartData({ token: localStorage.getItem("token") })
-            console.log(token);
+            // console.log(token);
         }
     }
     loadData()
