@@ -103,4 +103,4 @@ Ensure you have the following installed:
 #### * The app is under development. *
 
 ## Contact
-For inquiries, reach out at [your-email@example.com](mailto:your-email@example.com)
+For inquiries, reach out at [apurva2137@gmail.com](mailto:apurva2137@gmail.com)
