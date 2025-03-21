@@ -73,6 +73,33 @@ Ensure you have the following installed:
 ## Home Page
 ![Screenshot 2025-02-04 022016 1](https://github.com/user-attachments/assets/effee5af-283a-4cb9-a79f-7039cb403326)
 
+## Sign-up pop-up
+![Picture1](https://github.com/user-attachments/assets/57491a49-a667-4a35-b7a6-6f10650f3b0c)
+
+## Sign In pop-up
+![Picture2](https://github.com/user-attachments/assets/346dca63-3b94-4390-b1f4-e14750e3e669)
+
+## Vendor's Dashboard
+![WhatsApp Image 2025-03-21 at 23 09 27_60f47ab0](https://github.com/user-attachments/assets/166bc6b3-a898-43da-8053-d7c3798a97d3)
+
+## Popular Dishes
+![Picture3](https://github.com/user-attachments/assets/b7e18e9a-70d8-4d63-bcba-cecbff968b3e)
+
+## Personalized Food Recommendation
+![Picture1](https://github.com/user-attachments/assets/4f8738ef-c6af-4ef8-b326-c00a400f0a02)
+![Picture2](https://github.com/user-attachments/assets/7d5739af-685d-45ae-ac21-76c526e8b152)
+
+## Trending Dishes for a Daily Optimized Menu
+![Screenshot 2025-03-21 231934](https://github.com/user-attachments/assets/15ae8665-4268-44c3-bd51-0e965648d29f)
+
+## Cart Page
+![Picture3](https://github.com/user-attachments/assets/68a58007-5420-4f13-8aae-39cf6f4e0062)
+
+## Order Confirmation
+![Picture4](https://github.com/user-attachments/assets/f19f21ad-8ac8-4d5c-9a32-a7124ecdad11)
+
+
+
 #### * The app is under development. *
 
 ## Contact
