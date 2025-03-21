@@ -69,6 +69,10 @@ Ensure you have the following installed:
 4. **Chef-Consumer Communication**
 5. **Real-time Recommendations & Seasonal Menus**
 
+## Screenshots
+## Home Page
+![Screenshot 2025-02-04 022016 1](https://github.com/user-attachments/assets/effee5af-283a-4cb9-a79f-7039cb403326)
+
 #### * The app is under development. *
 
 ## Contact
