@@ -24,25 +24,25 @@ function App() {
 
   return (
     <>
-    <StoreContextProvider>
-    <ToastContainer />
-      {showLogin ? <LoginPopup setShowLogin={setShowLogin} /> : <></>}
-      
-      <div className='app'>
-        <BrowserRouter>
+      <StoreContextProvider>
+        <ToastContainer />
+        {showLogin ? <LoginPopup setShowLogin={setShowLogin} /> : <></>}
+
+        <div className='app'>
+          <BrowserRouter>
             <Navbar setShowLogin={setShowLogin} />
-          {/* <Navbar setShowLogin={setShowLogin}/> */}
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/cart' element={<Cart />}/>
-            <Route path="/order-confirmation" element={<OrderConfirmation />} />
-          {/* <Route path='/order' element={<PlaceOrder />}/>
+            {/* <Navbar setShowLogin={setShowLogin}/> */}
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/cart' element={<Cart />} />
+              <Route path="/order-confirmation" element={<OrderConfirmation />} />
+              {/* <Route path='/order' element={<PlaceOrder />}/>
           <Route path='/myorders' element={<MyOrders />}/>
           <Route path='/verify' element={<Verify />}/> */}
-          </Routes>
-        </BrowserRouter>
-      </div>
-      <Footer />
+            </Routes>
+          </BrowserRouter>
+        </div>
+        <Footer />
       </StoreContextProvider>
     </>
   )
