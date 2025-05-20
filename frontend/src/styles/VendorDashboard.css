@@ -1,0 +1,83 @@
+/* src/styles/VendorDashboard.css */
+
+.vendor-dashboard-container {
+    background-color: #f3f4f6;
+    padding: 24px;
+    min-height: 100vh;
+  }
+  
+  .vendor-dashboard-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #1f2937;
+    margin-bottom: 24px;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #374151;
+    margin-bottom: 16px;
+  }
+  
+  .menu-list, .orders-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .menu-item, .order-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    background-color: white;
+  }
+  
+  .delete-button {
+    background-color: #ef4444;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .delete-button:hover {
+    background-color: #dc2626;
+  }
+  
+  .add-dish-form {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  
+  .input-field {
+    padding: 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    width: 200px;
+  }
+  
+  .add-button {
+    background-color: #10b981;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-button:hover {
+    background-color: #059669;
+  }
+  
+  .empty-message {
+    color: #6b7280;
+    font-size: 1rem;
+  }
+  

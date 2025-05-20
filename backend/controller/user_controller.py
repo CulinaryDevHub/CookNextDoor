@@ -1,3 +1,4 @@
+
 # from app import app
 from model.user_model import user_model
 import json
@@ -22,6 +23,9 @@ from flask_cors import CORS
 
 def create_user_blueprint(bcrypt, jwt):
     user_bp = Blueprint("user", __name__)
+    # vendor_routes = Blueprint('vendor_routes', __name__)
+    # customer_routes = Blueprint('customer_routes', __name__)
+
 
     obj = user_model(bcrypt)
 
@@ -106,8 +110,16 @@ def create_user_blueprint(bcrypt, jwt):
                 return jsonify({"success": False, "error": "Unauthorized"}), 401
 
             # Generate JWT token
-            user_id_field = "vendor_id" if user_type == "vendor" else "customer_id"
-            access_token = create_access_token(identity=user[user_id_field])
+            user_id_field = "vendor_id" if user_type == "cook" else "customer_id"
+
+            additional_claims = {"user_type": user_type}
+            if user_type == "cook":
+                additional_claims["vendor_id"] = user["vendor_id"]
+            else :
+                additional_claims["customer_id"] = user["customer_id"]
+
+            access_token = create_access_token(identity=user[user_id_field], additional_claims=additional_claims)
+
 
             return jsonify({
                 "success": True,
@@ -127,6 +139,7 @@ def create_user_blueprint(bcrypt, jwt):
         return obj.getall_dishes() # Replace `your_class_instance` with your actual instance
 
     @user_bp.route(f'/api/cart/<int:customer_id>', methods=['GET'])
+    @jwt_required()
     def get_cart_items(customer_id):
         if customer_id is None:
             return jsonify({"message": "customer_id is required", "success": False}), 400
@@ -154,6 +167,7 @@ def create_user_blueprint(bcrypt, jwt):
             return jsonify({"message": "Internal Server Error", "error": str(e), "success": False}), 500
         
     @user_bp.route('/api/cart/add', methods=['POST', 'OPTIONS'])
+    @jwt_required()
     def add_to_cart():
         try:
             data = request.get_json()  # Get the JSON data from the request body
@@ -173,6 +187,7 @@ def create_user_blueprint(bcrypt, jwt):
             return jsonify({"message": "Internal Server Error", "error": str(e), "success": False}), 500 
         
     @user_bp.route('/api/cart/remove', methods=['DELETE'])
+    @jwt_required()
     def remove_from_cart():
         try:
             data = request.get_json()  # Get the JSON data from the request body
@@ -217,5 +232,127 @@ def create_user_blueprint(bcrypt, jwt):
 
         except Exception as e:
             return jsonify({"error": str(e)}), 500  
+        
+        
+
+
+    from flask_jwt_extended import get_jwt_identity
+
+    from flask_jwt_extended import get_jwt_identity, get_jwt
+
+    @user_bp.route('/menu', methods=['GET'])
+    @jwt_required()
+    def get_vendor_menu():
+        claims = get_jwt()  # Extract all claims from JWT
+        jwt_vendor_id = get_jwt_identity()  # Extract vendor_id
+        
+        # Check if user_type is 'cook'
+        if claims.get('user_type') != 'cook':
+            return jsonify({"error": "Unauthorized access"}), 403
+
+        dishes = obj.get_dishes_by_vendor(jwt_vendor_id)
+        return jsonify(dishes)
+
+
+    # to be changed
+
+    @user_bp.route('/orders/<int:vendor_id>', methods=['GET'])
+    @jwt_required()
+    def get_vendor_orders(vendor_id):
+
+        claims = get_jwt()
+        # Ensure the vendor is accessing their own orders
+        if claims['user_type'] != 'vendor' or claims['user_id'] != vendor_id:
+            return jsonify({"error": "Unauthorized access"}), 403
+        
+        orders = obj.get_orders_by_vendor(vendor_id)
+        return jsonify(orders)
+    
+
+    from flask_jwt_extended import get_jwt_identity
+
+    @user_bp.route('/menu/add', methods=['POST'])
+    @jwt_required()
+    def add_new_dish():
+        vendor_id = get_jwt_identity()  # Extract vendor_id directly from the token
+
+        data = request.json
+        print(data)
+
+        obj.add_dish(
+            data['dish_name'], 
+            data['price'],
+            data['description'], 
+            data['ingredients'],
+            vendor_id  
+        )
+
+        return jsonify({'message': 'Dish added successfully!'})
+    
+
+
+    @user_bp.route('/menu/update/<int:dish_id>', methods=['PUT'])
+    @jwt_required()
+    def update_existing_dish(dish_id):
+        if request.method == 'OPTIONS':
+            # CORS preflight request
+            response =Flask.make_response()
+            response.headers['Access-Control-Allow-Origin'] = 'http://localhost:5173'
+            response.headers['Access-Control-Allow-Methods'] = 'PUT'
+            response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization'
+            return response
+        claims = get_jwt()
+        if claims['user_type'] != 'vendor':
+            return jsonify({"error": "Unauthorized access"}), 403
+        data = request.json
+        print(data)
+    
+        obj.update_dish(
+            dish_id, 
+            data['dish_name'], 
+            data['price'], 
+            data['description'], 
+            data['ingredients']
+        )
+        return jsonify({'message': 'Dish updated successfully!'})
+    
+
+    @user_bp.route('/menu/delete/<int:dish_id>', methods=['DELETE'])
+    @jwt_required()
+    def delete_dish_route(dish_id):
+        if request.method == 'OPTIONS':
+            # CORS preflight request
+            response =Flask.make_response()
+            response.headers['Access-Control-Allow-Origin'] = 'http://localhost:5173'
+            response.headers['Access-Control-Allow-Methods'] = 'DELETE'
+            response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization'
+            return response
+        claims = get_jwt()
+        if claims['user_type'] != 'vendor':
+            return jsonify({"error": "Unauthorized access"}), 403
+
+        obj.delete_dish(dish_id)
+        return jsonify({'message': 'Dish deleted successfully!'})
+
+# Customer API
+    @user_bp.route('/vendors', methods=['GET'])
+    # @jwt_required()
+    def get_all_vendors():
+        vendors = obj.get_vendors()
+        return jsonify(vendors)
+    
+
+
+    @user_bp.route('/vendor/menu/<int:vendor_id>', methods=['GET'])
+    # @jwt_required()
+    def get_vendor_menu_for_customer(vendor_id):
+        dishes = obj.get_dishes_by_vendor(vendor_id)
+        return jsonify(dishes)
+
 
     return user_bp
+
+
+
+
+

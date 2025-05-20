@@ -5,12 +5,15 @@ import { Link, useNavigate } from 'react-router-dom'
 import { StoreContext } from '../../context/StoreContext'
 import logo from '../../assets/logo.svg';
 import { CgProfile } from "react-icons/cg";
-import { TfiFacebook } from "react-icons/tfi";
-import { FaXTwitter } from "react-icons/fa6";
-import { FaInstagram } from "react-icons/fa";
+// import { TfiFacebook } from "react-icons/tfi";
+// import { FaXTwitter } from "react-icons/fa6";
+// import { FaInstagram } from "react-icons/fa";
 import { FaOpencart } from "react-icons/fa";
+import { jwtDecode } from 'jwt-decode';
+
 
 const Navbar = ({ setShowLogin }) => {
+  const navigate = useNavigate();
 
   const [menu, setMenu] = useState("home");
   const { token, setToken } = useContext(StoreContext)||{};
@@ -22,12 +25,31 @@ const Navbar = ({ setShowLogin }) => {
     // navigate('/')
   }
 
+  const getVendorIdFromToken = () => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      return decodedToken.user_id; // Assuming user_id is the vendor_id
+    }
+    return null;
+  };
+
+  const handleDashboardClick = () => {
+    const vendorId = getVendorIdFromToken();
+    if (vendorId) {
+      // Navigate to the dashboard with vendorId
+      navigate(`/dashboard/${vendorId}`);
+    } else {
+      console.error('No vendor ID found or token is invalid.');
+    }
+  };
+
   return (
     <div className='navbar'>
       <img className='logo' src={logo} alt="" />
       <ul className="navbar-menu">
         <Link to="/" onClick={() => setMenu("home")} className={`${menu === "home" ? "active" : ""}`}>home</Link>
-        <a href='#explore-menu' onClick={() => setMenu("menu")} className={`${menu === "menu" ? "active" : ""}`}>menu</a>
+        <a href='/vendors' onClick={() => setMenu("menu")} className={`${menu === "menu" ? "active" : ""}`}>vendors</a>
         <a href='#app-download' onClick={() => setMenu("about")} className={`${menu === "about" ? "active" : ""}`}>about</a>
         <a href='#footer' onClick={() => setMenu("contact")} className={`${menu === "contact" ? "active" : ""}`}>contact us</a>
       </ul>
@@ -46,6 +68,8 @@ const Navbar = ({ setShowLogin }) => {
               <li ><Link to='/cart' className='flex gap-3'><p>Orders</p></Link></li>
               <hr />
               <li onClick={logout}><p>Logout</p></li> 
+              <hr />
+              <li onClick={handleDashboardClick}><p>DashBoard</p></li>
             </ul>
           </div>
           </div>

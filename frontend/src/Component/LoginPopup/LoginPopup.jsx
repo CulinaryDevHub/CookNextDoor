@@ -10,7 +10,7 @@ const LoginPopup = ({ setShowLogin }) => {
     const { setToken, url } = useContext(StoreContext) || {}
     // const [token, setToken] = useState("")
     const [currState, setCurrState] = useState("Login");
-    // const url = "http://localhost:5000"
+    //const url = "http://localhost:5000"
 
     const [data, setData] = useState({
         user_type: "",

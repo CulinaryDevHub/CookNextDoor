@@ -1,38 +1,30 @@
-import mysql.connector
 import json
+import os
 from flask import jsonify
 from flask_bcrypt import Bcrypt
-# from app import bcrypt
-import os
 from supabase import create_client, Client
 from dotenv import load_dotenv
-load_dotenv()
 
+load_dotenv()
 
 class user_model():
     def __init__(self, bcrypt):
         self.bcrypt = bcrypt
-
         try:
             url: str = os.environ.get("SUPABASE_URL")
             key: str = os.environ.get("SUPABASE_KEY")
             self.supabase: Client = create_client(url, key)
-
-            print(self.supabase)
-        except:
-            print("error")
+            print("Supabase connection established")
+        except Exception as e:
+            print(f"Error connecting to Supabase: {str(e)}")
 
     def user_getall_model(self):
         try:
             response = self.supabase.table("customer").select("*").execute()
-
-            if response.data:
-                return json.dumps(response.data)  
-            else:
-                return "No data found"
+            return json.dumps(response.data) if response.data else "No data found"
         except Exception as e:
             return f"Error fetching data: {str(e)}"
-        
+
     def user_addone_model(self, data):
         try:
             # Hash the password
@@ -71,55 +63,66 @@ class user_model():
             print(f"Error: {str(e)}")
             return json.dumps({'message': 'Server error occurred', 'success': False}), 500
 
-
     def get_user_by_email(self, email, user_type):
-
         try:
-            table_name = "vendor" if user_type == "vendor" else "customer"
-
+            table_name = "vendor" if user_type == "cook" else "customer"
             response = self.supabase.table(table_name).select("*").eq("email", email).execute()
-
-            if response.data:
-                return response.data[0]  # Return the first matching user
-            return None  # User not found
-
+            return response.data[0] if response.data else None
         except Exception as e:
-            print(f"Error fetching user: {e}")
             return None
-    
-    # def get_id_by_email(self, email):
-    #     query = f"SELECT customer_id FROM Customer WHERE email = {email}"
 
-
-    
-    def getall_dishes(self):
+    def get_vendors(self):
         try:
-            # Fetch all dishes from Supabase
-            response = self.supabase.table("dishes").select("*").execute()
-
-            # Check if data exists
-            if not response.data:
-                return jsonify({"dishes": [], "success": True}), 200  # Return empty list if no dishes found
-
-            # Convert data to a list of dictionaries for JSON response
-            dish_list = []
-            for dish in response.data:
-                dish_list.append({
-                    "dish_id": dish.get("dish_id"),  # Use .get() to avoid KeyError
-                    "vendor_id": dish.get("vendor_id"),
-                    "dish_name": dish.get("dish_name"),
-                    "description": dish.get("description"),
-                    "ingredients": dish.get("ingredients"),
-                    "price": str(dish.get("price", "0")),  # Convert Decimal to string for JSON serialization
-                    "image_url": dish.get("image_url", ""),  # Provide empty string if None
-                    "availability_status": bool(dish.get("availability_status", False))  # Convert to boolean
-                })
-
-            return jsonify({"dishes": dish_list, "success": True}), 200
-
+            response = self.supabase.table("vendor").select("*").execute()
+            return response.data if response.data else []
         except Exception as e:
-            print(f"ERROR: {str(e)}")  # Print the error for debugging
-            return jsonify({"message": "Failed to retrieve dishes", "error": str(e), "success": False}), 500
+            return []
+
+    def get_dishes_by_vendor(self, vendor_id):
+        try:
+            response = self.supabase.table("dishes").select("*").eq("vendor_id", vendor_id).execute()
+            return response.data if response.data else []
+        except Exception as e:
+            return []
+
+    def get_orders_by_vendor(self, vendor_id):
+        try:
+            response = self.supabase.table("orders").select("*").eq("vendor_id", vendor_id).execute()
+            return response.data if response.data else []
+        except Exception as e:
+            return []
+
+    def add_dish(self, dish_name, price, description, ingredients, vendor_id):
+        try:
+            response = self.supabase.table("dishes").insert({
+                "dish_name": dish_name,
+                "price": price,
+                "description": description,
+                "ingredients": ingredients,
+                "vendor_id": vendor_id
+            }).execute()
+            return response.data if response.data else None
+        except Exception as e:
+            return None
+
+    def update_dish(self, dish_id, name, price, description, ingredients):
+        try:
+            response = self.supabase.table("dishes").update({
+                "dish_name": name,
+                "price": price,
+                "description": description,
+                "ingredients": ingredients
+            }).eq("dish_id", dish_id).execute()
+            return response.data if response.data else None
+        except Exception as e:
+            return None
+
+    def delete_dish(self, dish_id):
+        try:
+            response = self.supabase.table("dishes").delete().eq("dish_id", dish_id).execute()
+            return response.data if response.data else None
+        except Exception as e:
+            return None
 
     def get_cartId_by_custId(self, customer_id):
         try:
@@ -132,7 +135,7 @@ class user_model():
         except Exception as e:
             print(f"Error fetching cart ID: {str(e)}")
             return jsonify({"message": "Failed to retrieve cart_id", "error": str(e), "success": False}), 500
-
+        
     def get_cart_details(self, customer_id):
         try:
             cart_id = self.get_cartId_by_custId(customer_id)
@@ -148,8 +151,7 @@ class user_model():
         except Exception as e:
             print(f"Error fetching cart details: {str(e)}")
             return jsonify({"message": "Failed to retrieve cart details", "error": str(e), "success": False}), 500
-
-
+        
     def get_dishDetails_by_dishId(self, dish_id):
         try:
             # Fetch dish details from Supabase
@@ -163,8 +165,7 @@ class user_model():
         except Exception as e:
             print(f"Error fetching dish details: {str(e)}")
             return {"dish": None, "success": False, "error": str(e)} 
-            
-
+        
     def addToCart(self, dish_id, customer_id):
         try:
             cart_id = self.get_cartId_by_custId(customer_id)
@@ -199,15 +200,4 @@ class user_model():
         except Exception as e:
             print(f"Error deleting cart items: {str(e)}")  # Log the error for debugging
             return jsonify({"message": "Internal Server Error", "error": str(e), "success": False}), 500
-        
-    def get_user(self, email):
-        try:
-            query = "SELECT firstname, lastname, contact, address FROM Customer WHERE email=%s"
-            self.cur.execute(query, (email,))
-            result = self.cur.fetchone()
-
-            return result
-        
-        except Exception as e:
-            print(f"Error fetching cart items: {str(e)}")  # Log the error for debugging
-            return jsonify({"message": "Internal Server Error", "error": str(e), "success": False}), 500
+    
