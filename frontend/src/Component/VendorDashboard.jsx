@@ -1,15 +1,28 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { getVendorMenu, addDish, updateDish, deleteDish, getVendorOrders } from '../api';
+import  { useState, useEffect, useCallback } from 'react';
+import { getVendorMenu, addDish, updateDish, deleteDish, getVendorOrders} from '../api';
 import '../styles/VendorDashboard.css';
 import { useParams } from 'react-router-dom';
+import Optimisation from '../pages/Optimisation/optimisation';
 
 const VendorDashboard = () => {
   const { vendorId } = useParams();
   const [menu, setMenu] = useState([]);
   const [orders, setOrders] = useState([]);
   const [newDish, setNewDish] = useState({ name: '', price: '', description: '', ingredients: '' });
-  const [editDish, setEditDish] = useState(null); // State to track which dish is being edited
-  const [updatedDish, setUpdatedDish] = useState({ name: '', price: '', description: '', ingredients: '' }); // State for updated dish details
+  const [editDish, setEditDish] = useState(null); 
+  const [updatedDish, setUpdatedDish] = useState({ name: '', price: '', description: '', ingredients: '' });
+  // const [vendorInfo, setVendorInfo] = useState(null); 
+   
+
+  // const fetchVendorInfo = useCallback(async () => {
+  //   try {
+  //     const response = await getVendorInfo(vendorId);
+  //     setVendorInfo(response.data);  
+  //   } catch (error) {
+  //     console.error('Error fetching vendor info', error);
+  //   }
+  // }, [vendorId]);
+
 
   const fetchMenu = useCallback(async () => {
     try {
@@ -31,6 +44,7 @@ const VendorDashboard = () => {
   }, [vendorId]);
 
   useEffect(() => {
+    // fetchVendorInfo();
     fetchMenu();
     fetchOrders();
   }, [fetchMenu, fetchOrders]);
@@ -44,13 +58,13 @@ const VendorDashboard = () => {
     try {
       await addDish({
         dish_name: newDish.name,
-        price: parseFloat(newDish.price), // Ensure the price is a number
+        price: parseFloat(newDish.price),
         vendor_id: vendorId,
         description: newDish.description,
         ingredients: newDish.ingredients
       });
-      fetchMenu(); // Refresh the menu after adding a new dish
-      setNewDish({ name: '', price: '', description: '', ingredients: '' }); // Reset the form
+      fetchMenu(); 
+      setNewDish({ name: '', price: '', description: '', ingredients: '' }); 
     } catch (error) {
       console.error('Error adding dish', error);
     }
@@ -68,7 +82,7 @@ const VendorDashboard = () => {
   };
 
   const handleEditDish = (dish) => {
-    setEditDish(dish.dish_id); // Set the current dish being edited
+    setEditDish(dish.dish_id);
     setUpdatedDish({ name: dish.dish_name, price: dish.price, description: dish.description, ingredients: dish.ingredients }); // Populate the edit form with the current values
   };
 
@@ -85,8 +99,8 @@ const VendorDashboard = () => {
         description: updatedDish.description,
         ingredients: updatedDish.ingredients
       });
-      fetchMenu(); // Refresh the menu after updating the dish
-      setEditDish(null); // Exit edit mode
+      fetchMenu();
+      setEditDish(null);
     } catch (error) {
       console.error('Error updating dish', error);
     }
@@ -95,6 +109,20 @@ const VendorDashboard = () => {
   return (
     <div className="vendor-dashboard-container">
       <h2 className="vendor-dashboard-title">Vendor Dashboard</h2>
+      <Optimisation/>
+
+      {/* Vendor Info Section
+      <div className="vendor-info-section">
+        {vendorInfo ? (
+          <div className="vendor-info">
+            <h3>Welcome, {vendorInfo.name}!</h3>
+            <p>Email: {vendorInfo.email}</p>
+            <p>Location: {vendorInfo.location}</p>
+          </div>
+        ) : (
+          <p>Loading vendor information...</p>
+        )}
+      </div> */}
 
       {/* Menu Section */}
       <div className="menu-section">
@@ -149,7 +177,7 @@ const VendorDashboard = () => {
                 ) : (
                   <>
                     <span><strong>Name:</strong> {dish.dish_name}</span> <br />
-                    <span><strong>Price:</strong> ${dish.price}</span> <br />
+                    <span><strong>Price:</strong> Rs{dish.price}</span> <br />
                     <span><strong>Description:</strong> {dish.description || "No description provided"}</span> <br />
                     <span><strong>Ingredients:</strong> {dish.ingredients || "No ingredients provided"}</span> <br />
                     <button
@@ -212,7 +240,7 @@ const VendorDashboard = () => {
           <ul className="orders-list">
             {orders.map((order) => (
               <li key={order.order_id} className="order-item">
-                <span>Order #{order.order_id} - Total: ${order.total_price}</span>
+                <span>Order #{order.order_id} - Total: Rs{order.total_price}</span>
               </li>
             ))}
           </ul>

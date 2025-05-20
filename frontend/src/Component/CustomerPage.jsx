@@ -1,11 +1,14 @@
 import  { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getAllVendors } from '../api'; // Adjust this path as needed
-import '../styles/CustomerPage.css'; // External CSS file for CustomerPage
+import { getAllVendors } from '../api'; 
+import '../styles/CustomerPage.css'; 
+import Recommendation from '../pages/Recommendation/recommendation';
+
+
 
 const CustomerPage = () => {
   const [vendors, setVendors] = useState([]);
-  const navigate = useNavigate(); // useNavigate for navigation
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const fetchVendors = async () => {
@@ -27,14 +30,15 @@ const CustomerPage = () => {
 
   return (
     <div className="customer-page-container">
+    <Recommendation/>
       <h1 className="customer-page-title">Available Vendors</h1>
       <ul className="vendor-list">
         {vendors.length > 0 ? (
           vendors.map((vendor) => (
             <li key={vendor.vendor_id} className="vendor-item">
-              <h2 className="vendor-name">{vendor.first_name}</h2>
-              <p className="vendor-description">{vendor.last_name}</p>
-              <p className="vendor-location">Location: {vendor.adress}</p>
+              <h2 className="vendor-name">{vendor.firstname}</h2>
+              <p className="vendor-description">{vendor.lastname}</p>
+              <p className="vendor-location">Location: {vendor.address}</p>
               {/* Add a button to view the vendor's menu */}
               <button onClick={() => handleViewMenu(vendor.vendor_id)} className="view-menu-button">
                 View Menu

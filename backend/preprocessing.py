@@ -6,7 +6,6 @@ file_path = r'C:\Users\sahuj\Desktop\mp-main\CookNextDoor\backend\dataset\restau
 data = pd.read_csv(file_path)
 
 
-
 def clean_text(text):
   
     text = text.lower()
@@ -15,6 +14,7 @@ def clean_text(text):
    
     text = re.sub(r'\s+', ' ', text).strip()
     return text
+
 
 data['User_Preferences'] = data['User_Preferences'].fillna('').apply(lambda x: clean_text(x) if isinstance(x, str) else x)
 data['Ingredients_List'] = data['Ingredients_List'].fillna('').apply(lambda x: clean_text(x) if isinstance(x, str) else x)
@@ -25,3 +25,4 @@ data['Order_Price'] = data['Order_Price'].fillna(0)
 
 with open('data_preprocessed.pkl', 'wb') as f:
     pickle.dump(data, f)
+

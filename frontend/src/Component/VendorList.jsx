@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { getAllVendors } from '../api';
 import { useNavigate } from 'react-router-dom';
 import '../styles/VendorDetails.css';
+import Recommendation from '../pages/Recommendation/recommendation';
 
 
 const VendorList = () => {
@@ -28,12 +29,12 @@ const VendorList = () => {
 
   return (
     <div className="vendor-list-container">
+      <Recommendation/>
       <h1 className="vendor-list-title">Vendors List</h1>
       <ul className="vendor-list">
         {vendors.map((vendor, index) => (
           <li key={index} className="vendor-item">
-            <h2>{vendor.first_name} {vendor.last_name}</h2>
-            <p>{vendor.email}</p>
+            <h2>{vendor.firstname} {vendor.lastname}</h2>
             <button onClick={() => handleViewVendor(vendor.vendor_id)}>View Menu</button>
 
           </li>

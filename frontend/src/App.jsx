@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
-// import './App.css'
+
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-// import React from 'react';
+
 import Navbar from './Component/Navbar/Navbar.jsx'
 import Header from './Component/Header/Header.jsx'
 import Footer from './Component/Footer/Footer.jsx'
@@ -14,8 +14,8 @@ import VendorDashboard from './Component/VendorDashboard.jsx';
 import VendorDetails from './Component/VendorDetails.jsx';
 import VendorList from './Component/VendorList.jsx';
 import CustomerPage from './Component/CustomerPage.jsx';
-import Recommendation from './pages/Recommendation/recommendation.jsx'
-import Optimisation from './pages/Optimisation/optimisation.jsx'
+// import Recommendation from './pages/Recommendation/recommendation.jsx'
+// import Optimisation from './pages/Optimisation/optimisation.jsx'
 
 // import Home from './pages/Home/Home.jsx'
 // import Cart from './pages/Cart/Cart.jsx'
@@ -39,8 +39,8 @@ function App() {
           </StoreContextProvider>
           {/* <Navbar setShowLogin={setShowLogin}/> */}
           {/* <Header /> */}
-          <Recommendation/>
-          <Optimisation/>
+          {/* <Recommendation/> */}
+          {/* <Optimisation/> */}
           <Routes>
             <Route path='/' element={<Home />} />
             

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {jwtDecode} from 'jwt-decode';
+
 
 // Create an axios instance
 const api = axios.create({
@@ -82,3 +82,5 @@ export const getAllDishes = () => {
     headers: getAuthHeaders(),
   });
 };
+
+
