@@ -152,7 +152,7 @@ with open('data_preprocessed.pkl', 'rb') as f:
 with open('kmeans_model.pkl', 'rb') as model_file:
     kmeans = pickle.load(model_file)
 
-file_path = r'C:\Users\sahuj\Desktop\mp-main\CookNextDoor\backend\preprocessed_restaurant_data.csv'
+file_path = r'C:\Users\HP\OneDrive\Documents\MiniProj\CookNextDoor\backend\preprocessed_restaurant_data.csv'
 df = pd.read_csv(file_path)
 
 def get_current_season():
