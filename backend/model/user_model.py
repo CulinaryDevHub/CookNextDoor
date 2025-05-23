@@ -140,7 +140,7 @@ class user_model():
         try:
             cart_id = self.get_cartId_by_custId(customer_id)
             # Fetch dish_id and quantity for the given customer's cart
-            response = self.supabase.table("cart_items").select("dish_id, quantity").eq(
+            response = self.supabase.table("cart_items").select("cart_item_id, dish_id, quantity").eq(
                 "cart_id", cart_id
             ).execute()
 
@@ -154,7 +154,6 @@ class user_model():
         
     def get_dishDetails_by_dishId(self, dish_id):
         try:
-            # Fetch dish details from Supabase
             response = self.supabase.table("dishes").select("*").eq("dish_id", dish_id).execute()
 
             if not response.data:
@@ -201,3 +200,65 @@ class user_model():
             print(f"Error deleting cart items: {str(e)}")  # Log the error for debugging
             return jsonify({"message": "Internal Server Error", "error": str(e), "success": False}), 500
     
+    def get_vendorId_by_dishId(self, dish_id):
+        try:
+            response = self.supabase.table("dishes").select("vendor_id").eq("dish_id", dish_id).execute()
+            if not response.data:
+                return None  # If no cart found, return None
+            return response.data[0]["vendor_id"]  # Return cart_id
+
+        except Exception as e:
+            print(f"Error fetching vendor ID: {str(e)}")
+            return jsonify({"message": "Failed to retrieve vendor_id", "error": str(e), "success": False}), 500
+        
+    def get_address_by_custId(self, customer_id):
+        try:
+            response = self.supabase.table("customer").select("address").eq("customer_id", customer_id).execute()
+            if not response.data:
+                return None
+            return response.data[0]["address"]
+        except Exception as e:
+            print(f"Error fetching address: {str(e)}")
+            return jsonify({"message": "failed to retrieve address", "error": str(e), "success": False}), 500
+    
+    def update_qty(self, cart_id, items):
+        try:
+            for item in items:
+                dish_id = item["dish_id"]
+                new_qty = item["qty"]
+                response = self.supabase.table("cart_items").update({"quantity": new_qty}) \
+                    .eq("cart_id", cart_id) \
+                    .eq("dish_id", dish_id) \
+                    .execute()
+            if response.data:
+                return {"message": "quantity updated successfully", "success": True}, 200
+            else:
+                return {"message": "Failed to update qty", "success": False}, 500
+            
+        except Exception as e:
+            print(f"error updating quantity: {str(e)}")
+            return jsonify({"message": "failed to update quantity", "error": str(e), "success": False}), 500
+        
+    def add_order(self, customer_id, vendor_id, dish_id, qty, total_price, address):
+        try:
+            response = self.supabase.table("orders").insert({
+                "customer_id": customer_id,
+                "vendor_id": vendor_id,
+                "dish_id": dish_id,
+                "quantity": qty,
+                "total_price": total_price,
+                "delivery_address": address
+            }).execute()
+
+            if response.get("error"):
+                print(f"Supabase insert error: {response['error']}")
+                return {"message": "Failed to add order", "error": response["error"], "success": False}, 500
+        
+            if response.data:
+                return {"message": "order added successfully", "success": True}, 200
+            else:
+                return {"message": "Failed to add order", "success": False}, 500
+        
+        except Exception as e:
+            print(f"error adding order: {str(e)}")
+            return jsonify({"message": "failed to add order", "error": str(e), "success": False}), 500

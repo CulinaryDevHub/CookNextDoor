@@ -9,6 +9,8 @@ from flask_jwt_extended import create_access_token,get_jwt,get_jwt_identity, uns
 # from dotenv import load_dotenv
 # import os
 from flask_cors import CORS
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import get_jwt_identity, get_jwt
 
 # CORS(app, supports_credentials=True, resources={r"/*": {"origins": "http://localhost:5173"}},  methods=["GET", "POST", "OPTIONS", "DELETE"]) 
 
@@ -118,7 +120,7 @@ def create_user_blueprint(bcrypt, jwt):
             else :
                 additional_claims["customer_id"] = user["customer_id"]
 
-            access_token = create_access_token(identity=user[user_id_field], additional_claims=additional_claims)
+            access_token = create_access_token(identity=str(user[user_id_field]), additional_claims=additional_claims)
 
 
             return jsonify({
@@ -170,7 +172,7 @@ def create_user_blueprint(bcrypt, jwt):
     @jwt_required()
     def add_to_cart():
         try:
-            data = request.get_json()  # Get the JSON data from the request body
+            data = request.get_json()
             dish_id = data.get('dish_id')
             customer_id = data.get('customer_id')
 
@@ -234,12 +236,7 @@ def create_user_blueprint(bcrypt, jwt):
             return jsonify({"error": str(e)}), 500  
         
         
-
-
-    from flask_jwt_extended import get_jwt_identity
-
-    from flask_jwt_extended import get_jwt_identity, get_jwt
-
+    
     @user_bp.route('/menu', methods=['GET'])
     @jwt_required()
     def get_vendor_menu():
@@ -256,13 +253,14 @@ def create_user_blueprint(bcrypt, jwt):
 
     # to be changed
 
-    @user_bp.route('/orders/<int:vendor_id>', methods=['GET'])
+    @user_bp.route('/orders', methods=['GET'])
     @jwt_required()
-    def get_vendor_orders(vendor_id):
+    def get_vendor_orders():
 
         claims = get_jwt()
+        vendor_id = int(get_jwt_identity())
         # Ensure the vendor is accessing their own orders
-        if claims['user_type'] != 'vendor' or claims['user_id'] != vendor_id:
+        if claims['user_type'] != 'cook' or claims['vendor_id'] != vendor_id:
             return jsonify({"error": "Unauthorized access"}), 403
         
         orders = obj.get_orders_by_vendor(vendor_id)
@@ -289,7 +287,6 @@ def create_user_blueprint(bcrypt, jwt):
 
         return jsonify({'message': 'Dish added successfully!'})
     
-
 
     @user_bp.route('/menu/update/<int:dish_id>', methods=['PUT'])
     @jwt_required()
@@ -334,7 +331,6 @@ def create_user_blueprint(bcrypt, jwt):
         obj.delete_dish(dish_id)
         return jsonify({'message': 'Dish deleted successfully!'})
 
-# Customer API
     @user_bp.route('/vendors', methods=['GET'])
     # @jwt_required()
     def get_all_vendors():
@@ -349,6 +345,33 @@ def create_user_blueprint(bcrypt, jwt):
         dishes = obj.get_dishes_by_vendor(vendor_id)
         return jsonify(dishes)
 
+    @user_bp.route('/order/add', methods=['POST', "OPTION"])
+    @jwt_required()
+    def place_order():
+        claims = get_jwt()
+        customer_id = int(get_jwt_identity())
+        if claims['user_type'] != 'customer' or claims['customer_id'] != customer_id:
+            return jsonify({"error": "Unauthorized access"}), 403
+        
+        cart_id = obj.get_cartId_by_custId(customer_id)
+
+        data = request.get_json()
+        address = data.get("address")
+        items = data.get("items")
+        obj.update_qty(cart_id, items)
+
+        cart_details = obj.get_cart_details(customer_id)
+        for detail in cart_details:
+            dish_id = detail['dish_id']
+            qty = detail['quantity']
+            dish_details = obj.get_dishDetails_by_dishId(dish_id)
+            vendor_id = dish_details['dish']['vendor_id']
+            total_price = dish_details['dish']['price'] * qty
+
+            obj.add_order(customer_id, vendor_id, dish_id, qty, total_price, address)
+
+        return jsonify({'message': 'order confirmed'})
+    
 
     return user_bp
 
