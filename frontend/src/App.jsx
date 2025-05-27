@@ -10,13 +10,10 @@ import Footer from './Component/Footer/Footer.jsx'
 import LoginPopup from './Component/LoginPopup/LoginPopup.jsx'
 import Home from './pages/Home/Home.jsx'
 import { StoreContextProvider } from './context/StoreContext.jsx'
-import VendorDashboard from './Component/VendorDashboard.jsx';
-import VendorDetails from './Component/VendorDetails.jsx';
-import VendorList from './Component/VendorList.jsx';
-import CustomerPage from './Component/CustomerPage.jsx';
-// import Recommendation from './pages/Recommendation/recommendation.jsx'
-// import Optimisation from './pages/Optimisation/optimisation.jsx'
-
+import Cart from './Component/Cart.jsx'
+import OrderConfirmation from './Component/OrderConfirmation'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import Home from './pages/Home/Home.jsx'
 // import Cart from './pages/Cart/Cart.jsx'
 // import PlaceOrder from './pages/PlaceOrder/PlaceOrder.jsx'
@@ -28,48 +25,26 @@ function App() {
 
   return (
     <>
-    <StoreContextProvider>
-      {showLogin ? <LoginPopup setShowLogin={setShowLogin} /> : <></>}
-      </StoreContextProvider>
-      <div className='app'>
-      
-        <BrowserRouter>
-          <StoreContextProvider>
+      <StoreContextProvider>
+        <ToastContainer />
+        {showLogin ? <LoginPopup setShowLogin={setShowLogin} /> : <></>}
+
+        <div className='app'>
+          <BrowserRouter>
             <Navbar setShowLogin={setShowLogin} />
-          </StoreContextProvider>
-          {/* <Navbar setShowLogin={setShowLogin}/> */}
-          {/* <Header /> */}
-          {/* <Recommendation/> */}
-          {/* <Optimisation/> */}
-          <Routes>
-            <Route path='/' element={<Home />} />
-            
-            {/* <Route path='/cart' element={<Cart />}/>
-      <Navbar/>
-      <Header/>
-      <Recommendation/>
-      {/* <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/cart' element={<Cart />}/>
-          <Route path='/order' element={<PlaceOrder />}/>
+            {/* <Navbar setShowLogin={setShowLogin}/> */}
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/cart' element={<Cart />} />
+              <Route path="/order-confirmation" element={<OrderConfirmation />} />
+              {/* <Route path='/order' element={<PlaceOrder />}/>
           <Route path='/myorders' element={<MyOrders />}/>
           <Route path='/verify' element={<Verify />}/> */}
-
-          <Route path="/vendor/:vendorId" element={<VendorDetails />} />
-        <Route path="/vendors" element={<VendorList />} />
-        <Route path="/dashboard/:vendorId" element={<VendorDashboard />} />
-        <Route path="/customer" element={<CustomerPage />} /> 
-        {/* <Route path='/verify' element  ={<Verify />}/> */}
-
-        {/* <Route path="/" element={<VendorList />} /> */}
-          </Routes>
-        </BrowserRouter>
-      </div>
-      <Footer />
-          
-        {/* </Routes> */}
-
-      
+            </Routes>
+          </BrowserRouter>
+        </div>
+        <Footer />
+      </StoreContextProvider>
     </>
   )
 }

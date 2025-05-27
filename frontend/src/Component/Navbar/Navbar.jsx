@@ -17,7 +17,7 @@ const Navbar = ({ setShowLogin }) => {
 
   const [menu, setMenu] = useState("home");
   const { token, setToken } = useContext(StoreContext)||{};
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -61,15 +61,17 @@ const Navbar = ({ setShowLogin }) => {
           <div className={getTotalCartAmount() > 0 ? "dot" : ""}></div>
         </Link> */}
         {!token ? <button onClick={() => setShowLogin(true)}>sign in</button>
-          : <div className='navbar-profile'>
-            <CgProfile />
+          : <div className='flex gap-10'><Link to='/cart' className='flex gap-3'> <FaOpencart size={20}/></Link>
+          <div className='navbar-profile'>
+            <CgProfile size={20}/>
             <ul className='navbar-profile-dropdown'>
-              <li> <FaOpencart /> <p>Orders</p></li>
+              <li ><Link to='/cart' className='flex gap-3'><p>Orders</p></Link></li>
               <hr />
               <li onClick={logout}><p>Logout</p></li> 
               <hr />
               <li onClick={handleDashboardClick}><p>DashBoard</p></li>
             </ul>
+          </div>
           </div>
         }
 
