@@ -87,7 +87,7 @@ def create_user_blueprint(bcrypt, jwt):
             print(f"Error: {str(e)}")
             return jsonify({'message': 'Server error occurred', 'success': False}), 500
 
-    @user_bp.route('/api/user/logintoken', methods=["POST", "OPTIONS"])
+    @user_bp.route('/api/user/login', methods=["POST", "OPTIONS"])
     def create_token():
         try:
             data = request.get_json()
@@ -140,9 +140,14 @@ def create_user_blueprint(bcrypt, jwt):
     def get_dishes():
         return obj.getall_dishes() # Replace `your_class_instance` with your actual instance
 
-    @user_bp.route(f'/api/cart/<int:customer_id>', methods=['GET'])
+    @user_bp.route(f'/api/cart', methods=['GET'])
     @jwt_required()
-    def get_cart_items(customer_id):
+    def get_cart_items():
+        claims = get_jwt()
+        customer_id = int(get_jwt_identity())
+        if claims['user_type'] != 'customer' or claims['customer_id'] != customer_id:
+            return jsonify({"error": "Unauthorized access"}), 403
+        
         if customer_id is None:
             return jsonify({"message": "customer_id is required", "success": False}), 400
 
@@ -172,9 +177,13 @@ def create_user_blueprint(bcrypt, jwt):
     @jwt_required()
     def add_to_cart():
         try:
+            claims = get_jwt()
+            customer_id = int(get_jwt_identity())
+            if claims['user_type'] != 'customer' or claims['customer_id'] != customer_id:
+                return jsonify({"error": "Unauthorized access"}), 403
+
             data = request.get_json()
             dish_id = data.get('dish_id')
-            customer_id = data.get('customer_id')
 
             if not customer_id or not dish_id:
                 return jsonify({"message": "customer_id is required", "success": False}), 400
@@ -192,10 +201,13 @@ def create_user_blueprint(bcrypt, jwt):
     @jwt_required()
     def remove_from_cart():
         try:
-            data = request.get_json()  # Get the JSON data from the request body
-            dish_id = data.get('dish_id')  # Fetch the dish_id
-            customer_id = data.get('customer_id')
-            # print(f"Request data: {data}") 
+            claims = get_jwt()
+            customer_id = int(get_jwt_identity())
+            if claims['user_type'] != 'customer' or claims['customer_id'] != customer_id:
+                return jsonify({"error": "Unauthorized access"}), 403
+
+            data = request.get_json()
+            dish_id = data.get('dish_id')
 
             if customer_id is None:
                 return jsonify({"message": "customer_id is required", "success": False}), 400
@@ -208,58 +220,30 @@ def create_user_blueprint(bcrypt, jwt):
         except Exception as e:
             print(f"Error deleting cart items details: {str(e)}")  # Log the error for debugging
             return jsonify({"message": "Internal Server Error", "error": str(e), "success": False}), 500  
-
-
-    @user_bp.route('/api/checkEmail', methods=['POST'])
-    def check_email():
-        data = request.json
-        email = data.get('email')
-
-        if not email:
-            return jsonify({"error": "Email is required"}), 400
-
-        try:
-            result = obj.get_user(email)
-
-            if result:
-                # Debugging log: Print fetched result (for debugging purposes)
-                print(f"Fetched result from DB: {result}")
-
-                # Combine firstname and lastname into full name
-                result['name'] = f"{result['firstname']} {result['lastname']}"
-                del result['firstname'], result['lastname']  # Remove separate first/last names from response
-                return jsonify(result)
-            else:
-                return jsonify({"error": "Email not found , Verify again OR Register Yourself"}), 404
-
-        except Exception as e:
-            return jsonify({"error": str(e)}), 500  
-        
-        
+     
     
-    @user_bp.route('/menu', methods=['GET'])
+    @user_bp.route('/api/menu', methods=['GET'])
     @jwt_required()
     def get_vendor_menu():
         claims = get_jwt()  # Extract all claims from JWT
-        jwt_vendor_id = get_jwt_identity()  # Extract vendor_id
+        vendor_id = get_jwt_identity()  # Extract vendor_id
         
-        # Check if user_type is 'cook'
         if claims.get('user_type') != 'cook':
             return jsonify({"error": "Unauthorized access"}), 403
 
-        dishes = obj.get_dishes_by_vendor(jwt_vendor_id)
+        dishes = obj.get_dishes_by_vendor(vendor_id)
         return jsonify(dishes)
 
 
     # to be changed
 
-    @user_bp.route('/orders', methods=['GET'])
+    @user_bp.route('/api/orders', methods=['GET'])
     @jwt_required()
     def get_vendor_orders():
 
         claims = get_jwt()
         vendor_id = int(get_jwt_identity())
-        # Ensure the vendor is accessing their own orders
+        
         if claims['user_type'] != 'cook' or claims['vendor_id'] != vendor_id:
             return jsonify({"error": "Unauthorized access"}), 403
         
@@ -267,15 +251,17 @@ def create_user_blueprint(bcrypt, jwt):
         return jsonify(orders)
     
 
-    from flask_jwt_extended import get_jwt_identity
-
-    @user_bp.route('/menu/add', methods=['POST'])
+    @user_bp.route('/api/menu/add', methods=['POST'])
     @jwt_required()
     def add_new_dish():
-        vendor_id = get_jwt_identity()  # Extract vendor_id directly from the token
+        claims = get_jwt()
+        vendor_id = int(get_jwt_identity())
+        
+        if claims['user_type'] != 'cook' or claims['vendor_id'] != vendor_id:
+            return jsonify({"error": "Unauthorized access"}), 403
 
-        data = request.json
-        print(data)
+        data = request.get_json()
+        # print(data)
 
         obj.add_dish(
             data['dish_name'], 
@@ -288,7 +274,7 @@ def create_user_blueprint(bcrypt, jwt):
         return jsonify({'message': 'Dish added successfully!'})
     
 
-    @user_bp.route('/menu/update/<int:dish_id>', methods=['PUT'])
+    @user_bp.route('/api/menu/update/<int:dish_id>', methods=['PUT'])
     @jwt_required()
     def update_existing_dish(dish_id):
         if request.method == 'OPTIONS':
@@ -299,10 +285,13 @@ def create_user_blueprint(bcrypt, jwt):
             response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization'
             return response
         claims = get_jwt()
-        if claims['user_type'] != 'vendor':
+        vendor_id = int(get_jwt_identity())
+        
+        if claims['user_type'] != 'cook' or claims['vendor_id'] != vendor_id:
             return jsonify({"error": "Unauthorized access"}), 403
-        data = request.json
-        print(data)
+        
+        data = request.get_json()
+        # print(data)
     
         obj.update_dish(
             dish_id, 
@@ -314,7 +303,7 @@ def create_user_blueprint(bcrypt, jwt):
         return jsonify({'message': 'Dish updated successfully!'})
     
 
-    @user_bp.route('/menu/delete/<int:dish_id>', methods=['DELETE'])
+    @user_bp.route('/api/menu/delete/<int:dish_id>', methods=['DELETE'])
     @jwt_required()
     def delete_dish_route(dish_id):
         if request.method == 'OPTIONS':
@@ -331,7 +320,7 @@ def create_user_blueprint(bcrypt, jwt):
         obj.delete_dish(dish_id)
         return jsonify({'message': 'Dish deleted successfully!'})
 
-    @user_bp.route('/vendors', methods=['GET'])
+    @user_bp.route('/api/vendors', methods=['GET'])
     # @jwt_required()
     def get_all_vendors():
         vendors = obj.get_vendors()
@@ -339,13 +328,13 @@ def create_user_blueprint(bcrypt, jwt):
     
 
 
-    @user_bp.route('/vendor/menu/<int:vendor_id>', methods=['GET'])
+    @user_bp.route('/api/vendor/menu/<int:vendor_id>', methods=['GET'])
     # @jwt_required()
     def get_vendor_menu_for_customer(vendor_id):
         dishes = obj.get_dishes_by_vendor(vendor_id)
         return jsonify(dishes)
 
-    @user_bp.route('/order/add', methods=['POST', "OPTION"])
+    @user_bp.route('/api/order/add', methods=['POST', "OPTION"])
     @jwt_required()
     def place_order():
         claims = get_jwt()

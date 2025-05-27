@@ -1,2 +1,3 @@
 --> if the dish is already in the cart and dish is added again inc quantity or handle it.
 --> fetch cutomerId from token on backend itself
+--> update menu
