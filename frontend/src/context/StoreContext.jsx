@@ -111,7 +111,7 @@ const StoreContextProvider = (props) => {
 
 const fetchMenu = async () => {
     try {
-        const response = await axios.get(url + "/api/dishes");
+        const response = await axios.get(url + "/api/vendors");
         setFoodList(response.data.dishes); // Make sure you use the right key from the response
     } catch (error) {
         console.error('Error fetching food list:', error);

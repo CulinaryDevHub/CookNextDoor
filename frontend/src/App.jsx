@@ -14,6 +14,10 @@ import Cart from './Component/Cart.jsx'
 import OrderConfirmation from './Component/OrderConfirmation'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import VendorDetails from './Component/VendorDetails.jsx'
+import Menu from './Component/Menu/Menu.jsx'
+import VendorDashboard from './Component/VendorDashboard.jsx'
+import VendorList from './Component/VendorList.jsx'
 // import Home from './pages/Home/Home.jsx'
 // import Cart from './pages/Cart/Cart.jsx'
 // import PlaceOrder from './pages/PlaceOrder/PlaceOrder.jsx'
@@ -37,6 +41,8 @@ function App() {
               <Route path='/' element={<Home />} />
               <Route path='/cart' element={<Cart />} />
               <Route path="/order-confirmation" element={<OrderConfirmation />} />
+              <Route path="/vendor/:vendorId" element={<Menu />} />
+              <Route path="/vendors" element={<VendorList />} />
               {/* <Route path='/order' element={<PlaceOrder />}/>
           <Route path='/myorders' element={<MyOrders />}/>
           <Route path='/verify' element={<Verify />}/> */}

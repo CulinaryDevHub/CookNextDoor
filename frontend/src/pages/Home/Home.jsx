@@ -6,6 +6,7 @@ import React, { useState } from 'react'
 import Header from '../../Component/Header/Header'
 import Menu from '../../Component/Menu/Menu'
 import { StoreContextProvider } from '../../context/StoreContext'
+import VendorList from '../../Component/VendorList'
 
 const Home = () => {
 
@@ -15,7 +16,7 @@ const Home = () => {
     <>
       <Header/>
       <StoreContextProvider>
-      <Menu />
+        <VendorList/>
       </StoreContextProvider>
       {/* <ExploreMenu setCategory={setCategory} category={category}/>
       <FoodDisplay category={category}/>

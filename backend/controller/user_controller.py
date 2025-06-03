@@ -138,7 +138,7 @@ def create_user_blueprint(bcrypt, jwt):
 
     @user_bp.route('/api/dishes', methods=['GET'])
     def get_dishes():
-        return obj.getall_dishes() # Replace `your_class_instance` with your actual instance
+        return obj.getall_dishes() 
 
     @user_bp.route(f'/api/cart', methods=['GET'])
     @jwt_required()

@@ -30,7 +30,7 @@ const getAuthHeaders = () => {
 // Get Vendor Menu
 export const getVendorMenu = (vendorId) => {
   return api.get(`vendor/menu/${vendorId}`, {
-    headers: getAuthHeaders(),
+    // headers: getAuthHeaders(),
   });
 };
 
@@ -64,14 +64,14 @@ export const getVendorOrders = (vendorId) => {
 
 // Get all vendors (customer side)
 export const getAllVendors = () => {
-  return api.get(`/customer/vendors`, {
+  return api.get(`/vendors`, {
     headers: getAuthHeaders(),
   });
 };
 
 // Get vendor menu for customer
 export const getVendorMenuForCustomer = (vendorId) => {
-  return api.get(`customer/vendor/menu/${vendorId}`, {
+  return api.get(`/vendor/menu/${vendorId}`, {
     headers: getAuthHeaders(),
   });
 };

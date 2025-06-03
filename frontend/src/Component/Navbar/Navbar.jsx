@@ -13,7 +13,6 @@ import { jwtDecode } from 'jwt-decode';
 
 
 const Navbar = ({ setShowLogin }) => {
-  const navigate = useNavigate();
 
   const [menu, setMenu] = useState("home");
   const { token, setToken } = useContext(StoreContext)||{};
