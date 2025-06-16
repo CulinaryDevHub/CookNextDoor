@@ -32,7 +32,7 @@ const LoginPopup = ({ setShowLogin }) => {
 
         let new_url = url;
         if (currState === "Login") {
-            new_url += "/api/user/logintoken";
+            new_url += "/api/user/login";
         }
         else {
             new_url += "/api/user/addone"

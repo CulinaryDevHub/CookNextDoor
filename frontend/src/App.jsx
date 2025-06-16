@@ -43,6 +43,7 @@ function App() {
               <Route path="/order-confirmation" element={<OrderConfirmation />} />
               <Route path="/vendor/:vendorId" element={<Menu />} />
               <Route path="/vendors" element={<VendorList />} />
+              <Route path="/dashboard/:vendorId" element={<VendorDashboard />} />
               {/* <Route path='/order' element={<PlaceOrder />}/>
           <Route path='/myorders' element={<MyOrders />}/>
           <Route path='/verify' element={<Verify />}/> */}

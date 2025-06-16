@@ -36,14 +36,14 @@ export const getVendorMenu = (vendorId) => {
 
 // Add a new dish
 export const addDish = (dishData) => {
-  return api.post(`vendor/menu/add`, dishData, {
+  return api.post(`menu/add`, dishData, {
     headers: getAuthHeaders(),
   });
 };
 
 // Update a dish
 export const updateDish = (dishId, dishData) => {
-  return api.put(`vendor/menu/update/${dishId}`, dishData, {
+  return api.put(`menu/update/${dishId}`, dishData, {
     headers: getAuthHeaders(),
   });
 };
@@ -57,7 +57,7 @@ export const deleteDish = (dishId) => {
 
 // Get vendor orders
 export const getVendorOrders = (vendorId) => {
-  return api.get(`vendor/orders/${vendorId}`, {
+  return api.get(`orders`, {
     headers: getAuthHeaders(),
   });
 };

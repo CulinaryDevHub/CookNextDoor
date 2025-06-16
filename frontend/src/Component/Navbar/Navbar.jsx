@@ -28,7 +28,7 @@ const Navbar = ({ setShowLogin }) => {
     const token = localStorage.getItem('token');
     if (token) {
       const decodedToken = jwtDecode(token);
-      return decodedToken.user_id; // Assuming user_id is the vendor_id
+      return decodedToken.vendor_id; // Assuming user_id is the vendor_id
     }
     return null;
   };

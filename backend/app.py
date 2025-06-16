@@ -22,7 +22,7 @@ CORS(app)
 
 #CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}},  methods=["GET", "POST", "OPTIONS","PUT","DELETE"]) 
 
-CORS(app, supports_credentials=True, resources={r"/*": {"origins": "http://localhost:5173"}},  methods=["GET", "POST", "OPTIONS", "DELETE"]) 
+CORS(app, supports_credentials=True, resources={r"/*": {"origins": "http://localhost:5173"}},  methods=["GET", "POST", "OPTIONS", "DELETE", "PUT"]) 
 # obj = UserModel()
 # print(f"obj: {obj}")
 
