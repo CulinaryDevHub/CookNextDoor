@@ -18,7 +18,7 @@ const getAuthHeaders = () => {
       'Content-Type': 'application/json',
     };
   } else {
-    console.error("No token found");
+    // console.error("No token found");
     return {
       'Content-Type': 'application/json',
     };

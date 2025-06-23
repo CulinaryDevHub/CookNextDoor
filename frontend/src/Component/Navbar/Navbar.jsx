@@ -10,12 +10,13 @@ import { CgProfile } from "react-icons/cg";
 // import { FaInstagram } from "react-icons/fa";
 import { FaOpencart } from "react-icons/fa";
 import { jwtDecode } from 'jwt-decode';
+import useAuthContext from '../../context/AuthContext';
 
 
 const Navbar = ({ setShowLogin }) => {
 
   const [menu, setMenu] = useState("home");
-  const { token, setToken } = useContext(StoreContext)||{};
+  const { token, setToken } = useAuthContext()
   const navigate = useNavigate();
 
   const logout = () => {

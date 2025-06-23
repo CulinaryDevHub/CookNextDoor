@@ -18,6 +18,7 @@ import VendorDetails from './Component/VendorDetails.jsx'
 import Menu from './Component/Menu/Menu.jsx'
 import VendorDashboard from './Component/VendorDashboard.jsx'
 import VendorList from './Component/VendorList.jsx'
+import { VendorContextProvider } from './context/VendorContext.jsx'
 // import Home from './pages/Home/Home.jsx'
 // import Cart from './pages/Cart/Cart.jsx'
 // import PlaceOrder from './pages/PlaceOrder/PlaceOrder.jsx'
@@ -30,6 +31,7 @@ function App() {
   return (
     <>
       <StoreContextProvider>
+        <VendorContextProvider>
         <ToastContainer />
         {showLogin ? <LoginPopup setShowLogin={setShowLogin} /> : <></>}
 
@@ -44,13 +46,14 @@ function App() {
               <Route path="/vendor/:vendorId" element={<Menu />} />
               <Route path="/vendors" element={<VendorList />} />
               <Route path="/dashboard/:vendorId" element={<VendorDashboard />} />
-              {/* <Route path='/order' element={<PlaceOrder />}/>
-          <Route path='/myorders' element={<MyOrders />}/>
-          <Route path='/verify' element={<Verify />}/> */}
+              {/* <Route path='/order' element={<PlaceOrder />}/> */}
+          {/* <Route path='/myorders' element={<MyOrders />}/> */}
+          {/* <Route path='/verify' element={<Verify />}/> */}
             </Routes>
           </BrowserRouter>
         </div>
         <Footer />
+        </VendorContextProvider>
       </StoreContextProvider>
     </>
   )

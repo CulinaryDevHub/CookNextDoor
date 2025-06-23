@@ -2,15 +2,17 @@ import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { StoreContext } from '../context/StoreContext';
 import { useNavigate } from 'react-router-dom';
+import useAuthContext from '../context/AuthContext';
 
 const Cart = () => {
-    const { url, cartItems, setCartItems, quantity, setQuantity, getCustomerId, removeFromCart } = useContext(StoreContext) || {};
+    const { url, cartItems, setCartItems, quantity, setQuantity, getCustomerId, removeFromCart, getCartItems } = useContext(StoreContext) || {};
     // const [cartItems, setCartItems] = useState([]); // Initialize with an empty array
     const [errorMessage, setErrorMessage] = useState(""); // State to hold error messages, if any
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [user, setUser] = useState({ name: '', address: '', contact: '' });
     const [totalPrice, setTotal] = useState(0);
+    const {token, loading} = useAuthContext()
 
     const headingStyle = {
         color: '#ffffff',
@@ -52,38 +54,14 @@ const Cart = () => {
 
     // Function to fetch cart items
     const fetchCartItems = async () => {
-        const customer_id = getCustomerId(); // Get customer ID
-        if (!customer_id) {
-            console.error('Customer ID not found. User may not be logged in.');
-            setErrorMessage("Customer ID not found. User may not be logged in.");
-            return; // Exit if customer_id is not available
-        }
-
-        try {
-            const response = await axios.get(url + `/api/cart/${customer_id}`); // Fetch cart items
-            const dishDetails = response.data.dish_details || [];  // Store cart items in state, default to empty array if undefined
-            // console.log(dishDetails);
-
-            const details = dishDetails.map(item => item.details);  // Extract details if needed
-            setCartItems(details);
-
-            const dishQuantity = response.data.dish_details || [];  // Store cart items in state, default to empty array if undefined
-            const fetchedquantity = dishQuantity.map(item => item.quantity);  // Extract details if needed
-            setQuantity(fetchedquantity);
-
-        } catch (error) {
-            if (error.response) {
-                console.error('Error response:', error.response.data);
-                setErrorMessage(error.response.data.message || "Failed to fetch cart items");
-            } else if (error.request) {
-                console.error('Error request:', error.request);
-                setErrorMessage("No response from the server");
-            } else {
-                console.error('Error message:', error.message);
-                setErrorMessage(error.message);
-            }
-        }
+        getCartItems();
     };
+
+    useEffect(() => {
+    if (!loading && token) {
+      fetchCartItems();
+    }
+  }, [loading, token]);
 
     // Calculate total price whenever cartItems or quantity changes
     useEffect(() => {

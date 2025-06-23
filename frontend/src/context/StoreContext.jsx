@@ -1,19 +1,26 @@
 import { Children, createContext, useEffect, useState } from "react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
+import useAuthContext from "./AuthContext";
+
+
 const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
+    const {token, setToken} = useAuthContext()
     const url = "http://localhost:5000"
     const [food_list, setFoodList] = useState([]);
     const [cartItems, setCartItems] = useState({});
-    const [token, setToken] = useState("")
+    // const [token, setToken] = useState("")
     const [quantity, setQuantity] = useState(1)
 
+    // console.log(token);
     // Function to get customer ID from the token
     const getCustomerId = () => {
-        const token = localStorage.getItem('token'); // Get token from localStorage
+        // const token = localStorage.getItem('token'); // Get token from localStorage
         if (token) {
+            setToken(token);
+            
             try {
                 const decoded = jwtDecode(token); // Decode the token
                 // console.log(decoded.sub);
@@ -26,6 +33,49 @@ const StoreContextProvider = (props) => {
         }
         return null; // Handle case where token is not available
     };
+
+    const getCartItems = async () => {
+        const customer_id = getCustomerId(); // Get customer ID
+        if (!customer_id) {
+            console.error('Customer ID not found. User may not be logged in.');
+            return; // Exit if customer_id is not available
+        }
+        
+        // if (token && customer_id) {
+            try {
+                const response = await axios.get(
+                    url + `/api/cart`,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        }
+                    }
+                ); // Fetch cart items
+                const dishDetails = response.data.dish_details || [];  // Store cart items in state, default to empty array if undefined
+                console.log(dishDetails);
+
+                const details = dishDetails.map(item => item.details);  // Extract details if needed
+                setCartItems(details);
+
+                const dishQuantity = response.data.dish_details || [];  // Store cart items in state, default to empty array if undefined
+                const fetchedquantity = dishQuantity.map(item => item.quantity);  // Extract details if needed
+                setQuantity(fetchedquantity);
+
+            } catch (error) {
+                if (error.response) {
+                    console.error('Error response:', error.response.data);
+                    // setErrorMessage(error.response.data.message || "Failed to fetch cart items");
+                } else if (error.request) {
+                    console.error('Error request:', error.request);
+                    // setErrorMessage("No response from the server");
+                } else {
+                    console.error('Error message:', error.message);
+                    // setErrorMessage(error.message);
+                }
+            }
+        // }
+    }
 
     const addToCart = async (dish_id) => {
         const customer_id = getCustomerId()
@@ -44,14 +94,19 @@ const StoreContextProvider = (props) => {
             try {
                 await axios.post(
                     url + "/api/cart/add",
-                    { dish_id, customer_id },  // Send the dish_id in the request body
-                    { headers: { token } }  // Set Authorization header
+                    { dish_id },  // Send the dish_id in the request body
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        }
+                    }  // Set Authorization header
                 );
                 console.log(`Dish ${dish_id} added to cart`);
                 alert('dish added!')
             } catch (error) {
                 if (error.response) {
-                    console.error('Error adding dish to cart:', error.response.data); // Log server's error message
+                    console.error('Error adding dish to cart r:', error.response.data); // Log server's error message
                 } else {
                     console.error('Error adding dish to cart:', error);
                 }
@@ -122,13 +177,19 @@ const StoreContextProvider = (props) => {
         async function loadData() {
             await fetchMenu();
             if (localStorage.getItem("token")) {
-                setToken(localStorage.getItem("token"))
+                // setToken(localStorage.getItem("token"))
                 // await loadCartData({ token: localStorage.getItem("token") })
-                // console.log(token);
+                // console.log(localStorage.getItem("token"));
             }
         }
+        
         loadData()
-    }, [])
+    }, [token])
+
+    useEffect(() => {
+        // console.log(token);
+        
+    },[])
 
     const contextValue = {
         url,
@@ -144,7 +205,8 @@ const StoreContextProvider = (props) => {
         token,
         setToken,
         // loadCartData,
-        setCartItems
+        setCartItems,
+        getCartItems
     };
 
     return (
