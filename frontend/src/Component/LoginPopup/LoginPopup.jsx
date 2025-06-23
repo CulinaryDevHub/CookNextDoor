@@ -4,11 +4,12 @@ import './LoginPopup.css'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import { StoreContext } from '../../context/StoreContext'
+import useAuthContext from '../../context/AuthContext'
 
 const LoginPopup = ({ setShowLogin }) => {
 
-    const { setToken, url } = useContext(StoreContext) || {}
-    // const [token, setToken] = useState("")
+    const {  url } = useContext(StoreContext) || {}
+    const {token, setToken} = useAuthContext()
     const [currState, setCurrState] = useState("Login");
     //const url = "http://localhost:5000"
 
@@ -32,7 +33,7 @@ const LoginPopup = ({ setShowLogin }) => {
 
         let new_url = url;
         if (currState === "Login") {
-            new_url += "/api/user/logintoken";
+            new_url += "/api/user/login";
         }
         else {
             new_url += "/api/user/addone"
@@ -57,7 +58,7 @@ const LoginPopup = ({ setShowLogin }) => {
 
             if (result.success) {                
                 setToken(result.token);
-                localStorage.setItem("token", result.token);
+                localStorage.setItem("token", result.token);  // stored token in localstorage
                 setShowLogin(false);
             } else {
                 // toast.error(result.error || "Unauthorized");

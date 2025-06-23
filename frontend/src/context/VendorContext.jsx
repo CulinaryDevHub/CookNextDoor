@@ -1,5 +1,7 @@
+import { Children, createContext, useContext } from "react";
 import axios from 'axios';
 
+const VendorContext = createContext({})
 
 // Create an axios instance
 const api = axios.create({
@@ -18,7 +20,6 @@ const getAuthHeaders = () => {
       'Content-Type': 'application/json',
     };
   } else {
-    // console.error("No token found");
     return {
       'Content-Type': 'application/json',
     };
@@ -29,8 +30,8 @@ const getAuthHeaders = () => {
 
 // Get Vendor Menu
 export const getVendorMenu = (vendorId) => {
-  return api.get(`vendor/menu/${vendorId}`, {
-    // headers: getAuthHeaders(),
+  return api.get(`/menu`, {
+    headers: getAuthHeaders(),
   });
 };
 
@@ -83,4 +84,14 @@ export const getAllDishes = () => {
   });
 };
 
+export const VendorContextProvider = ({children}) => {
+    return (
+        <VendorContext.Provider value={{ getVendorMenu, addDish, updateDish, deleteDish, getVendorOrders}}>
+            {children}
+        </VendorContext.Provider>
+    )
+}
 
+export default function useVendorContext(){
+    return useContext(VendorContext)
+}

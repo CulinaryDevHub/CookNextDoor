@@ -10,13 +10,13 @@ import { CgProfile } from "react-icons/cg";
 // import { FaInstagram } from "react-icons/fa";
 import { FaOpencart } from "react-icons/fa";
 import { jwtDecode } from 'jwt-decode';
+import useAuthContext from '../../context/AuthContext';
 
 
 const Navbar = ({ setShowLogin }) => {
-  const navigate = useNavigate();
 
   const [menu, setMenu] = useState("home");
-  const { token, setToken } = useContext(StoreContext)||{};
+  const { token, setToken } = useAuthContext()
   const navigate = useNavigate();
 
   const logout = () => {
@@ -29,7 +29,7 @@ const Navbar = ({ setShowLogin }) => {
     const token = localStorage.getItem('token');
     if (token) {
       const decodedToken = jwtDecode(token);
-      return decodedToken.user_id; // Assuming user_id is the vendor_id
+      return decodedToken.vendor_id; // Assuming user_id is the vendor_id
     }
     return null;
   };

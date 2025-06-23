@@ -138,7 +138,7 @@ def create_user_blueprint(bcrypt, jwt):
 
     @user_bp.route('/api/dishes', methods=['GET'])
     def get_dishes():
-        return obj.getall_dishes() # Replace `your_class_instance` with your actual instance
+        return obj.getall_dishes() 
 
     @user_bp.route(f'/api/cart', methods=['GET'])
     @jwt_required()
@@ -277,13 +277,13 @@ def create_user_blueprint(bcrypt, jwt):
     @user_bp.route('/api/menu/update/<int:dish_id>', methods=['PUT'])
     @jwt_required()
     def update_existing_dish(dish_id):
-        if request.method == 'OPTIONS':
-            # CORS preflight request
-            response =Flask.make_response()
-            response.headers['Access-Control-Allow-Origin'] = 'http://localhost:5173'
-            response.headers['Access-Control-Allow-Methods'] = 'PUT'
-            response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization'
-            return response
+        # if request.method == 'OPTIONS':
+        #     # CORS preflight request
+        #     response =Flask.make_response()
+        #     response.headers['Access-Control-Allow-Origin'] = 'http://localhost:5173'
+        #     response.headers['Access-Control-Allow-Methods'] = 'PUT'
+        #     response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization'
+        #     return response
         claims = get_jwt()
         vendor_id = int(get_jwt_identity())
         

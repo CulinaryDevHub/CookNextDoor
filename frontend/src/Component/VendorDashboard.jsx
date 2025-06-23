@@ -1,10 +1,12 @@
 import  { useState, useEffect, useCallback } from 'react';
-import { getVendorMenu, addDish, updateDish, deleteDish, getVendorOrders} from '../api';
+// import { getVendorMenu, addDish, updateDish, deleteDish, getVendorOrders} from '../api';
 import '../styles/VendorDashboard.css';
 import { useParams } from 'react-router-dom';
 import Optimisation from '../pages/Optimisation/optimisation';
+import useVendorContext from '../context/VendorContext';
 
 const VendorDashboard = () => {
+  const { getVendorMenu, addDish, updateDish, deleteDish, getVendorOrders} = useVendorContext();
   const { vendorId } = useParams();
   const [menu, setMenu] = useState([]);
   const [orders, setOrders] = useState([]);

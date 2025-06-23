@@ -1,9 +1,27 @@
-import {React, useContext} from 'react'
+import {React, useContext, useState, useEffect} from 'react'
+import { useParams } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
+import { getVendorMenuForCustomer } from '../../api';
 
 const Menu = () => {
 
-    const { food_list, url, cartItems, setCartItems, addToCart } = useContext(StoreContext) || {};
+    const {  url, cartItems, setCartItems, addToCart } = useContext(StoreContext) || {};
+
+    const { vendorId } = useParams();
+      const [food_list, setMenu] = useState([]);
+    
+      useEffect(() => {
+        const fetchMenu = async () => {
+          try {
+            const response = await getVendorMenuForCustomer(vendorId);
+            setMenu(response.data);
+          } catch (error) {
+            console.error('Error fetching vendor menu', error);
+          }
+        };
+    
+        fetchMenu();
+      }, [vendorId]);
     // console.log(food_list);
     
     // const handleAddToCart = async (dish_id) => {
