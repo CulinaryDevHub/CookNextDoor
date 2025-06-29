@@ -105,14 +105,12 @@ class user_model():
         except Exception as e:
             return None
 
-    def update_dish(self, dish_id, name, price, description, ingredients):
+    def update_dish(self, data, dish_id):
         try:
-            response = self.supabase.table("dishes").update({
-                "dish_name": name,
-                "price": price,
-                "description": description,
-                "ingredients": ingredients
-            }).eq("dish_id", dish_id).execute()
+            for key, value in data.items():
+                response = self.supabase.table("dishes").update({
+                    key: value
+                }).eq("dish_id", dish_id).execute()
             return response.data if response.data else None
         except Exception as e:
             return None
