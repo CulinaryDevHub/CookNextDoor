@@ -274,16 +274,9 @@ def create_user_blueprint(bcrypt, jwt):
         return jsonify({'message': 'Dish added successfully!'})
     
 
-    @user_bp.route('/api/menu/update/<int:dish_id>', methods=['PUT'])
+    @user_bp.route('/api/menu/update/<int:dish_id>', methods=['PATCH'])
     @jwt_required()
     def update_existing_dish(dish_id):
-        # if request.method == 'OPTIONS':
-        #     # CORS preflight request
-        #     response =Flask.make_response()
-        #     response.headers['Access-Control-Allow-Origin'] = 'http://localhost:5173'
-        #     response.headers['Access-Control-Allow-Methods'] = 'PUT'
-        #     response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization'
-        #     return response
         claims = get_jwt()
         vendor_id = int(get_jwt_identity())
         
@@ -291,14 +284,11 @@ def create_user_blueprint(bcrypt, jwt):
             return jsonify({"error": "Unauthorized access"}), 403
         
         data = request.get_json()
-        # print(data)
+        print(data)
     
         obj.update_dish(
-            dish_id, 
-            data['dish_name'], 
-            data['price'], 
-            data['description'], 
-            data['ingredients']
+            data,
+            dish_id
         )
         return jsonify({'message': 'Dish updated successfully!'})
     
